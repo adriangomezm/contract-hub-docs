@@ -10,8 +10,16 @@
 <style>
   @font-face {
     font-family: 'Polymath Text';
-    src: local('Polymath Text'), local('PolymathText');
-    font-weight: 100 900;
+    src: url('fonts/PolymathTextDemo-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Polymath Text';
+    src: url('fonts/PolymathTextDemo-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
     font-display: swap;
   }
   /* ── Reset & Base ── */
@@ -281,6 +289,35 @@
     text-align: center;
   }
 
+  /* ── Language Switcher ── */
+  .lang-switcher {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.75rem;
+  }
+  .lang-switcher a {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .lang-switcher a:hover {
+    background: var(--sage-light);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .lang-switcher a.active {
+    background: var(--sage);
+    color: var(--white);
+    border-color: var(--sage);
+  }
+
   /* ── Responsive ── */
   @media (max-width: 900px) {
     .sidebar { display: none; }
@@ -302,6 +339,10 @@
   <div class="sidebar-brand">
     <h2>Contract Hub</h2>
     <p>User Documentation</p>
+    <div class="lang-switcher">
+      <a href="index.html" class="active">EN</a>
+      <a href="es.html">ES</a>
+    </div>
   </div>
 
   <div class="nav-section">

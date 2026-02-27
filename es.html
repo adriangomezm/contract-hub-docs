@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contract Hub — Documentaci&oacute;n de Usuario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Polymath Text';
+    src: url('fonts/PolymathTextDemo-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Polymath Text';
+    src: url('fonts/PolymathTextDemo-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F5;
+    --white: #FFFFFF;
+    --sage: #B8D4C8;
+    --sage-light: #dceee6;
+    --sage-dark: #7fb5a0;
+    --lavender: #C5CAE9;
+    --lavender-light: #e8eaf6;
+    --pink: #F0B8D0;
+    --pink-light: #fce4ec;
+    --amber: #F0A830;
+    --amber-light: #fff3e0;
+    --text: #1A1A1A;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --border: #E8E4DF;
+    --border-light: #F0ECE7;
+    --error: #E57373;
+    --radius: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Polymath Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── Typography ── */
+  h1, h2, h3, h4 { line-height: 1.3; color: var(--text); font-family: 'Space Grotesk', sans-serif; }
+  h1 { font-size: 2rem; font-weight: 800; }
+  h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
+  h3 { font-size: 1.15rem; font-weight: 700; margin-top: 1.8rem; margin-bottom: 0.75rem; }
+  h4 { font-size: 1rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.5rem; }
+
+  p { margin-bottom: 0.8rem; }
+  a { color: var(--sage-dark); text-decoration: none; font-weight: 500; }
+  a:hover { text-decoration: underline; }
+  strong { font-weight: 700; }
+
+  ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+  li { margin-bottom: 0.35rem; }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    background: var(--lavender-light);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92em; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #F5F2ED; font-weight: 700; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
+  tr:hover td { background: var(--cream); }
+
+  /* ── Layout ── */
+  .page-wrapper { display: flex; min-height: 100vh; }
+
+  /* ── Sidebar Navigation ── */
+  .sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  .sidebar-brand {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 1rem;
+  }
+  .sidebar-brand h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .sidebar-brand p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0;
+    font-weight: 500;
+  }
+
+  .nav-section { padding: 0.5rem 1.5rem; }
+  .nav-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 6px 12px;
+    margin: 2px 0;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .nav-link:hover {
+    background: var(--sage-light);
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  /* ── Main Content ── */
+  .main-content {
+    flex: 1;
+    max-width: 860px;
+    padding: 3rem 3.5rem 6rem;
+  }
+
+  /* ── Brand Strip ── */
+  .brand-strip {
+    height: 4px;
+    background: linear-gradient(90deg, var(--amber), var(--pink), var(--lavender), var(--sage));
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .info-card {
+    background: var(--lavender-light);
+    border: 1px solid var(--lavender);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.92em;
+  }
+  .info-card strong { color: var(--text); }
+
+  .tip-card {
+    background: var(--sage-light);
+    border: 1px solid var(--sage);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.92em;
+  }
+
+  .warning-card {
+    background: var(--amber-light);
+    border: 1px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.92em;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .badge-sage { background: var(--sage-light); color: #3a7d60; }
+  .badge-lavender { background: var(--lavender-light); color: #3f51b5; }
+  .badge-pink { background: var(--pink-light); color: #ad1457; }
+  .badge-amber { background: var(--amber-light); color: #e65100; }
+  .badge-muted { background: #f0ece7; color: var(--text-muted); }
+
+  /* ── Steps ── */
+  .steps { counter-reset: step-counter; list-style: none; margin-left: 0; padding-left: 0; }
+  .steps li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0; top: 2px;
+    width: 26px; height: 26px;
+    background: var(--sage);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.82rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Keyboard shortcut ── */
+  kbd {
+    background: #f0ece7;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 0.85em;
+    font-weight: 600;
+  }
+
+  /* ── Divider ── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 2.5rem 0;
+  }
+
+  /* ── Section anchor offset ── */
+  section[id] { scroll-margin-top: 1.5rem; }
+
+  /* ── Screenshots ── */
+  .screenshot {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  .screenshot img {
+    max-width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .screenshot.screenshot-mobile img {
+    max-width: 320px;
+  }
+  .screenshot figcaption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  /* ── Footer ── */
+  .doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* ── Language Switcher ── */
+  .lang-switcher {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.75rem;
+  }
+  .lang-switcher a {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .lang-switcher a:hover {
+    background: var(--sage-light);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .lang-switcher a.active {
+    background: var(--sage);
+    color: var(--white);
+    border-color: var(--sage);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main-content { padding: 2rem 1.5rem 4rem; }
+  }
+
+  @media print {
+    .sidebar { display: none; }
+    .main-content { max-width: 100%; padding: 1rem; }
+    .brand-strip { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <h2>Contract Hub</h2>
+    <p>Documentaci&oacute;n de Usuario</p>
+    <div class="lang-switcher">
+      <a href="index.html">EN</a>
+      <a href="es.html" class="active">ES</a>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Primeros Pasos</div>
+    <a href="#introduction" class="nav-link">Introducci&oacute;n</a>
+    <a href="#key-concepts" class="nav-link">Conceptos Clave</a>
+    <a href="#signing-in" class="nav-link">Iniciar Sesi&oacute;n</a>
+    <a href="#company-selector" class="nav-link">Selector de Empresa</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Gu&iacute;a del Administrador</div>
+    <a href="#dashboard" class="nav-link">Panel Principal</a>
+    <a href="#managing-contracts" class="nav-link">Gesti&oacute;n de Contratos</a>
+    <a href="#creating-contract" class="nav-link">Crear un Contrato</a>
+    <a href="#template-builder" class="nav-link">Constructor de Plantillas</a>
+    <a href="#field-overlay-editor" class="nav-link">Editor de Campos</a>
+    <a href="#field-types" class="nav-link">Tipos de Campos</a>
+    <a href="#envelopes" class="nav-link">Sobres</a>
+    <a href="#matching-rules" class="nav-link">Reglas de Asignaci&oacute;n</a>
+    <a href="#signing-sessions" class="nav-link">Sesiones de Firma</a>
+    <a href="#user-management" class="nav-link">Gesti&oacute;n de Usuarios</a>
+    <a href="#company-management" class="nav-link">Gesti&oacute;n de Empresas</a>
+    <a href="#settings" class="nav-link">Configuraci&oacute;n</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Experiencia del Candidato</div>
+    <a href="#candidate-overview" class="nav-link">Vista General</a>
+    <a href="#candidate-welcome" class="nav-link">Pantalla de Bienvenida</a>
+    <a href="#candidate-reading" class="nav-link">Lectura del Contrato</a>
+    <a href="#candidate-ai" class="nav-link">Asistente IA</a>
+    <a href="#candidate-signing" class="nav-link">Firma del Contrato</a>
+    <a href="#candidate-completion" class="nav-link">Confirmaci&oacute;n</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Referencia</div>
+    <a href="#statuses" class="nav-link">Estados</a>
+    <a href="#roles-permissions" class="nav-link">Roles y Permisos</a>
+    <a href="#security" class="nav-link">Seguridad</a>
+    <a href="#talkpush-integration" class="nav-link">Integraci&oacute;n Talkpush</a>
+    <a href="#faq" class="nav-link">Preguntas Frecuentes</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+<div class="brand-strip"></div>
+
+<h1>Contract Hub</h1>
+<p style="font-size:1.1rem; color:var(--text-secondary); margin-bottom:2rem;">
+  Documentaci&oacute;n completa para la plataforma de firma electr&oacute;nica nativa de Talkpush para reclutamiento de alto volumen.
+</p>
+
+<hr>
+
+<!-- INTRODUCTION -->
+<section id="introduction">
+<h2>Introducci&oacute;n</h2>
+<p>
+  <strong>Contract Hub</strong> es la plataforma de firma electr&oacute;nica nativa de Talkpush, dise&ntilde;ada espec&iacute;ficamente para flujos de trabajo de reclutamiento de alto volumen. Permite a los equipos de contrataci&oacute;n crear, enviar y gestionar contratos de empleo de forma completamente digital &mdash; desde la creaci&oacute;n de plantillas hasta la firma del candidato.
+</p>
+<p>
+  A diferencia de las herramientas gen&eacute;ricas de firma electr&oacute;nica, Contract Hub se integra directamente con el CRM de Talkpush, lo que permite la distribuci&oacute;n autom&aacute;tica de contratos basada en datos del candidato, el auto-llenado de campos y la actualizaci&oacute;n de estado en tiempo real &mdash; todo sin intervenci&oacute;n manual.
+</p>
+<p>Caracter&iacute;sticas principales:</p>
+<ul>
+  <li><strong>Constructor de plantillas</strong> con editor visual de campos arrastrar y soltar</li>
+  <li><strong>Env&iacute;o autom&aacute;tico de contratos</strong> basado en atributos del candidato</li>
+  <li><strong>Auto-llenado</strong> de campos del contrato desde perfiles de Talkpush</li>
+  <li><strong>Asistente IA</strong> que explica los t&eacute;rminos del contrato a los candidatos en lenguaje sencillo</li>
+  <li><strong>Experiencia de firma m&oacute;vil</strong> accesible v&iacute;a WhatsApp, SMS o correo electr&oacute;nico</li>
+  <li><strong>Auditor&iacute;a con hash SHA-256</strong> para cumplimiento legal</li>
+  <li><strong>Arquitectura multi-tenant</strong> con control de acceso basado en roles</li>
+</ul>
+</section>
+
+<!-- KEY CONCEPTS -->
+<section id="key-concepts">
+<h2>Conceptos Clave</h2>
+<table>
+  <thead><tr><th>T&eacute;rmino</th><th>Descripci&oacute;n</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Contrato (Plantilla)</strong></td><td>Un documento reutilizable (PDF o DOCX) con campos configurados que se env&iacute;a a los candidatos para su firma.</td></tr>
+    <tr><td><strong>Sobre</strong></td><td>Un grupo de una o m&aacute;s plantillas de contrato que se env&iacute;an juntas como un solo paquete de firma.</td></tr>
+    <tr><td><strong>Regla de Asignaci&oacute;n</strong></td><td>Condiciones de filtro que determinan qu&eacute; candidatos reciben qu&eacute; sobres, basadas en atributos de Talkpush.</td></tr>
+    <tr><td><strong>Sesi&oacute;n de Firma</strong></td><td>Una instancia de firma individual &mdash; un candidato espec&iacute;fico firmando un sobre espec&iacute;fico de documentos.</td></tr>
+    <tr><td><strong>Editor de Campos</strong></td><td>La herramienta visual donde se arrastran y colocan los campos interactivos sobre las p&aacute;ginas del contrato.</td></tr>
+    <tr><td><strong>Campo</strong></td><td>Un elemento interactivo colocado en un contrato (firma, campo de texto, casilla de verificaci&oacute;n, men&uacute; desplegable, etc.).</td></tr>
+    <tr><td><strong>Empresa</strong></td><td>Un espacio de trabajo aislado para una organizaci&oacute;n. Cada empresa tiene sus propias plantillas, sesiones, usuarios y configuraciones.</td></tr>
+    <tr><td><strong>Tenant de Talkpush</strong></td><td>El identificador de la organizaci&oacute;n que vincula una empresa de Contract Hub con un CRM espec&iacute;fico de Talkpush.</td></tr>
+  </tbody>
+</table>
+</section>
+
+<hr>
+
+<!-- SIGNING IN -->
+<section id="signing-in">
+<h2>Iniciar Sesi&oacute;n</h2>
+<p>
+  Contract Hub soporta dos m&eacute;todos de autenticaci&oacute;n:
+</p>
+<ul>
+  <li><strong>Correo electr&oacute;nico y contrase&ntilde;a</strong> &mdash; Ingrese sus credenciales proporcionadas por su administrador.</li>
+  <li><strong>Google SSO</strong> &mdash; Haga clic en <strong>Continuar con Google</strong> para autenticarse con su cuenta de Google Workspace.</li>
+</ul>
+
+<figure class="screenshot">
+  <img src="screenshots/login.png" alt="P&aacute;gina de inicio de sesi&oacute;n con campos de correo y contrase&ntilde;a y bot&oacute;n de Google SSO">
+  <figcaption>P&aacute;gina de inicio &mdash; Correo/contrase&ntilde;a y opciones de Google SSO</figcaption>
+</figure>
+
+<div class="info-card">
+  <strong>Nota:</strong> Los nuevos usuarios deben ser invitados por un administrador. No hay auto-registro. Revise su correo electr&oacute;nico para la invitaci&oacute;n y siga el enlace para establecer su contrase&ntilde;a.
+</div>
+</section>
+
+<!-- COMPANY SELECTOR -->
+<section id="company-selector">
+<h2>Selector de Empresa</h2>
+<p>
+  Despu&eacute;s de iniciar sesi&oacute;n, ver&aacute; el <strong>Selector de Empresa</strong>. Contract Hub es multi-tenant, lo que significa que cada empresa opera como un espacio de trabajo independiente. Si tiene acceso a m&uacute;ltiples empresas, el&iacute;jalas aqu&iacute;.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/company-selector.png" alt="Selector de empresa mostrando los espacios de trabajo disponibles">
+  <figcaption>Selector de Empresa &mdash; Elija el espacio de trabajo de su organizaci&oacute;n</figcaption>
+</figure>
+
+<p>
+  Haga clic en una tarjeta de empresa para ingresar a ese espacio de trabajo. Todos los datos (plantillas, sesiones, usuarios) est&aacute;n limitados a la empresa seleccionada. Para cambiar de empresa m&aacute;s tarde, haga clic en el nombre de la empresa en la barra lateral.
+</p>
+<div class="tip-card">
+  <strong>Consejo:</strong> Si solo tiene acceso a una empresa, ser&aacute; redirigido autom&aacute;ticamente a su panel principal.
+</div>
+</section>
+
+<hr>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+<h2>Panel Principal</h2>
+<p>
+  El Panel Principal proporciona una vista general de la actividad de contratos de su empresa. Es la primera pantalla que ve despu&eacute;s de seleccionar una empresa.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/dashboard.png" alt="Panel principal mostrando m&eacute;tricas de contratos y actividad reciente">
+  <figcaption>Panel Principal &mdash; M&eacute;tricas de actividad de contratos de un vistazo</figcaption>
+</figure>
+
+<h3>M&eacute;tricas del Panel</h3>
+<p>El panel muestra estad&iacute;sticas clave de un vistazo:</p>
+<ul>
+  <li><strong>Total de Sesiones</strong> &mdash; N&uacute;mero total de sesiones de firma creadas.</li>
+  <li><strong>Completadas</strong> &mdash; Sesiones donde todos los documentos han sido firmados.</li>
+  <li><strong>En Progreso</strong> &mdash; Sesiones donde el candidato ha comenzado pero no ha terminado.</li>
+  <li><strong>Pendientes</strong> &mdash; Sesiones creadas pero a&uacute;n no abiertas por el candidato.</li>
+  <li><strong>Expiradas/Rechazadas</strong> &mdash; Sesiones que pasaron su fecha l&iacute;mite o fueron expl&iacute;citamente rechazadas.</li>
+</ul>
+
+<h3>Actividad Reciente</h3>
+<p>
+  Debajo de las m&eacute;tricas, un feed cronol&oacute;gico muestra los eventos m&aacute;s recientes de sesiones de firma &mdash; incluyendo sesiones creadas, vistas, completadas y expiradas.
+</p>
+</section>
+
+<!-- MANAGING CONTRACTS -->
+<section id="managing-contracts">
+<h2>Gesti&oacute;n de Contratos</h2>
+<p>
+  La p&aacute;gina <strong>Contratos</strong> (accesible desde la barra lateral) es donde gestiona sus plantillas de contrato. Cada plantilla representa un tipo de documento reutilizable que puede ser enviado a los candidatos.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/contracts-list.png" alt="Lista de contratos mostrando plantillas con estados e insignias de categor&iacute;a">
+  <figcaption>Lista de Contratos &mdash; Todas las plantillas con estado, categor&iacute;a y acciones</figcaption>
+</figure>
+
+<h3>Caracter&iacute;sticas de la Lista de Contratos</h3>
+<ul>
+  <li><strong>B&uacute;squeda y Filtrado</strong> &mdash; Busque por nombre o filtre por estado (Borrador, Activo, Archivado) y categor&iacute;a.</li>
+  <li><strong>Insignias de Estado</strong> &mdash; <span class="badge badge-muted">Borrador</span> <span class="badge badge-sage">Activo</span> <span class="badge badge-lavender">Archivado</span></li>
+  <li><strong>Men&uacute; de Acciones</strong> &mdash; Cada fila tiene un men&uacute; con opciones para Editar, Duplicar, Archivar o Eliminar.</li>
+  <li><strong>Conteo de Campos</strong> &mdash; Muestra cu&aacute;ntos campos interactivos se han colocado en cada plantilla.</li>
+</ul>
+</section>
+
+<!-- CREATING A CONTRACT -->
+<section id="creating-contract">
+<h2>Crear un Contrato</h2>
+<ol class="steps">
+  <li>
+    <strong>Haga clic en "Nuevo Contrato"</strong><br>
+    Desde la p&aacute;gina de Contratos, haga clic en el bot&oacute;n de acci&oacute;n principal.
+  </li>
+  <li>
+    <strong>Suba su documento</strong><br>
+    Arrastre y suelte o seleccione un archivo <strong>PDF</strong> o <strong>DOCX</strong> (m&aacute;ximo 20 MB). El documento se renderiza como vista previa despu&eacute;s de la carga.
+  </li>
+  <li>
+    <strong>Configure los metadatos</strong><br>
+    <ul>
+      <li><strong>Nombre</strong> &mdash; Un nombre claro y descriptivo para la plantilla (ej., "Contrato de Trabajo - M&eacute;xico").</li>
+      <li><strong>Categor&iacute;a</strong> &mdash; Agrupe las plantillas por tipo (ej., Empleo, NDA, Pol&iacute;tica).</li>
+      <li><strong>Descripci&oacute;n</strong> &mdash; Notas opcionales para referencia interna.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Guarde como Borrador</strong><br>
+    La plantilla se crea en estado <span class="badge badge-muted">Borrador</span>. Ahora puede a&ntilde;adir campos usando el Editor de Campos y configurar sobres.
+  </li>
+</ol>
+</section>
+
+<!-- TEMPLATE BUILDER -->
+<section id="template-builder">
+<h2>Constructor de Plantillas</h2>
+<p>
+  El Constructor de Plantillas es donde configura los metadatos, la informaci&oacute;n del firmante y las propiedades del documento de un contrato. Acc&eacute;dalo haciendo clic en <strong>Editar</strong> en cualquier contrato de la lista.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/template-detail.png" alt="Constructor de plantillas mostrando metadatos de contrato y configuraci&oacute;n de firmante">
+  <figcaption>Constructor de Plantillas &mdash; Configurar metadatos y ajustes del firmante</figcaption>
+</figure>
+
+<h3>Secciones del Constructor</h3>
+<ul>
+  <li><strong>Informaci&oacute;n B&aacute;sica</strong> &mdash; Nombre, categor&iacute;a, descripci&oacute;n y documento cargado.</li>
+  <li><strong>Vista Previa del Documento</strong> &mdash; Renderizado p&aacute;gina por p&aacute;gina del PDF/DOCX cargado.</li>
+  <li><strong>Configuraci&oacute;n del Firmante</strong> &mdash; Defina qui&eacute;n necesita firmar. Actualmente Contract Hub soporta escenarios de firmante &uacute;nico (el candidato).</li>
+  <li><strong>Estado de Publicaci&oacute;n</strong> &mdash; Cambie entre Borrador y Activo. Solo las plantillas activas pueden incluirse en sobres.</li>
+</ul>
+
+<div class="tip-card">
+  <strong>Consejo:</strong> Use el bot&oacute;n <strong>Editar Campos</strong> para abrir el Editor de Campos visual y colocar elementos interactivos directamente sobre el documento.
+</div>
+</section>
+
+<!-- FIELD OVERLAY EDITOR -->
+<section id="field-overlay-editor">
+<h2>Editor de Campos</h2>
+<p>
+  El <strong>Editor de Campos</strong> es la herramienta visual arrastrar y soltar donde coloca campos interactivos directamente sobre las p&aacute;ginas de su contrato. Cada campo se convierte en un elemento rellenable o firmable que el candidato completar&aacute; durante la sesi&oacute;n de firma.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/field-overlay-editor.png" alt="Editor de campos mostrando la interfaz arrastrar y soltar con panel de propiedades">
+  <figcaption>Editor de Campos &mdash; Arrastre y suelte campos sobre las p&aacute;ginas del contrato</figcaption>
+</figure>
+
+<h3>C&oacute;mo Usar el Editor</h3>
+<ol class="steps">
+  <li>
+    <strong>Seleccione un tipo de campo</strong><br>
+    Desde la barra de herramientas, haga clic en el tipo de campo que desea a&ntilde;adir (Firma, Campo de Texto, Casilla de Verificaci&oacute;n, etc.).
+  </li>
+  <li>
+    <strong>Haga clic en el documento para colocarlo</strong><br>
+    Haga clic en cualquier lugar de la p&aacute;gina del contrato para posicionar el campo. Tambi&eacute;n puede arrastrar campos existentes para reposicionarlos.
+  </li>
+  <li>
+    <strong>Configure las propiedades del campo</strong><br>
+    Haga clic en un campo colocado para abrir su panel de propiedades. Configure:
+    <ul>
+      <li><strong>Etiqueta</strong> &mdash; El nombre mostrado al candidato.</li>
+      <li><strong>Obligatorio</strong> &mdash; Si el candidato debe completar este campo para enviar.</li>
+      <li><strong>Fuente de datos</strong> &mdash; Elija entre "Entrada del candidato" o "Atributo de Talkpush" (auto-llenado).</li>
+      <li><strong>Clave de atributo de Talkpush</strong> &mdash; Si la fuente es auto-llenado, seleccione qu&eacute; atributo del candidato usar.</li>
+      <li><strong>Valor predeterminado</strong> &mdash; Un valor de respaldo si el atributo auto-llenado est&aacute; vac&iacute;o.</li>
+      <li><strong>Clave de escritura diferida</strong> &mdash; Opcionalmente, escriba el valor ingresado de vuelta al perfil del candidato en Talkpush.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Redimensione seg&uacute;n necesite</strong><br>
+    Arrastre los controladores de esquina para redimensionar campos, especialmente &aacute;reas de firma y campos de texto.
+  </li>
+  <li>
+    <strong>Guarde</strong><br>
+    Haga clic en <strong>Guardar</strong> para persistir la ubicaci&oacute;n de los campos. Los campos se almacenan como coordenadas relativas a la p&aacute;gina.
+  </li>
+</ol>
+
+<h3>Atajos de Teclado</h3>
+<table>
+  <thead><tr><th>Atajo</th><th>Acci&oacute;n</th></tr></thead>
+  <tbody>
+    <tr><td><kbd>Supr</kbd> / <kbd>Retroceso</kbd></td><td>Eliminar el campo seleccionado</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Deshacer la &uacute;ltima acci&oacute;n</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Guardar la ubicaci&oacute;n de campos</td></tr>
+    <tr><td>Teclas de <kbd>Flecha</kbd></td><td>Mover el campo seleccionado en peque&ntilde;os incrementos</td></tr>
+  </tbody>
+</table>
+</section>
+
+<!-- FIELD TYPES REFERENCE -->
+<section id="field-types">
+<h2>Referencia de Tipos de Campos</h2>
+<table>
+  <thead><tr><th>Tipo</th><th>Descripci&oacute;n</th><th>Caso de Uso</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Firma</strong></td><td>Pad de firma para dibujar o escribir. Se renderiza como una imagen en el documento firmado.</td><td>Firma del candidato, iniciales</td></tr>
+    <tr><td><strong>Campo de Texto</strong></td><td>Entrada de texto de una l&iacute;nea con ancho configurable.</td><td>Nombre, n&uacute;mero de identificaci&oacute;n, direcci&oacute;n</td></tr>
+    <tr><td><strong>&Aacute;rea de Texto</strong></td><td>Entrada de texto de m&uacute;ltiples l&iacute;neas para contenido m&aacute;s largo.</td><td>Notas adicionales, comentarios</td></tr>
+    <tr><td><strong>Casilla de Verificaci&oacute;n</strong></td><td>Una sola casilla marcar/desmarcar.</td><td>Acuerdos de t&eacute;rminos, confirmaciones de pol&iacute;ticas</td></tr>
+    <tr><td><strong>Men&uacute; Desplegable</strong></td><td>Lista de selecci&oacute;n con opciones predefinidas.</td><td>Departamento, ubicaci&oacute;n, tipo de contrato</td></tr>
+    <tr><td><strong>Bot&oacute;n de Radio</strong></td><td>Selecci&oacute;n &uacute;nica de un grupo de opciones.</td><td>S&iacute;/No, selecci&oacute;n de turno</td></tr>
+    <tr><td><strong>Fecha Autom&aacute;tica</strong></td><td>Se auto-llena con la fecha actual al momento de la firma.</td><td>Fecha de firma, marca de tiempo del documento</td></tr>
+    <tr><td><strong>Solo Lectura</strong></td><td>Texto est&aacute;tico mostrado al candidato pero no editable. &Uacute;til para informaci&oacute;n pre-llenada.</td><td>Nombre de la empresa, nombre de la campa&ntilde;a</td></tr>
+  </tbody>
+</table>
+
+<div class="info-card">
+  <strong>Fuentes de datos de campos:</strong> Cada campo puede obtener su valor de la <strong>entrada del candidato</strong> (completado durante la firma), un <strong>atributo de Talkpush</strong> (auto-llenado desde el perfil del CRM), o un <strong>valor est&aacute;tico</strong> (fijado en la plantilla).
+</div>
+</section>
+
+<!-- ENVELOPES -->
+<section id="envelopes">
+<h2>Sobres</h2>
+<p>
+  Los <strong>Sobres</strong> agrupan una o m&aacute;s plantillas de contrato que se env&iacute;an juntas a un candidato como un solo paquete de firma. Cuando un candidato coincide con las reglas de un sobre, recibe todos los documentos del sobre en una sola sesi&oacute;n de firma.
+</p>
+
+<h3>Crear un Sobre</h3>
+<ol class="steps">
+  <li>
+    <strong>Navegue a Sobres</strong><br>
+    Desde la barra lateral, haga clic en <strong>Sobres</strong>.
+  </li>
+  <li>
+    <strong>Haga clic en "Nuevo Sobre"</strong><br>
+    Abra el formulario de creaci&oacute;n de sobre.
+  </li>
+  <li>
+    <strong>Nombre el sobre</strong><br>
+    D&eacute;le un nombre descriptivo (ej., "Paquete de Onboarding - Centro de Contacto").
+  </li>
+  <li>
+    <strong>A&ntilde;ada plantillas</strong><br>
+    Seleccione una o m&aacute;s plantillas activas para incluir. El orden importa &mdash; los candidatos ver&aacute;n los documentos en el orden listado.
+  </li>
+  <li>
+    <strong>Configure reglas de asignaci&oacute;n</strong><br>
+    Defina condiciones de filtro que determinan qu&eacute; candidatos reciben este sobre. Ver <a href="#matching-rules">Reglas de Asignaci&oacute;n</a> a continuaci&oacute;n.
+  </li>
+  <li>
+    <strong>Active el sobre</strong><br>
+    Establezca el estado a Activo para comenzar a asignar candidatos autom&aacute;ticamente.
+  </li>
+</ol>
+</section>
+
+<!-- MATCHING RULES -->
+<section id="matching-rules">
+<h2>Reglas de Asignaci&oacute;n</h2>
+<p>
+  Las <strong>Reglas de Asignaci&oacute;n</strong> determinan qu&eacute; candidatos reciben qu&eacute; sobres. Cada sobre puede tener una o m&aacute;s condiciones de filtro basadas en atributos del candidato de Talkpush.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/matching-rules.png" alt="Configuraci&oacute;n de reglas de asignaci&oacute;n mostrando condiciones de filtro y l&oacute;gica AND/OR">
+  <figcaption>Reglas de Asignaci&oacute;n &mdash; Filtrar candidatos por atributos de Talkpush</figcaption>
+</figure>
+
+<h3>Componentes de los Filtros</h3>
+<table>
+  <thead><tr><th>Componente</th><th>Descripci&oacute;n</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Atributo</strong></td><td>El campo del candidato de Talkpush a evaluar (ej., pa&iacute;s, departamento, tipo de trabajo, campa&ntilde;a).</td></tr>
+    <tr><td><strong>Operador</strong></td><td>La condici&oacute;n de comparaci&oacute;n: <code>es igual a</code>, <code>no es igual a</code>, <code>contiene</code>, <code>comienza con</code>, etc.</td></tr>
+    <tr><td><strong>Valor</strong></td><td>El valor objetivo a comparar (ej., "M&eacute;xico", "Soporte", "Tiempo completo").</td></tr>
+    <tr><td><strong>L&oacute;gica</strong></td><td><strong>AND</strong> &mdash; Todas las condiciones deben cumplirse. <strong>OR</strong> &mdash; Al menos una condici&oacute;n debe cumplirse.</td></tr>
+  </tbody>
+</table>
+
+<h3>Ejemplo</h3>
+<div class="card">
+  <p>Para enviar un paquete de onboarding a nuevos agentes de centro de contacto en M&eacute;xico:</p>
+  <ul>
+    <li>Pa&iacute;s <code>es igual a</code> "M&eacute;xico" <strong>AND</strong></li>
+    <li>Departamento <code>es igual a</code> "Centro de Contacto" <strong>AND</strong></li>
+    <li>Tipo de Trabajo <code>es igual a</code> "Tiempo Completo"</li>
+  </ul>
+</div>
+
+<div class="tip-card">
+  <strong>Consejo:</strong> Use la l&oacute;gica <strong>AND</strong> para asignaci&oacute;n precisa (todas las condiciones deben coincidir) y la l&oacute;gica <strong>OR</strong> para distribuci&oacute;n m&aacute;s amplia (cualquier condici&oacute;n es suficiente).
+</div>
+</section>
+
+<!-- SIGNING SESSIONS -->
+<section id="signing-sessions">
+<h2>Sesiones de Firma</h2>
+<p>
+  Las <strong>Sesiones de Firma</strong> representan instancias individuales de un candidato firmando un sobre de documentos. Cada sesi&oacute;n rastrea su propio progreso, estado y seguimiento de auditor&iacute;a.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/signing-sessions.png" alt="Lista de sesiones de firma mostrando candidatos, estados e insignias de progreso">
+  <figcaption>Sesiones de Firma &mdash; Seguimiento de progreso del candidato y estados</figcaption>
+</figure>
+
+<h3>Informaci&oacute;n de la Sesi&oacute;n</h3>
+<p>Cada sesi&oacute;n de firma muestra:</p>
+<ul>
+  <li><strong>Candidato</strong> &mdash; Nombre y correo electr&oacute;nico del firmante.</li>
+  <li><strong>Sobre</strong> &mdash; Qu&eacute; paquete de documentos se envi&oacute;.</li>
+  <li><strong>Estado</strong> &mdash; Estado actual: <span class="badge badge-amber">Pendiente</span>, <span class="badge badge-lavender">Visto</span>, <span class="badge badge-lavender">En Progreso</span>, <span class="badge badge-sage">Completado</span>, <span class="badge badge-pink">Rechazado</span>, o <span class="badge badge-muted">Expirado</span>.</li>
+  <li><strong>Creada</strong> &mdash; Cu&aacute;ndo se inici&oacute; la sesi&oacute;n.</li>
+  <li><strong>Expira</strong> &mdash; La fecha l&iacute;mite para completar la firma.</li>
+</ul>
+
+<h3>Acciones de la Sesi&oacute;n</h3>
+<ul>
+  <li><strong>Ver Detalles</strong> &mdash; Abra la l&iacute;nea de tiempo completa de la sesi&oacute;n y seguimiento de auditor&iacute;a.</li>
+  <li><strong>Descargar Documento</strong> &mdash; Descargue el contrato firmado (disponible despu&eacute;s de completar).</li>
+  <li><strong>Reenviar Enlace</strong> &mdash; Env&iacute;e el enlace de firma nuevamente al candidato.</li>
+  <li><strong>Anular</strong> &mdash; Cancele la sesi&oacute;n e invalide el enlace de firma.</li>
+</ul>
+
+<div class="warning-card">
+  <strong>Precauci&oacute;n:</strong> Anular una sesi&oacute;n es permanente. El enlace de firma se desactiva inmediatamente y el candidato ya no puede acceder al documento.
+</div>
+</section>
+
+<!-- USER MANAGEMENT -->
+<section id="user-management">
+<h2>Gesti&oacute;n de Usuarios</h2>
+<p>
+  La p&aacute;gina <strong>Usuarios</strong> le permite invitar miembros del equipo, asignar roles y gestionar el acceso al espacio de trabajo de su empresa. Los Administradores de Empresa y Propietarios de Talkpush pueden gestionar usuarios.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/users.png" alt="P&aacute;gina de gesti&oacute;n de usuarios mostrando lista de miembros del equipo con roles">
+  <figcaption>Gesti&oacute;n de Usuarios &mdash; Invitar y gestionar miembros del equipo</figcaption>
+</figure>
+
+<h3>Invitar a un Nuevo Usuario</h3>
+<ol class="steps">
+  <li>
+    <strong>Haga clic en "Invitar Usuario"</strong><br>
+    Abra el formulario de invitaci&oacute;n desde la p&aacute;gina de Usuarios.
+  </li>
+  <li>
+    <strong>Ingrese los detalles del usuario</strong><br>
+    <ul>
+      <li><strong>Correo electr&oacute;nico</strong> &mdash; La direcci&oacute;n de correo del nuevo miembro del equipo.</li>
+      <li><strong>Nombre</strong> &mdash; Nombre y apellido.</li>
+      <li><strong>Rol</strong> &mdash; Seleccione <strong>Administrador de Empresa</strong> (acceso completo al espacio de trabajo) o <strong>Usuario de Empresa</strong> (solo ver sesiones de firma).</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Enviar Invitaci&oacute;n</strong><br>
+    Haga clic en <strong>Enviar Invitaci&oacute;n</strong>. El usuario recibir&aacute; un correo con un enlace para configurar su contrase&ntilde;a y acceder a Contract Hub.
+  </li>
+</ol>
+
+<h3>Lista de Usuarios</h3>
+<p>La tabla de usuarios muestra todos los miembros del equipo con su nombre, correo, rol y estado. Puede filtrar por:</p>
+<ul>
+  <li><strong>Todos</strong> &mdash; Mostrar todos los usuarios.</li>
+  <li><strong>Activos</strong> &mdash; Usuarios que han aceptado su invitaci&oacute;n y configurado su cuenta.</li>
+  <li><strong>Invitaci&oacute;n Pendiente</strong> &mdash; Usuarios que han sido invitados pero a&uacute;n no han creado su contrase&ntilde;a.</li>
+</ul>
+
+<h3>Gesti&oacute;n de Usuarios</h3>
+<ul>
+  <li><strong>Cambiar Rol</strong> &mdash; Actualice el rol de un usuario desde el men&uacute; de acciones en su fila.</li>
+  <li><strong>Reenviar Invitaci&oacute;n</strong> &mdash; Si la invitaci&oacute;n de un usuario expir&oacute; o se perdi&oacute;, reenv&iacute;ela desde el men&uacute; de acciones.</li>
+  <li><strong>Desactivar</strong> &mdash; Deshabilite el acceso de un usuario sin eliminar su cuenta.</li>
+</ul>
+
+<div class="info-card">
+  <strong>Nota:</strong> Solo puede gestionar usuarios dentro del espacio de trabajo de su empresa actual. Para gestionar usuarios en otra empresa, primero cambie a esa empresa usando el <a href="#company-selector">Selector de Empresa</a>.
+</div>
+</section>
+
+<!-- COMPANY MANAGEMENT -->
+<section id="company-management">
+<h2>Gesti&oacute;n de Empresas</h2>
+<p>
+  La <strong>Gesti&oacute;n de Empresas</strong> est&aacute; disponible para Propietarios de Talkpush y permite crear y configurar tenants de empresa dentro de Contract Hub. Cada empresa opera como un espacio de trabajo independiente con sus propias plantillas, sesiones, usuarios y configuraciones.
+</p>
+
+<div class="warning-card">
+  <strong>Acceso restringido:</strong> Solo los usuarios con el rol de <strong>Propietario de Talkpush</strong> pueden acceder a la Gesti&oacute;n de Empresas.
+</div>
+
+<h3>Crear una Empresa</h3>
+<ol class="steps">
+  <li>
+    <strong>Navegue a Gesti&oacute;n de Empresas</strong><br>
+    Desde la pantalla del Selector de Empresa, haga clic en <strong>Gestionar Empresas</strong>.
+  </li>
+  <li>
+    <strong>Haga clic en "A&ntilde;adir Empresa"</strong><br>
+    Abra el formulario de nueva empresa.
+  </li>
+  <li>
+    <strong>Complete los Datos de la Empresa</strong><br>
+    <ul>
+      <li><strong>Nombre de la Empresa</strong> &mdash; El nombre visible de la organizaci&oacute;n.</li>
+      <li><strong>Pa&iacute;s</strong> &mdash; El pa&iacute;s principal de operaci&oacute;n de la empresa.</li>
+      <li><strong>ID de Tenant</strong> &mdash; Un identificador que vincula esta empresa con el tenant del CRM de Talkpush.</li>
+      <li><strong>Subdominio</strong> &mdash; Subdominio personalizado opcional para las URLs de firma de la empresa.</li>
+      <li><strong>ID de Carpeta</strong> &mdash; Identificador opcional de carpeta de Talkpush para delimitar datos.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Guardar</strong><br>
+    La empresa se crea con una clave API auto-generada (con prefijo <code>tk_</code>) para integraciones del sistema. La empresa se establece como Activa por defecto.
+  </li>
+</ol>
+
+<h3>Configuraci&oacute;n de la Empresa</h3>
+<p>Para cada empresa, los administradores pueden configurar:</p>
+<ul>
+  <li><strong>Estado</strong> &mdash; Activa o Inactiva. Las empresas inactivas se ocultan del Selector de Empresa para usuarios no propietarios.</li>
+  <li><strong>Clave API</strong> &mdash; Clave de autenticaci&oacute;n auto-generada para integraciones API. Puede regenerarse si se compromete.</li>
+  <li><strong>Subdominio</strong> &mdash; Subdominio personalizado con marca para los enlaces de firma dirigidos al candidato.</li>
+</ul>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings">
+<h2>Configuraci&oacute;n</h2>
+<p>
+  La p&aacute;gina de <strong>Configuraci&oacute;n</strong> permite a los Administradores de Empresa y Propietarios configurar preferencias a nivel de organizaci&oacute;n.
+</p>
+
+<figure class="screenshot">
+  <img src="screenshots/settings.png" alt="P&aacute;gina de configuraci&oacute;n mostrando opciones de configuraci&oacute;n de la empresa y preferencias">
+  <figcaption>Configuraci&oacute;n &mdash; Configuraci&oacute;n y preferencias a nivel de empresa</figcaption>
+</figure>
+
+<h3>Ajustes Disponibles</h3>
+<ul>
+  <li><strong>Nombre de la Empresa</strong> &mdash; Actualice el nombre visible de su organizaci&oacute;n.</li>
+  <li><strong>Expiraci&oacute;n Predeterminada</strong> &mdash; Establezca el n&uacute;mero predeterminado de d&iacute;as antes de que una sesi&oacute;n de firma expire (los candidatos ya no pueden acceder al enlace de firma despu&eacute;s de este per&iacute;odo).</li>
+  <li><strong>Programa de Recordatorios</strong> &mdash; Configure recordatorios autom&aacute;ticos por correo para sesiones pendientes (ej., 1 d&iacute;a antes de expirar, 3 d&iacute;as despu&eacute;s de la creaci&oacute;n).</li>
+  <li><strong>Marca</strong> &mdash; Suba un logotipo de empresa y establezca los colores de marca para las p&aacute;ginas de firma dirigidas al candidato.</li>
+  <li><strong>Preferencias de Notificaci&oacute;n</strong> &mdash; Elija qu&eacute; notificaciones por correo reciben los administradores (ej., sesi&oacute;n completada, sesi&oacute;n rechazada, sesi&oacute;n expirada).</li>
+</ul>
+</section>
+
+<hr>
+
+<!-- CANDIDATE EXPERIENCE -->
+
+<!-- CANDIDATE OVERVIEW -->
+<section id="candidate-overview">
+<h2>Experiencia de Firma del Candidato</h2>
+<p>
+  Los candidatos interact&uacute;an con Contract Hub a trav&eacute;s de una interfaz de firma dedicada y optimizada para m&oacute;viles. No se requiere cuenta ni aplicaci&oacute;n &mdash; los candidatos simplemente hacen clic en un enlace enviado por WhatsApp, SMS o correo electr&oacute;nico y completan el proceso de firma en su navegador.
+</p>
+<p>
+  La experiencia del candidato est&aacute; dise&ntilde;ada para ser simple, accesible y guiada:
+</p>
+<ol class="steps">
+  <li><strong>Pantalla de Bienvenida</strong> &mdash; Introducci&oacute;n e instrucciones.</li>
+  <li><strong>Leer el Contrato</strong> &mdash; Desplazarse por el documento completo.</li>
+  <li><strong>Consultar al Asistente IA</strong> &mdash; Opcionalmente chatear con una IA que explica el contrato en lenguaje sencillo.</li>
+  <li><strong>Completar Campos y Firmar</strong> &mdash; Completar los campos requeridos y a&ntilde;adir su firma.</li>
+  <li><strong>Confirmaci&oacute;n</strong> &mdash; Recibir una pantalla de finalizaci&oacute;n y opci&oacute;n de descarga.</li>
+</ol>
+</section>
+
+<!-- CANDIDATE: WELCOME -->
+<section id="candidate-welcome">
+<h3>Pantalla de Bienvenida</h3>
+<p>
+  Cuando un candidato abre su enlace de firma, se le recibe con una pantalla de bienvenida que muestra el logotipo de la empresa, una breve explicaci&oacute;n de lo que har&aacute; y un bot&oacute;n <strong>Comenzar</strong>.
+</p>
+<figure class="screenshot screenshot-mobile">
+  <img src="screenshots/candidate-welcome.png" alt="Pantalla de bienvenida del candidato con marca de la empresa y bot&oacute;n Comenzar">
+  <figcaption>Bienvenida del Candidato &mdash; Introducci&oacute;n con marca e instrucciones claras</figcaption>
+</figure>
+</section>
+
+<!-- CANDIDATE: READING -->
+<section id="candidate-reading">
+<h3>Lectura del Contrato</h3>
+<p>
+  El contrato se muestra en un visor con scroll optimizado para m&oacute;viles. Los candidatos pueden leer todo el documento antes de completar cualquier campo. La interfaz destaca qu&eacute; secciones requieren atenci&oacute;n.
+</p>
+<figure class="screenshot screenshot-mobile">
+  <img src="screenshots/candidate-reading.png" alt="Candidato leyendo el documento del contrato en m&oacute;vil">
+  <figcaption>Lectura &mdash; Visor de contrato optimizado para m&oacute;viles</figcaption>
+</figure>
+</section>
+
+<!-- CANDIDATE: AI ASSISTANT -->
+<section id="candidate-ai">
+<h3>Asistente IA del Contrato</h3>
+<p>
+  Un chatbot impulsado por IA est&aacute; disponible durante toda la experiencia de firma. Los candidatos pueden tocar el icono de chat para hacer preguntas sobre cualquier parte del contrato. La IA explica cl&aacute;usulas, define t&eacute;rminos legales y aclara obligaciones &mdash; todo en un lenguaje sencillo y amigable.
+</p>
+<figure class="screenshot screenshot-mobile">
+  <img src="screenshots/candidate-chatting.png" alt="Interfaz del Asistente IA ayudando a un candidato a entender los t&eacute;rminos del contrato">
+  <figcaption>Asistente IA &mdash; Explicando t&eacute;rminos del contrato en lenguaje sencillo</figcaption>
+</figure>
+
+<div class="tip-card">
+  <strong>Consejo:</strong> El Asistente IA solo explica el contrato &mdash; no puede modificar el documento ni proporcionar asesor&iacute;a legal.
+</div>
+</section>
+
+<!-- CANDIDATE: SIGNING -->
+<section id="candidate-signing">
+<h3>Firma del Contrato</h3>
+<p>
+  Despu&eacute;s de leer el contrato, el candidato procede al paso de firma. Completa los campos requeridos (texto, fechas, casillas) y dibuja o escribe su firma en el &aacute;rea designada. Todos los campos pre-llenados con datos de Talkpush son visibles y pueden revisarse.
+</p>
+<p>
+  Una vez completados todos los campos requeridos, el candidato toca <strong>Completar Firma</strong> para enviar el documento. El sistema registra un evento de auditor&iacute;a con marca de tiempo para la firma.
+</p>
+</section>
+
+<!-- CANDIDATE: COMPLETION -->
+<section id="candidate-completion">
+<h3>Confirmaci&oacute;n</h3>
+<p>
+  Despu&eacute;s de firmar, el candidato ve una pantalla de confirmaci&oacute;n con un mensaje de &eacute;xito. Puede descargar una copia del documento firmado para sus registros. El estado de la sesi&oacute;n se actualiza a <strong>Completado</strong> y el seguimiento de auditor&iacute;a se finaliza.
+</p>
+<figure class="screenshot screenshot-mobile">
+  <img src="screenshots/candidate-completed.jpg" alt="Pantalla de finalizaci&oacute;n mostrando mensaje de &eacute;xito y opci&oacute;n de descarga">
+  <figcaption>Confirmaci&oacute;n &mdash; Verificaci&oacute;n con opci&oacute;n de descarga del documento</figcaption>
+</figure>
+</section>
+
+<hr>
+
+<!-- REFERENCE -->
+
+<!-- STATUS REFERENCE -->
+<section id="statuses">
+<h2>Referencia de Estados</h2>
+
+<h3>Estados de Sesi&oacute;n de Firma</h3>
+<table>
+  <thead><tr><th>Estado</th><th>Insignia</th><th>Descripci&oacute;n</th></tr></thead>
+  <tbody>
+    <tr><td>Completado</td><td><span class="badge badge-sage">Completado</span></td><td>Todos los documentos han sido firmados exitosamente.</td></tr>
+    <tr><td>En Progreso</td><td><span class="badge badge-lavender">En Progreso</span></td><td>El candidato ha comenzado a completar campos pero no ha terminado.</td></tr>
+    <tr><td>Pendiente</td><td><span class="badge badge-amber">Pendiente</span></td><td>La sesi&oacute;n ha sido creada pero el candidato a&uacute;n no ha abierto el enlace.</td></tr>
+    <tr><td>Visto</td><td><span class="badge badge-lavender">Visto</span></td><td>El candidato abri&oacute; el enlace de firma pero no ha comenzado a completar campos.</td></tr>
+    <tr><td>Rechazado</td><td><span class="badge badge-pink">Rechazado</span></td><td>El candidato se neg&oacute; expl&iacute;citamente a firmar el documento.</td></tr>
+    <tr><td>Expirado</td><td><span class="badge badge-muted">Expirado</span></td><td>El plazo de firma pas&oacute; sin completarse.</td></tr>
+    <tr><td>Anulado</td><td><span class="badge badge-muted">Anulado</span></td><td>Un administrador cancel&oacute; manualmente la sesi&oacute;n.</td></tr>
+  </tbody>
+</table>
+
+<h3>Estados de Plantilla</h3>
+<table>
+  <thead><tr><th>Estado</th><th>Insignia</th><th>Descripci&oacute;n</th></tr></thead>
+  <tbody>
+    <tr><td>Borrador</td><td><span class="badge badge-muted">Borrador</span></td><td>En configuraci&oacute;n. No disponible para env&iacute;o.</td></tr>
+    <tr><td>Activo</td><td><span class="badge badge-sage">Activo</span></td><td>Publicado y disponible para asignar a candidatos.</td></tr>
+    <tr><td>Archivado</td><td><span class="badge badge-lavender">Archivado</span></td><td>Retirado. Las sesiones existentes contin&uacute;an pero no se crean nuevas.</td></tr>
+  </tbody>
+</table>
+</section>
+
+<!-- ROLES & PERMISSIONS -->
+<section id="roles-permissions">
+<h2>Roles y Permisos</h2>
+<p>
+  Contract Hub utiliza un sistema de control de acceso basado en roles (RBAC) de tres niveles. A cada usuario se le asigna exactamente un rol que determina lo que puede ver y hacer.
+</p>
+
+<table>
+  <thead><tr><th>Capacidad</th><th>Propietario Talkpush</th><th>Admin de Empresa</th><th>Usuario de Empresa</th></tr></thead>
+  <tbody>
+    <tr><td>Ver Panel Principal</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Gestionar Plantillas (Contratos)</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Usar Editor de Campos</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Configurar Sobres</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Configurar Reglas de Asignaci&oacute;n</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Ver Sesiones de Firma</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
+    <tr><td>Gestionar Usuarios</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Gestionar Configuraci&oacute;n</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+    <tr><td>Crear y Gestionar Empresas</td><td>S&iacute;</td><td>No</td><td>No</td></tr>
+    <tr><td>Acceso a Todos los Espacios</td><td>S&iacute;</td><td>Solo asignados</td><td>Solo asignados</td></tr>
+    <tr><td>Acceso al Centro de Ayuda</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
+  </tbody>
+</table>
+
+<h3>Descripci&oacute;n de Roles</h3>
+<ul>
+  <li><strong>Propietario de Talkpush</strong> &mdash; Super-administrador con acceso inter-organizacional. Puede crear y gestionar empresas, invitar usuarios a cualquier empresa y acceder a todas las funcionalidades en todos los tenants. Destinado al personal interno de Talkpush.</li>
+  <li><strong>Administrador de Empresa</strong> &mdash; Acceso completo dentro del espacio de trabajo de su empresa asignada. Puede gestionar plantillas, sobres, reglas de asignaci&oacute;n, usuarios y configuraci&oacute;n. No puede crear nuevas empresas ni acceder a otros espacios de trabajo.</li>
+  <li><strong>Usuario de Empresa</strong> &mdash; Rol de acceso limitado. Solo puede ver y hacer seguimiento de Sesiones de Firma y acceder al Centro de Ayuda. No puede gestionar plantillas, usuarios ni configuraci&oacute;n. Ideal para reclutadores o coordinadores que necesitan monitorear el progreso de firmas sin capacidades administrativas.</li>
+</ul>
+
+<div class="info-card">
+  <strong>Visibilidad de la barra lateral:</strong> La barra lateral de la aplicaci&oacute;n muestra u oculta din&aacute;micamente los elementos del men&uacute; seg&uacute;n el rol del usuario. Los Usuarios de Empresa solo ven <strong>Firma</strong> y <strong>Centro de Ayuda</strong> en la navegaci&oacute;n.
+</div>
+</section>
+
+<!-- SECURITY & COMPLIANCE -->
+<section id="security">
+<h2>Seguridad y Cumplimiento</h2>
+<p>
+  Contract Hub est&aacute; construido con la seguridad y el cumplimiento legal como pilares fundamentales, utilizando Supabase como infraestructura backend con caracter&iacute;sticas de seguridad de nivel empresarial.
+</p>
+
+<h3>Autenticaci&oacute;n y Acceso</h3>
+<ul>
+  <li><strong>Google SSO</strong> &mdash; Inicio de sesi&oacute;n &uacute;nico seguro a trav&eacute;s de Google Workspace con OAuth 2.0.</li>
+  <li><strong>Correo/Contrase&ntilde;a</strong> &mdash; Autenticaci&oacute;n gestionada por Supabase con hash seguro de contrase&ntilde;as.</li>
+  <li><strong>Control de Acceso Basado en Roles</strong> &mdash; RBAC de tres niveles con protecci&oacute;n a nivel de ruta. Las rutas protegidas verifican los permisos del rol antes del acceso a la p&aacute;gina.</li>
+  <li><strong>Aislamiento Multi-Tenant</strong> &mdash; Cada espacio de trabajo de empresa est&aacute; completamente aislado. Los usuarios solo pueden acceder a datos dentro de sus empresas asignadas.</li>
+  <li><strong>Registro Solo por Invitaci&oacute;n</strong> &mdash; No hay auto-registro. Los usuarios deben ser invitados por un administrador.</li>
+</ul>
+
+<h3>Seguridad de Firma</h3>
+<ul>
+  <li><strong>Enlaces de Firma &Uacute;nicos</strong> &mdash; Cada sesi&oacute;n de firma genera una URL &uacute;nica basada en token con tiempo limitado.</li>
+  <li><strong>Seguimiento de Auditor&iacute;a SHA-256</strong> &mdash; Cada acci&oacute;n se registra con hash criptogr&aacute;fico para asegurar evidencia anti-manipulaci&oacute;n.</li>
+  <li><strong>Registro de IP y Dispositivo</strong> &mdash; El seguimiento de auditor&iacute;a captura direcciones IP y cadenas de agente de usuario para cada evento.</li>
+  <li><strong>Expiraci&oacute;n de Sesi&oacute;n</strong> &mdash; Los enlaces de firma expiran autom&aacute;ticamente despu&eacute;s de la fecha l&iacute;mite configurada.</li>
+  <li><strong>Anulaci&oacute;n</strong> &mdash; Los administradores pueden anular sesiones activas, invalidando inmediatamente el enlace de firma.</li>
+</ul>
+
+<h3>Cumplimiento Legal</h3>
+<ul>
+  <li><strong>Ley ESIGN</strong> (Estados Unidos) &mdash; Las firmas electr&oacute;nicas son legalmente equivalentes a las firmas manuscritas.</li>
+  <li><strong>UETA</strong> (Ley Uniforme de Transacciones Electr&oacute;nicas) &mdash; Adoptada en 49 estados de EE.UU.</li>
+  <li><strong>eIDAS</strong> (Uni&oacute;n Europea) &mdash; Cumple con la regulaci&oacute;n de la UE sobre identificaci&oacute;n electr&oacute;nica y servicios de confianza.</li>
+  <li><strong>Cifrado de Datos</strong> &mdash; Todos los datos est&aacute;n cifrados en tr&aacute;nsito (TLS 1.2+) y en reposo.</li>
+</ul>
+</section>
+
+<!-- TALKPUSH INTEGRATION -->
+<section id="talkpush-integration">
+<h2>Integraci&oacute;n con Talkpush</h2>
+<p>
+  Contract Hub se integra profundamente con la plataforma CRM de Talkpush, permitiendo flujos de trabajo automatizados de contratos dentro del proceso de reclutamiento m&aacute;s amplio.
+</p>
+
+<h3>Puntos de Integraci&oacute;n</h3>
+<ul>
+  <li><strong>Sincronizaci&oacute;n de Datos del Candidato</strong> &mdash; Nombres, correos, tel&eacute;fonos y atributos personalizados se obtienen de los perfiles de Talkpush para auto-llenar campos del contrato.</li>
+  <li><strong>Disparadores de Campa&ntilde;a</strong> &mdash; Los contratos pueden enviarse autom&aacute;ticamente cuando los candidatos alcanzan una etapa espec&iacute;fica en una campa&ntilde;a de Talkpush.</li>
+  <li><strong>Asignaci&oacute;n por Atributos</strong> &mdash; Use m&aacute;s de 14 atributos del candidato de Talkpush para determinar qu&eacute; contratos se env&iacute;an a trav&eacute;s de los sobres.</li>
+  <li><strong>Escritura Diferida</strong> &mdash; Los valores ingresados por los candidatos durante la firma pueden escribirse de vuelta a su perfil de Talkpush usando la configuraci&oacute;n <code>writebackAttributeKey</code>.</li>
+  <li><strong>Eventos de Estado</strong> &mdash; Los eventos de firma de contratos (creado, visto, firmado, rechazado, expirado) se comunican de vuelta a Talkpush para automatizaci&oacute;n de flujos de trabajo.</li>
+</ul>
+
+<h3>Ciclo de Vida de Eventos</h3>
+<table>
+  <thead><tr><th>Evento</th><th>Cu&aacute;ndo se Dispara</th><th>Datos Incluidos</th></tr></thead>
+  <tbody>
+    <tr><td><code>session.created</code></td><td>Se inicia una nueva sesi&oacute;n de firma</td><td>ID de sesi&oacute;n, ID del candidato, ID de plantilla</td></tr>
+    <tr><td><code>session.viewed</code></td><td>El candidato abre el enlace de firma</td><td>ID de sesi&oacute;n, marca de tiempo, IP</td></tr>
+    <tr><td><code>session.in_progress</code></td><td>El candidato comienza a completar campos</td><td>ID de sesi&oacute;n, marca de tiempo</td></tr>
+    <tr><td><code>session.completed</code></td><td>Todos los documentos est&aacute;n firmados</td><td>ID de sesi&oacute;n, URL del documento firmado, marca de tiempo</td></tr>
+    <tr><td><code>session.declined</code></td><td>El candidato se niega a firmar</td><td>ID de sesi&oacute;n, raz&oacute;n (si se proporcion&oacute;), marca de tiempo</td></tr>
+    <tr><td><code>session.expired</code></td><td>Pasa el plazo de firma</td><td>ID de sesi&oacute;n, marca de tiempo de expiraci&oacute;n</td></tr>
+    <tr><td><code>session.voided</code></td><td>El administrador cancela la sesi&oacute;n</td><td>ID de sesi&oacute;n, anulado por, marca de tiempo</td></tr>
+    <tr><td><code>field.writeback</code></td><td>Un valor de campo se escribe en Talkpush</td><td>Clave de atributo, valor, ID del candidato</td></tr>
+  </tbody>
+</table>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<h2>Preguntas Frecuentes</h2>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Qu&eacute; formatos de archivo puedo subir?</h4>
+  <p>Contract Hub soporta documentos <strong>PDF</strong> y <strong>DOCX</strong> (Microsoft Word). El tama&ntilde;o m&aacute;ximo de archivo es 20 MB. Ambos formatos se renderizan en el Editor de Campos para la colocaci&oacute;n visual de campos.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Puedo enviar m&uacute;ltiples contratos a la vez?</h4>
+  <p>S&iacute;. Use los <strong>Sobres</strong> para agrupar m&uacute;ltiples plantillas juntas. Cuando un candidato coincide con las reglas del sobre, todas las plantillas se env&iacute;an como parte de una sola sesi&oacute;n de firma. Los candidatos ven su progreso como "2/3 documentos", etc.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Cu&aacute;l es la diferencia entre el Constructor de Plantillas y el Editor de Campos?</h4>
+  <p>El <strong>Constructor de Plantillas</strong> es para editar metadatos del contrato (nombre, categor&iacute;a, descripci&oacute;n) y configurar firmantes. El <strong>Editor de Campos</strong> es la herramienta visual de arrastrar y soltar donde coloca campos interactivos directamente sobre las p&aacute;ginas del documento. Se acceden desde botones diferentes en la p&aacute;gina de Contratos.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Qu&eacute; pasa cuando una sesi&oacute;n expira?</h4>
+  <p>El enlace de firma se desactiva y el candidato ya no puede acceder al documento. El estado de la sesi&oacute;n cambia a <span class="badge badge-muted">Expirado</span>. Para dar m&aacute;s tiempo al candidato, cree una nueva sesi&oacute;n con un enlace nuevo.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Los candidatos pueden firmar en el m&oacute;vil?</h4>
+  <p>S&iacute;. La experiencia de firma est&aacute; completamente optimizada para m&oacute;viles. Los candidatos pueden leer, completar campos y firmar contratos en cualquier navegador de smartphone o tablet sin instalar una aplicaci&oacute;n.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Las firmas electr&oacute;nicas son legalmente v&aacute;lidas?</h4>
+  <p>S&iacute;. Contract Hub cumple con la Ley ESIGN, UETA y las regulaciones eIDAS, haciendo que las firmas electr&oacute;nicas sean legalmente equivalentes a las firmas manuscritas en Estados Unidos, Europa y la mayor&iacute;a de jurisdicciones internacionales.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;C&oacute;mo cambio entre empresas?</h4>
+  <p>Haga clic en el nombre de la empresa en la barra lateral izquierda (mostrado con un icono de edificio). Esto le lleva de vuelta al <strong>Selector de Empresa</strong> donde puede elegir un espacio de trabajo diferente. Todos los datos est&aacute;n limitados a la empresa seleccionada.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Cu&aacute;l es la diferencia entre la asignaci&oacute;n AND y OR en los sobres?</h4>
+  <p><strong>AND</strong> significa que el candidato debe cumplir todas las condiciones de filtro. <strong>OR</strong> significa que el candidato solo necesita coincidir con al menos una condici&oacute;n. AND es m&aacute;s estricto (para asignaci&oacute;n precisa), OR es m&aacute;s amplio (para distribuci&oacute;n m&aacute;s amplia).</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;C&oacute;mo funciona el auto-llenado de datos?</h4>
+  <p>Los campos configurados con la fuente de datos <strong>Atributo de Talkpush</strong> obtienen autom&aacute;ticamente valores del perfil del candidato en Talkpush (ej., nombre, correo, direcci&oacute;n). Opcionalmente puede configurar <code>isEditableWhenAutofilled</code> para que el candidato pueda modificar el valor pre-llenado, y <code>fallbackValue</code> para proporcionar un valor predeterminado cuando el atributo est&eacute; vac&iacute;o.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Puedo usar Google SSO para iniciar sesi&oacute;n?</h4>
+  <p>S&iacute;. Haga clic en <strong>Continuar con Google</strong> en la p&aacute;gina de inicio de sesi&oacute;n para autenticarse con su cuenta de Google Workspace. Su cuenta de Google debe estar autorizada por su administrador. Si ve un error de "no autorizado", contacte a su administrador para una invitaci&oacute;n.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Qu&eacute; es un Usuario de Empresa y a qu&eacute; puede acceder?</h4>
+  <p>Un <strong>Usuario de Empresa</strong> es un rol de acceso limitado destinado a reclutadores o coordinadores. Puede ver y hacer seguimiento de Sesiones de Firma y acceder al Centro de Ayuda, pero no puede gestionar plantillas, sobres, usuarios ni configuraci&oacute;n. Esto mantiene la interfaz simple para los miembros del equipo que solo necesitan monitorear el progreso de los contratos.</p>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0;">&iquest;Puedo escribir valores de campos de vuelta a Talkpush?</h4>
+  <p>S&iacute;. Configure el <code>writebackAttributeKey</code> en cualquier campo para sincronizar autom&aacute;ticamente la entrada del candidato de vuelta a su perfil de Talkpush despu&eacute;s de la firma. Esto es &uacute;til para capturar nueva informaci&oacute;n como contactos de emergencia, datos bancarios o identificaciones fiscales que se ingresan durante el proceso de firma del contrato.</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="brand-strip" style="margin-bottom:1rem;"></div>
+  <p>
+    <strong>Contract Hub</strong> por Talkpush &middot; Documentaci&oacute;n de Usuario<br>
+    &copy; 2024&ndash;2026 Talkpush. Todos los derechos reservados.
+  </p>
+  <p style="margin-top:0.5rem;">
+    &iquest;Preguntas? Contacte a su administrador o visite el <a href="https://help.talkpush.com" target="_blank">Centro de Ayuda</a>.
+  </p>
+</div>
+
+</main>
+</div>
+</body>
+</html>
