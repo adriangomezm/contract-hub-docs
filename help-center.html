@@ -632,11 +632,14 @@ body {
 <script>
 // ─── HELP CENTER DATA ───
 const COLLECTIONS = [
+  /* ══════════════════════════════════════════════════════════
+     1. GETTING STARTED
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'getting-started',
     title: 'Getting Started',
     description: 'Learn the basics of Contract Hub, key concepts, and how to sign in and navigate the platform.',
-    icon: '🚀',
+    icon: '\u{1F680}',
     iconBg: '#EDE7F6',
     articleCount: 4,
     articles: [
@@ -664,939 +667,855 @@ const COLLECTIONS = [
   <li><strong>Candidates</strong> — Receive, review, and sign contracts from any device</li>
 </ul>
 
-<div class="info-box tip"><strong>Tip</strong>Contract Hub integrates seamlessly with Talkpush's recruitment automation platform. Contracts can be triggered automatically as part of your hiring workflow.</div>
+<div class="info-box tip">
+  <strong>Tip</strong>
+  Contract Hub is fully integrated with the Talkpush platform, so candidate data flows automatically from your recruitment pipeline into contracts.
+</div>
         `
       },
       {
         id: 'key-concepts',
         title: 'Key Concepts & Terminology',
-        subtitle: 'Essential terms you need to know when working with Contract Hub.',
+        subtitle: 'Understand the core terms used throughout Contract Hub.',
         body: `
-<p>Before diving into Contract Hub, here are the core concepts you'll encounter throughout the platform:</p>
+<p>Before diving in, familiarize yourself with these key terms:</p>
 
 <table class="ref-table">
-  <thead><tr><th>Term</th><th>Definition</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Template</strong></td><td>A reusable contract document (PDF) with configured fields for signatures, text inputs, dates, and more. Templates are the foundation — you upload a PDF once, configure the fields, and reuse it for every candidate.</td></tr>
-    <tr><td><strong>Envelope</strong></td><td>A package containing one or more templates that gets sent to a candidate as a group. Envelopes let you bundle multiple documents (e.g., NDA + Employment Contract + Policy Agreement) into a single signing session.</td></tr>
-    <tr><td><strong>Signing Session</strong></td><td>A specific instance of an envelope sent to a particular candidate. Each session tracks its own status, timestamps, and completion progress.</td></tr>
-    <tr><td><strong>Field</strong></td><td>An interactive element placed on a template page — signatures, text inputs, checkboxes, dates, and more. Fields can be pre-filled with candidate data or left for manual input.</td></tr>
-    <tr><td><strong>Matching Rule</strong></td><td>Logic that automatically selects the correct template or envelope for a candidate based on attributes like campaign, location, or job type. Uses AND/OR operators for flexible filtering.</td></tr>
-    <tr><td><strong>Bundle</strong></td><td>A group of templates within an envelope. Each template in the bundle shares the same matching rules and signer configuration.</td></tr>
-    <tr><td><strong>Audit Trail</strong></td><td>A complete log of every action taken during the signing process — who signed, when, from what device, and IP address. Critical for legal compliance.</td></tr>
-    <tr><td><strong>Data Source</strong></td><td>Where field values come from when auto-filling. Data can come from Talkpush candidate profiles, manual entry, system-generated values (like dates), or fixed text.</td></tr>
-    <tr><td><strong>Company</strong></td><td>An organizational unit in Contract Hub. Each company has its own templates, envelopes, users, and settings. Users can belong to multiple companies.</td></tr>
-  </tbody>
+  <tr><th>Term</th><th>Definition</th></tr>
+  <tr><td><strong>Template</strong></td><td>A reusable contract document (DOCX or PDF) with placeholders for candidate-specific data. Managed under the <strong>Contracts</strong> section in the sidebar.</td></tr>
+  <tr><td><strong>Field</strong></td><td>A placeholder in a template that gets filled with real data (e.g., candidate name, start date, salary).</td></tr>
+  <tr><td><strong>Overlay</strong></td><td>For PDF templates, the visual editor where you position fields on top of the document pages.</td></tr>
+  <tr><td><strong>Signer</strong></td><td>A person who needs to sign the contract. The primary signer is typically the candidate; additional signers can include managers or HR representatives.</td></tr>
+  <tr><td><strong>Signing Session</strong></td><td>A single instance of a contract sent to a specific candidate for signature. Tracked under the <strong>Signing</strong> section.</td></tr>
+  <tr><td><strong>Matching Rule</strong></td><td>A condition that determines which template is automatically sent to a candidate, based on campaign, attributes, or other criteria.</td></tr>
+  <tr><td><strong>Company</strong></td><td>An organization account in Contract Hub. Multi-company setups allow switching between different companies.</td></tr>
 </table>
 
-<div class="info-box"><strong>Note</strong>These concepts build on each other: <strong>Templates</strong> contain <strong>Fields</strong>, <strong>Envelopes</strong> contain <strong>Templates</strong>, and <strong>Signing Sessions</strong> are instances of <strong>Envelopes</strong> sent to candidates.</div>
+<div class="info-box">
+  <strong>Note</strong>
+  The sidebar navigation shows: <strong>Dashboard</strong>, <strong>Contracts</strong> (templates), <strong>Signing</strong> (sessions), <strong>Users</strong>, and <strong>Settings</strong>.
+</div>
         `
       },
       {
         id: 'signing-in',
-        title: 'Signing In & Account Access',
-        subtitle: 'How to access Contract Hub and manage your account credentials.',
+        title: 'Signing In & Authentication',
+        subtitle: 'How to access Contract Hub and manage your credentials.',
         body: `
+<h2>Accessing Contract Hub</h2>
+<p>Navigate to <code>contract-hub.talkpush.com</code> in your web browser. You'll see the login screen.</p>
+
 <img src="screenshots/login.png" alt="Contract Hub login screen" />
 
-<h2>Authentication Methods</h2>
-<p>Contract Hub supports two ways to sign in:</p>
+<h2>Login Methods</h2>
+<ul>
+  <li><strong>Email & Password</strong> — Enter your registered email and password</li>
+  <li><strong>Setup Password</strong> — If you received an invitation, use the setup link to create your password</li>
+</ul>
 
-<h3>Google Single Sign-On (SSO)</h3>
-<p>Click <strong>"Sign in with Google"</strong> on the login page. You'll be redirected to Google's authentication flow. Use your company Google account for seamless access.</p>
-
-<h3>Email & Password</h3>
-<p>Enter your registered email address and password directly on the login page. This option is available for organizations that don't use Google Workspace.</p>
-
-<h2>First-Time Password Setup</h2>
+<h2>Forgot Password</h2>
 <ol>
-  <li>When an administrator invites you, you'll receive an email with a setup link</li>
-  <li>Click the link to set your password</li>
-  <li>Choose a strong password (minimum 8 characters, mix of letters and numbers)</li>
-  <li>Once set, you can log in with your email and password immediately</li>
-</ol>
-
-<h2>Password Recovery</h2>
-<ol>
-  <li>Click <strong>"Forgot password?"</strong> on the login page</li>
+  <li>Click <strong>"Forgot password?"</strong> on the login screen</li>
   <li>Enter your registered email address</li>
-  <li>Check your inbox for the reset link (also check spam/junk folders)</li>
-  <li>Click the link and set a new password</li>
+  <li>Check your inbox for a reset link</li>
+  <li>Follow the link to set a new password</li>
 </ol>
 
-<div class="info-box warning"><strong>Important</strong>Password reset links expire after 24 hours. If your link has expired, simply request a new one from the login page.</div>
+<div class="info-box warning">
+  <strong>Important</strong>
+  Password reset links expire after a limited time. If your link has expired, request a new one from the login page.
+</div>
         `
       },
       {
         id: 'company-selector',
-        title: 'Switching Between Companies',
-        subtitle: 'Navigate between different companies if you have multi-company access.',
+        title: 'Choosing Your Company',
+        subtitle: 'How to select and switch between companies in multi-company setups.',
         body: `
+<p>If your account has access to multiple companies, you'll see the company selector after logging in.</p>
+
 <img src="screenshots/company-selector.png" alt="Company selector screen" />
 
-<h2>Multi-Company Access</h2>
-<p>If your organization manages multiple companies or brands, you may have access to more than one company in Contract Hub. After logging in, you'll see the Company Selector screen.</p>
-
-<h2>How to Switch Companies</h2>
+<h2>How It Works</h2>
 <ol>
-  <li><strong>After login</strong>, all companies you have access to are displayed as cards</li>
-  <li><strong>Search</strong> — Use the search bar at the top to filter companies by name</li>
-  <li><strong>Select</strong> — Click on a company card to enter that company's workspace</li>
-  <li><strong>Switch anytime</strong> — Click your company name in the sidebar header to return to the Company Selector</li>
+  <li>After login, you'll see a list of companies you have access to</li>
+  <li>Click on the company you want to work in</li>
+  <li>You'll be taken to that company's Dashboard</li>
 </ol>
 
-<h2>What Changes When You Switch</h2>
-<p>Each company is a separate workspace with its own:</p>
-<ul>
-  <li>Contract templates and envelopes</li>
-  <li>Signing sessions and candidate data</li>
-  <li>User roster and role assignments</li>
-  <li>Settings (branding, expiration, reminders)</li>
-</ul>
+<h2>Switching Companies</h2>
+<p>To switch to a different company while already logged in, look for the company switcher in the navigation area. This allows you to move between companies without logging out.</p>
 
-<div class="info-box"><strong>Note</strong>Your role may differ between companies. For example, you might be an Admin in one company and a Regular User in another.</div>
+<div class="info-box tip">
+  <strong>Tip</strong>
+  If you only have access to one company, you'll be taken directly to the Dashboard after login — no selector will appear.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     2. DASHBOARD & NAVIGATION
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'dashboard',
     title: 'Dashboard & Navigation',
-    description: 'Understand the dashboard overview, sidebar navigation, and key metrics at a glance.',
-    icon: '📊',
+    description: 'Understand the main dashboard, sidebar navigation, and key metrics at a glance.',
+    icon: '\u{1F4CA}',
     iconBg: '#E8F5E9',
     articleCount: 1,
     articles: [
       {
         id: 'dashboard-overview',
         title: 'Dashboard Overview',
-        subtitle: 'Your command center for monitoring contract activity and navigating the platform.',
+        subtitle: 'Your central hub for contract activity and performance metrics.',
         body: `
+<p>The Dashboard is the first screen you see after selecting your company. It provides a real-time overview of all contract activity.</p>
+
 <img src="screenshots/dashboard.png" alt="Contract Hub dashboard" />
 
 <h2>Sidebar Navigation</h2>
-<p>The left sidebar provides quick access to every section of Contract Hub:</p>
-
-<table class="ref-table">
-  <thead><tr><th>Menu Item</th><th>Description</th><th>Visibility</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Dashboard</strong></td><td>Overview with stats and recent activity</td><td>All users</td></tr>
-    <tr><td><strong>Contracts</strong></td><td>Manage contract templates</td><td>All users</td></tr>
-    <tr><td><strong>Envelopes</strong></td><td>Configure envelope bundles</td><td>All users</td></tr>
-    <tr><td><strong>Signing Sessions</strong></td><td>Track individual candidate sessions</td><td>All users</td></tr>
-    <tr><td><strong>Users</strong></td><td>Manage team members</td><td>Admins only</td></tr>
-    <tr><td><strong>Settings</strong></td><td>Company configuration</td><td>Admins only</td></tr>
-  </tbody>
-</table>
-
-<h2>Dashboard Stats</h2>
-<p>The dashboard displays six key metrics at the top:</p>
+<p>The left sidebar provides access to all main sections of Contract Hub:</p>
 <ul>
-  <li><strong>Total Sessions</strong> — Total signing sessions ever created</li>
-  <li><strong>Completed</strong> — Sessions fully signed by candidates</li>
-  <li><strong>Pending</strong> — Sessions awaiting candidate action</li>
-  <li><strong>Expired</strong> — Sessions past their expiration date</li>
-  <li><strong>Voided</strong> — Sessions manually cancelled by an admin</li>
-  <li><strong>Completion Rate</strong> — Percentage of sessions that were completed</li>
+  <li><strong>Dashboard</strong> — Overview metrics and recent activity (the home screen)</li>
+  <li><strong>Contracts</strong> — Manage contract templates (create, edit, configure)</li>
+  <li><strong>Signing</strong> — Track all signing sessions and their statuses</li>
+  <li><strong>Users</strong> — Manage team members and their permissions (admin only)</li>
+  <li><strong>Settings</strong> — Profile and account settings</li>
 </ul>
 
-<h2>Recent Signing Activity</h2>
-<p>Below the stats, you'll see a chronological feed of the most recent signing events — new sessions created, contracts signed, and sessions expired. This gives you a real-time pulse on contract activity.</p>
+<h2>Key Metrics</h2>
+<p>The dashboard displays six summary cards at the top:</p>
+<table class="ref-table">
+  <tr><th>Metric</th><th>Description</th></tr>
+  <tr><td><span class="status-badge blue">Active Contracts</span></td><td>Number of contract templates currently active and available for sending</td></tr>
+  <tr><td><span class="status-badge purple">Total Sessions</span></td><td>Total number of signing sessions created</td></tr>
+  <tr><td><span class="status-badge green">Completed</span></td><td>Contracts that have been fully signed by all parties</td></tr>
+  <tr><td><span class="status-badge amber">Pending</span></td><td>Contracts awaiting candidate action</td></tr>
+  <tr><td><span class="status-badge red">Declined</span></td><td>Contracts that candidates have declined to sign</td></tr>
+  <tr><td><span class="status-badge gray">Expired</span></td><td>Contracts that passed their deadline without completion</td></tr>
+</table>
 
-<h2>Hero Banner</h2>
-<p>The banner at the top highlights key system messages or announcements from Talkpush about new features and updates.</p>
+<h2>Recent Signing Activity</h2>
+<p>Below the metrics, you'll find a table showing recent signing sessions with candidate name, contract template used, status, and date. This gives you a quick view of the latest contract activity without navigating to the full Signing section.</p>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     3. CONTRACT TEMPLATES
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'templates',
     title: 'Contract Templates',
-    description: 'Create, manage, and configure reusable contract templates with fields and signing logic.',
-    icon: '📄',
+    description: 'Create, configure, and manage reusable contract templates with the 4-step wizard.',
+    icon: '\u{1F4DD}',
     iconBg: '#E3F2FD',
-    articleCount: 3,
+    articleCount: 4,
     articles: [
       {
-        id: 'managing-contracts',
-        title: 'Managing Your Templates',
-        subtitle: 'Browse, search, filter, and manage your library of contract templates.',
+        id: 'managing-templates',
+        title: 'Managing Contract Templates',
+        subtitle: 'View, organize, and manage your library of contract templates.',
         body: `
+<p>The <strong>Contracts</strong> section in the sidebar shows all your contract templates. This is where you manage your template library.</p>
+
 <img src="screenshots/contracts-list.png" alt="Contract templates list" />
 
-<h2>Template Library</h2>
-<p>The Contracts page shows all templates in your company as a card-based grid. Each card displays the template name, category, current status, and available actions.</p>
-
-<h2>Search & Filter</h2>
+<h2>Template List</h2>
+<p>Each template in the list shows:</p>
 <ul>
-  <li><strong>Search bar</strong> — Find templates by name instantly</li>
-  <li><strong>Status filter</strong> — Show only Active, Draft, or Archived templates</li>
-  <li><strong>Category filter</strong> — Filter by template category</li>
+  <li><strong>Template name</strong> — The display name you gave the template</li>
+  <li><strong>Type</strong> — Whether it's a DOCX or PDF-based template</li>
+  <li><strong>Status</strong> — Active, Draft, or Archived</li>
+  <li><strong>Created date</strong> — When the template was first created</li>
+  <li><strong>Actions</strong> — Edit, duplicate, or archive the template</li>
 </ul>
 
-<h2>Template Card Actions</h2>
-<p>Each template card has a menu (⋮) with these options:</p>
-<table class="ref-table">
-  <thead><tr><th>Action</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Edit</strong></td><td>Open the Template Builder to modify metadata and signer config</td></tr>
-    <tr><td><strong>Edit Fields</strong></td><td>Open the Field Overlay Editor to place/modify fields on the PDF</td></tr>
-    <tr><td><strong>Duplicate</strong></td><td>Create a copy of the template with all its configuration</td></tr>
-    <tr><td><strong>Download</strong></td><td>Download the original PDF file</td></tr>
-    <tr><td><strong>Archive / Restore</strong></td><td>Move to archive or restore from archive</td></tr>
-    <tr><td><strong>Delete</strong></td><td>Permanently remove the template (requires confirmation)</td></tr>
-  </tbody>
-</table>
-
-<h2>Template Statuses</h2>
+<h2>Template Actions</h2>
 <ul>
-  <li><span class="status-badge green">Active</span> — Available for use in envelopes and signing sessions</li>
-  <li><span class="status-badge amber">Draft</span> — Still being configured, not yet available</li>
-  <li><span class="status-badge gray">Archived</span> — Hidden from active use but preserved for records</li>
+  <li><strong>Create New</strong> — Click the "New Template" button to start the 4-step creation wizard</li>
+  <li><strong>Edit</strong> — Open an existing template to modify its content, signers, or matching rules</li>
+  <li><strong>Duplicate</strong> — Create a copy of a template as a starting point for a new one</li>
+  <li><strong>Archive</strong> — Remove a template from active use without deleting it</li>
 </ul>
 
-<h2>Contract Categories</h2>
-<p>Organize templates using categories: <strong>Employment Contract</strong>, <strong>NDA</strong>, <strong>Offer Letter</strong>, <strong>Policy Agreement</strong>, <strong>Benefits Enrollment</strong>, <strong>Tax Form</strong>, and <strong>Other</strong>.</p>
+<div class="info-box tip">
+  <strong>Tip</strong>
+  Archiving a template won't affect any existing signing sessions that were already created from it.
+</div>
         `
       },
       {
-        id: 'creating-contract',
-        title: 'Creating a New Contract Template',
-        subtitle: 'Step-by-step guide to uploading a PDF and setting up a new template.',
+        id: 'creating-template',
+        title: 'Creating a Template (4-Step Wizard)',
+        subtitle: 'Walk through the complete template creation process from document upload to matching rules.',
         body: `
-<h2>The 4-Step Creation Wizard</h2>
-<p>Creating a new template follows a guided wizard that walks you through each step:</p>
+<p>Creating a new contract template uses a 4-step wizard that guides you through the entire setup process.</p>
 
-<h3>Step 1: Upload Your PDF</h3>
-<p>Click <strong>"New Contract"</strong> on the Contracts page, then:</p>
+<h2>Step 1: Upload Document</h2>
+<p>Start by uploading your contract document. Contract Hub supports two formats:</p>
 <ul>
-  <li>Drag and drop a PDF file, or click to browse your files</li>
-  <li>Supported format: PDF only</li>
-  <li>Maximum file size: 10MB</li>
-  <li>Multi-page documents are fully supported</li>
+  <li><strong>DOCX files</strong> — Word documents that can be edited using the rich text editor. When uploading a DOCX, you'll be asked to choose between:
+    <ul>
+      <li><strong>Dynamic editing mode</strong> — Edit the document content directly in the Template Builder (TipTap editor)</li>
+      <li><strong>Overlay mode</strong> — Convert to PDF and place fields visually on top of the pages</li>
+    </ul>
+  </li>
+  <li><strong>PDF files</strong> — These always use the Field Overlay Editor where you position fields visually on the document pages</li>
 </ul>
 
-<h3>Step 2: Enter Contract Details</h3>
+<div class="info-box">
+  <strong>Note</strong>
+  Choose the format that best fits your workflow. DOCX with dynamic editing is great for templates that need frequent text changes. PDF overlay is ideal for standardized forms where layout must be preserved exactly.
+</div>
+
+<h2>Step 2: Template Details</h2>
+<p>Configure the basic information for your template:</p>
 <ul>
-  <li><strong>Contract Name</strong> — A clear, descriptive name (e.g., "US Employment Agreement 2024")</li>
-  <li><strong>Category</strong> — Select the appropriate contract type</li>
-  <li><strong>Description</strong> (optional) — Add notes about when this template should be used</li>
+  <li><strong>Template name</strong> — A descriptive name for easy identification (e.g., "Standard Employment Contract - USA")</li>
+  <li><strong>Description</strong> — Optional notes about the template's purpose or usage</li>
 </ul>
 
-<h3>Step 3: Configure Signers</h3>
+<img src="screenshots/template-detail.png" alt="Template details step" />
+
+<h2>Step 3: Signers</h2>
+<p>Define who needs to sign this contract:</p>
 <ul>
-  <li>Define the number of signers (typically 1 for candidate-only, or 2 for candidate + employer)</li>
-  <li>Set the signing order — who signs first?</li>
-  <li>Name each signer role (e.g., "Candidate", "HR Manager")</li>
+  <li><strong>Primary signer</strong> — Usually the candidate. This is the first and required signer.</li>
+  <li><strong>Additional signers</strong> — Add managers, HR representatives, or other parties who need to co-sign. Each signer gets their own designated signature fields.</li>
 </ul>
 
-<h3>Step 4: Place Fields on the Document</h3>
-<p>This opens the <strong>Field Overlay Editor</strong> where you visually place signature fields, text inputs, date pickers, and more directly on the PDF pages. See the <a href="#" onclick="navigateTo('article', 'field-editor', 'field-overlay'); return false;">Field Overlay Editor</a> article for details.</p>
+<h2>Step 4: Matching Rules</h2>
+<p>Configure when this template should be automatically used. Matching rules determine which contract template is sent to a candidate based on their campaign, attributes, or other criteria. See the dedicated <a href="#" onclick="navigateTo('article', 'matching-rules', 'templates'); return false;">Matching Rules article</a> for detailed instructions.</p>
 
-<div class="info-box tip"><strong>Tip</strong>You can save as Draft at any point and return later to finish configuring. A template must have at least one signature field to be marked as Active.</div>
+<div class="info-box tip">
+  <strong>Tip</strong>
+  You can skip matching rules during creation and add them later by editing the template.
+</div>
         `
       },
       {
         id: 'template-builder',
-        title: 'Template Builder: Metadata & Signer Configuration',
-        subtitle: 'Configure template details, signer roles, and signing order.',
+        title: 'Template Builder (Rich Text Editor)',
+        subtitle: 'Use the WYSIWYG editor to customize DOCX-based templates with formatting and fields.',
         body: `
-<img src="screenshots/template-detail.png" alt="Template builder" />
+<p>When you choose dynamic editing mode for a DOCX template, you get access to the Template Builder — a full-featured rich text editor powered by TipTap.</p>
 
-<h2>Template Metadata</h2>
-<p>The Template Builder lets you edit the core information about your template:</p>
+<h2>Editor Toolbar</h2>
+<p>The toolbar at the top of the editor provides comprehensive formatting options:</p>
+
+<h3>Text Formatting</h3>
 <ul>
-  <li><strong>Name</strong> — The display name shown in the template library and sent to candidates</li>
-  <li><strong>Category</strong> — Organizational classification (Employment Contract, NDA, etc.)</li>
-  <li><strong>Description</strong> — Internal notes about the template's purpose and usage</li>
-  <li><strong>Status</strong> — Toggle between Draft and Active</li>
+  <li><strong>Bold, Italic, Underline</strong> — Standard text styling</li>
+  <li><strong>Font family</strong> — Choose from available fonts</li>
+  <li><strong>Font size</strong> — Adjust text size</li>
+  <li><strong>Text color</strong> — Use the color picker to change text color</li>
 </ul>
 
-<h2>Signer Configuration</h2>
-<p>Each template defines who needs to sign and in what order:</p>
-
-<h3>Signer Roles</h3>
-<p>Add one or more signer roles. Common configurations:</p>
+<h3>Structure & Layout</h3>
 <ul>
-  <li><strong>Single signer</strong> — Candidate only (most common for high-volume hiring)</li>
-  <li><strong>Two signers</strong> — Candidate + Manager/HR representative</li>
-  <li><strong>Multiple signers</strong> — For complex contracts requiring multiple approvals</li>
+  <li><strong>Headings</strong> — H1, H2, H3 heading levels for document sections</li>
+  <li><strong>Alignment</strong> — Left, center, right, or justified text</li>
+  <li><strong>Bullet lists & numbered lists</strong> — Organize content with lists</li>
 </ul>
 
-<h3>Signing Order</h3>
-<p>Choose sequential signing (signer 1 must complete before signer 2 receives the document) or parallel signing (all signers receive simultaneously).</p>
+<h3>Media & Links</h3>
+<ul>
+  <li><strong>Images</strong> — Insert images into the contract</li>
+  <li><strong>Links</strong> — Add hyperlinks to text</li>
+</ul>
 
-<h2>PDF Preview</h2>
-<p>The right side of the Template Builder shows a preview of your uploaded PDF document, so you can verify the content while configuring metadata.</p>
+<h3>Document Sections</h3>
+<ul>
+  <li><strong>Header & Footer</strong> — Add consistent headers and footers across all pages</li>
+  <li><strong>Undo / Redo</strong> — Navigate through edit history</li>
+</ul>
 
-<div class="info-box"><strong>Note</strong>Changes to signer configuration may affect existing field assignments. If you change the number of signers, review your field placements in the Field Overlay Editor.</div>
+<h2>Inserting Fields</h2>
+<p>The most powerful feature of the Template Builder is field insertion. Click the <strong>Insert Field</strong> button to add dynamic placeholders that will be populated with candidate data when the contract is sent:</p>
+<ul>
+  <li>Candidate name, email, phone</li>
+  <li>Position title, department, start date</li>
+  <li>Salary, benefits details</li>
+  <li>Signature and date fields for each signer</li>
+  <li>Custom fields mapped from your Talkpush data</li>
+</ul>
+
+<div class="info-box tip">
+  <strong>Tip</strong>
+  Fields appear as highlighted tags in the editor. You can move them by clicking and dragging, or delete them by selecting and pressing Backspace.
+</div>
+        `
+      },
+      {
+        id: 'matching-rules',
+        title: 'Matching Rules',
+        subtitle: 'Automatically assign the right contract template to candidates based on campaign and attribute conditions.',
+        body: `
+<p>Matching Rules allow you to automatically determine which contract template is sent to a candidate. This is configured as the final step of template creation, or you can add/edit them later from the template settings.</p>
+
+<img src="screenshots/matching-rules.png" alt="Matching rules configuration" />
+
+<h2>How Matching Rules Work</h2>
+<p>When a contract request comes in from Talkpush, the system evaluates the candidate's data against your matching rules to select the correct template. If multiple templates match, the most specific rule wins.</p>
+
+<h2>Campaign Selection</h2>
+<p>The first part of a matching rule is selecting which <strong>campaigns</strong> this template applies to. You can select one or more campaigns from a multi-select dropdown. Only candidates from the selected campaigns will be considered for this template.</p>
+
+<h2>Attribute Filters</h2>
+<p>Beyond campaigns, you can add attribute-based conditions to further narrow which candidates receive this template. Each filter consists of:</p>
+<ul>
+  <li><strong>Attribute</strong> — The candidate data field to check (e.g., location, department, job level)</li>
+  <li><strong>Operator</strong> — The comparison type:
+    <ul>
+      <li><code>is</code> — Exact match</li>
+      <li><code>is not</code> — Excludes exact match</li>
+      <li><code>contains</code> — Partial text match</li>
+    </ul>
+  </li>
+  <li><strong>Value</strong> — The expected value to compare against</li>
+</ul>
+
+<h2>AND / OR Logic</h2>
+<p>When you add multiple attribute filters, you can toggle between:</p>
+<ul>
+  <li><strong>AND</strong> — All conditions must be true (stricter, more specific matching)</li>
+  <li><strong>OR</strong> — Any condition can be true (broader matching)</li>
+</ul>
+
+<h3>Example</h3>
+<p>To send a specific contract to candidates in New York who are applying for Manager-level roles:</p>
+<ol>
+  <li>Select the relevant campaigns</li>
+  <li>Add filter: Location <code>is</code> "New York"</li>
+  <li>Add filter: Job Level <code>is</code> "Manager"</li>
+  <li>Set logic to <strong>AND</strong></li>
+</ol>
+
+<div class="info-box warning">
+  <strong>Important</strong>
+  If no matching rules are configured for a template, it won't be automatically assigned to any candidates. You would need to manually select it when creating a signing session.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     4. FIELD OVERLAY EDITOR
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'field-overlay',
     title: 'Field Overlay Editor',
-    description: 'Place and configure interactive fields on your contract PDFs — signatures, inputs, dates, and more.',
-    icon: '✏️',
+    description: 'Position signature fields and data placeholders on PDF contract templates.',
+    icon: '\u{1F3AF}',
     iconBg: '#FFF8E1',
     articleCount: 2,
     articles: [
       {
         id: 'field-editor',
         title: 'Using the Field Overlay Editor',
-        subtitle: 'Drag, drop, and configure fields directly on your PDF contract pages.',
+        subtitle: 'How to place, position, and configure fields on PDF document pages.',
         body: `
-<img src="screenshots/field-overlay-editor.png" alt="Field Overlay Editor" />
+<p>The Field Overlay Editor is used for PDF-based templates (and DOCX templates in overlay mode). It lets you visually place fields on top of your document pages.</p>
 
-<h2>Opening the Editor</h2>
-<p>Access the Field Overlay Editor from the Contracts page by clicking <strong>"Edit Fields"</strong> on any template card menu, or directly from Step 4 of the creation wizard.</p>
+<img src="screenshots/field-overlay-editor.png" alt="Field overlay editor" />
 
-<h2>Editor Layout</h2>
-<p>The editor has three main areas:</p>
-<ul>
-  <li><strong>Document Canvas (center)</strong> — Your PDF rendered at full size. Navigate between pages using the page controls at the bottom.</li>
-  <li><strong>Field Palette (left sidebar)</strong> — Drag field types from here onto the document. Categories include Signature fields, Input fields, and Display fields.</li>
-  <li><strong>Configuration Panel (right sidebar)</strong> — When you select a field on the canvas, this panel shows its properties: signer assignment, data source, validation rules, and positioning.</li>
-</ul>
-
-<h2>Placing Fields</h2>
+<h2>How It Works</h2>
 <ol>
-  <li><strong>Select a field type</strong> from the left palette</li>
-  <li><strong>Drag it onto the PDF</strong> to the exact position where it should appear</li>
-  <li><strong>Resize</strong> by dragging the corner handles</li>
-  <li><strong>Configure</strong> using the right panel — assign to a signer, set data source, add validation</li>
+  <li><strong>View your document</strong> — The PDF pages are displayed as a background image</li>
+  <li><strong>Select a field type</strong> — Choose from the field palette on the side</li>
+  <li><strong>Click to place</strong> — Click on the document where the field should appear</li>
+  <li><strong>Drag to resize</strong> — Adjust the field size by dragging its edges</li>
+  <li><strong>Configure properties</strong> — Set field properties like name, required status, and assigned signer</li>
 </ol>
 
-<h2>Field Actions</h2>
+<h2>Navigation</h2>
 <ul>
-  <li><strong>Move</strong> — Click and drag to reposition</li>
-  <li><strong>Resize</strong> — Drag corner handles</li>
-  <li><strong>Duplicate</strong> — Copy a field with its configuration</li>
-  <li><strong>Delete</strong> — Remove a field from the page</li>
-  <li><strong>Configure</strong> — Click to open the property panel</li>
+  <li><strong>Page navigation</strong> — Use the page controls to move between document pages</li>
+  <li><strong>Zoom</strong> — Zoom in/out for precise field placement</li>
+  <li><strong>Scroll</strong> — Scroll through the document normally</li>
 </ul>
 
-<h2>Multi-Page Documents</h2>
-<p>For multi-page PDFs, use the page navigator at the bottom to switch between pages. Fields are placed per-page, and each page can have different field configurations.</p>
+<h2>Field Properties</h2>
+<p>Each placed field has configurable properties:</p>
+<ul>
+  <li><strong>Field name</strong> — Identifies the field (e.g., "candidate_signature", "start_date")</li>
+  <li><strong>Assigned signer</strong> — Which signer this field belongs to</li>
+  <li><strong>Required</strong> — Whether the field must be filled before signing is complete</li>
+  <li><strong>Position & size</strong> — Fine-tune exact placement and dimensions</li>
+</ul>
 
-<div class="info-box tip"><strong>Tip</strong>Use the zoom controls to get pixel-perfect field placement. Zoom in for precise positioning of signature lines and small text fields.</div>
+<div class="info-box tip">
+  <strong>Tip</strong>
+  Use zoom to get precise placement for signature fields. The overlay snaps to common positions to help with alignment.
+</div>
         `
       },
       {
         id: 'field-types',
-        title: 'Field Types Reference',
-        subtitle: 'Complete guide to all available field types, data sources, and validation options.',
+        title: 'Available Field Types',
+        subtitle: 'Reference guide for all field types you can place on a contract template.',
         body: `
-<h2>Signature Fields</h2>
+<p>Contract Hub supports several field types that can be placed on PDF templates:</p>
+
 <table class="ref-table">
-  <thead><tr><th>Type</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Signature</strong></td><td>Digital signature capture — candidates draw or type their signature</td></tr>
-    <tr><td><strong>Initials</strong></td><td>Smaller initial capture for page-by-page acknowledgment</td></tr>
-    <tr><td><strong>Signature Date</strong></td><td>Automatically stamps the date when the signature is applied</td></tr>
-  </tbody>
+  <tr><th>Field Type</th><th>Description</th><th>Common Use</th></tr>
+  <tr><td><strong>Signature</strong></td><td>Captures an electronic signature (draw or type)</td><td>Primary and co-signer signatures</td></tr>
+  <tr><td><strong>Date</strong></td><td>Auto-fills or allows date selection</td><td>Signing date, start date</td></tr>
+  <tr><td><strong>Text</strong></td><td>Free-text input field</td><td>Name, address, custom info</td></tr>
+  <tr><td><strong>Initials</strong></td><td>Captures initials</td><td>Page-by-page acknowledgment</td></tr>
+  <tr><td><strong>Checkbox</strong></td><td>Yes/no selection</td><td>Terms acceptance, option selection</td></tr>
 </table>
 
-<h2>Input Fields</h2>
-<table class="ref-table">
-  <thead><tr><th>Type</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Text Input</strong></td><td>Free-form text entry (names, addresses, custom responses)</td></tr>
-    <tr><td><strong>Date Picker</strong></td><td>Calendar-based date selection with format options</td></tr>
-    <tr><td><strong>Checkbox</strong></td><td>Yes/No toggle for acknowledgments and confirmations</td></tr>
-    <tr><td><strong>Dropdown</strong></td><td>Selection from a predefined list of options</td></tr>
-    <tr><td><strong>Number Input</strong></td><td>Numeric-only field for IDs, amounts, etc.</td></tr>
-  </tbody>
-</table>
-
-<h2>Display Fields</h2>
-<table class="ref-table">
-  <thead><tr><th>Type</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Static Text</strong></td><td>Pre-filled text that candidates can read but not edit</td></tr>
-    <tr><td><strong>Auto-fill Text</strong></td><td>Text automatically populated from candidate data (name, email, etc.)</td></tr>
-    <tr><td><strong>Image</strong></td><td>Display a static image (logos, stamps) on the document</td></tr>
-    <tr><td><strong>QR Code</strong></td><td>Auto-generated QR code linking to the signing session or verification URL</td></tr>
-  </tbody>
-</table>
-
-<h2>Data Sources</h2>
-<p>Each field can pull its value from different sources:</p>
+<h2>Auto-populated vs. Manual Fields</h2>
 <ul>
-  <li><strong>Talkpush Profile</strong> — Auto-fill from the candidate's Talkpush data (name, email, phone, etc.)</li>
-  <li><strong>Manual Entry</strong> — Candidate fills in the value during signing</li>
-  <li><strong>System Generated</strong> — Automatic values like current date, session ID, signing timestamp</li>
-  <li><strong>Fixed Value</strong> — A constant value defined when creating the template (company name, address, etc.)</li>
+  <li><strong>Auto-populated</strong> — Fields linked to Talkpush candidate data fill automatically (name, email, etc.)</li>
+  <li><strong>Manual</strong> — Fields the signer fills in during the signing session (signature, date acknowledgment)</li>
 </ul>
 
-<h2>Validation Rules</h2>
-<p>Input fields support validation to ensure data quality:</p>
+<h2>Assigning Fields to Signers</h2>
+<p>Each field must be assigned to a specific signer. When you place a field, select which signer it belongs to from the dropdown. This determines:</p>
 <ul>
-  <li><strong>Required</strong> — Field must be filled before signing can complete</li>
-  <li><strong>Format validation</strong> — Email format, phone number format, date format</li>
-  <li><strong>Character limits</strong> — Minimum and maximum length constraints</li>
+  <li>Who sees and fills that field during signing</li>
+  <li>The order in which fields become active</li>
+  <li>Color-coding in the editor for easy identification</li>
 </ul>
 
-<div class="info-box"><strong>Note</strong>Auto-fill fields linked to Talkpush profiles can also write data back to the candidate record after signing. Enable "Writeback" in the field configuration to sync values back to Talkpush.</div>
+<div class="info-box">
+  <strong>Note</strong>
+  The primary signer (candidate) typically has the most fields: signature, date, and any required acknowledgments. Additional signers usually only need a signature and date field.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     5. SIGNING SESSIONS
+     ══════════════════════════════════════════════════════════ */
   {
-    id: 'envelopes',
-    title: 'Envelopes & Matching Rules',
-    description: 'Bundle templates into envelopes and configure smart matching rules for automatic contract assignment.',
-    icon: '📬',
-    iconBg: '#FCE4EC',
-    articleCount: 2,
-    articles: [
-      {
-        id: 'envelopes-overview',
-        title: 'Understanding Envelopes',
-        subtitle: 'Package multiple templates together and define how they get assigned to candidates.',
-        body: `
-<h2>What Are Envelopes?</h2>
-<p>An envelope is a package that groups one or more contract templates together. When a signing session is created, it's based on an envelope — the candidate receives all templates in the envelope as a single signing experience.</p>
-
-<h2>Why Use Envelopes?</h2>
-<ul>
-  <li><strong>Bundle documents</strong> — Send an employment contract, NDA, and benefits form together</li>
-  <li><strong>Smart assignment</strong> — Use matching rules to automatically select the right envelope for each candidate</li>
-  <li><strong>Consistent experience</strong> — Ensure every candidate in a category gets the exact same set of documents</li>
-</ul>
-
-<h2>Envelope Structure</h2>
-<table class="ref-table">
-  <thead><tr><th>Component</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Name</strong></td><td>Descriptive name for the envelope (e.g., "US Full-Time Onboarding Package")</td></tr>
-    <tr><td><strong>Description</strong></td><td>Internal notes about when to use this envelope</td></tr>
-    <tr><td><strong>Templates</strong></td><td>One or more contract templates included in the bundle</td></tr>
-    <tr><td><strong>Matching Rules</strong></td><td>Logic that determines which candidates receive this envelope</td></tr>
-    <tr><td><strong>Status</strong></td><td>Active (available for use) or Draft (still configuring)</td></tr>
-    <tr><td><strong>Expiration</strong></td><td>Default expiration period for signing sessions created from this envelope</td></tr>
-  </tbody>
-</table>
-
-<h2>Creating an Envelope</h2>
-<ol>
-  <li>Navigate to <strong>Envelopes</strong> in the sidebar</li>
-  <li>Click <strong>"New Envelope"</strong></li>
-  <li>Enter the envelope name and description</li>
-  <li>Add templates by selecting from your template library</li>
-  <li>Configure matching rules (optional — see <a href="#" onclick="navigateTo('article', 'matching-rules', 'envelopes'); return false;">Matching Rules</a>)</li>
-</ol>
-
-<h2>Envelope Dashboard</h2>
-<p>The Envelopes page shows all configured envelopes with their status, number of included templates, and matching rule summary. Use the search bar and filters to quickly find specific envelopes.</p>
-
-<div class="info-box tip"><strong>Tip</strong>Start with a simple envelope containing one template. You can always add more templates later as your process matures.</div>
-        `
-      },
-      {
-        id: 'matching-rules',
-        title: 'Configuring Matching Rules',
-        subtitle: 'Set up automatic contract assignment using AND/OR logic and candidate attributes.',
-        body: `
-<img src="screenshots/matching-rules.png" alt="Matching rules configuration" />
-
-<h2>What Are Matching Rules?</h2>
-<p>Matching rules let you automatically assign the correct envelope to each candidate based on their profile attributes. Instead of manually selecting contracts, the system matches candidates to envelopes automatically.</p>
-
-<h2>AND/OR Logic</h2>
-<p>Rules are built using two logical operators:</p>
-<ul>
-  <li><strong>AND</strong> — All conditions must be true (narrower match)</li>
-  <li><strong>OR</strong> — Any condition can be true (broader match)</li>
-</ul>
-
-<div class="info-box"><strong>Example</strong><em>AND logic:</em> Campaign is "Customer Service" AND Location is "New York" → Only candidates in the NYC Customer Service campaign match.<br><br><em>OR logic:</em> Location is "New York" OR Location is "New Jersey" → Candidates in either location match.</div>
-
-<h2>Available Filter Attributes</h2>
-<p>You can filter candidates based on these Talkpush profile attributes:</p>
-
-<table class="ref-table">
-  <thead><tr><th>Attribute</th><th>Operators</th><th>Example</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Campaign</strong></td><td>is, is not, contains</td><td>Campaign is "Summer 2024 BPO Hiring"</td></tr>
-    <tr><td><strong>Location / City</strong></td><td>is, is not, contains</td><td>City contains "Manila"</td></tr>
-    <tr><td><strong>Job Title</strong></td><td>is, is not, contains</td><td>Job Title is "Customer Service Rep"</td></tr>
-    <tr><td><strong>Department</strong></td><td>is, is not</td><td>Department is "Operations"</td></tr>
-    <tr><td><strong>Country</strong></td><td>is, is not</td><td>Country is "Philippines"</td></tr>
-    <tr><td><strong>Source</strong></td><td>is, is not, contains</td><td>Source is "Indeed"</td></tr>
-    <tr><td><strong>Status</strong></td><td>is, is not</td><td>Status is "Offer Accepted"</td></tr>
-    <tr><td><strong>Custom Attributes</strong></td><td>is, is not, contains, is empty</td><td>Custom field "Employment Type" is "Full-Time"</td></tr>
-  </tbody>
-</table>
-
-<h2>Building Complex Rules</h2>
-<p>Combine multiple conditions for precise targeting:</p>
-<ol>
-  <li>Click <strong>"Add Condition"</strong> to add a new rule</li>
-  <li>Select the attribute, operator, and value</li>
-  <li>Choose <strong>AND</strong> or <strong>OR</strong> to connect with other conditions</li>
-  <li>Group conditions together for nested logic when needed</li>
-</ol>
-
-<div class="info-box warning"><strong>Important</strong>If multiple envelopes match the same candidate, the first matching envelope (by priority order) will be used. Make sure your rules don't overlap unintentionally.</div>
-        `
-      }
-    ]
-  },
-  {
-    id: 'signing-sessions',
+    id: 'signing',
     title: 'Signing Sessions',
-    description: 'Track, manage, and take action on individual candidate signing sessions.',
-    icon: '✍️',
-    iconBg: '#E0F2F1',
+    description: 'Track, manage, and take action on contract signing sessions.',
+    icon: '\u{270D}\u{FE0F}',
+    iconBg: '#FCE4EC',
     articleCount: 1,
     articles: [
       {
         id: 'tracking-sessions',
-        title: 'Tracking & Managing Signing Sessions',
-        subtitle: 'Monitor the status of every contract sent to candidates, with filtering, detail views, and bulk actions.',
+        title: 'Tracking Signing Sessions',
+        subtitle: 'Monitor contract progress, filter by status, and take actions on sessions.',
         body: `
+<p>The <strong>Signing</strong> section shows all signing sessions — every contract that has been sent to a candidate.</p>
+
 <img src="screenshots/signing-sessions.png" alt="Signing sessions list" />
 
-<h2>Sessions Overview</h2>
-<p>The Signing Sessions page gives you a complete view of every contract instance sent to candidates. Each row represents one candidate's signing journey.</p>
-
-<h2>Filtering Sessions</h2>
-<p>Find specific sessions using three methods:</p>
-<ul>
-  <li><strong>Search</strong> — Type a candidate name, email, or session ID</li>
-  <li><strong>Status filter</strong> — Filter by Pending, Viewed, Completed, Expired, Voided, Declined, or Failed</li>
-  <li><strong>Date range</strong> — Show sessions created within a specific period</li>
-</ul>
-
-<h2>Session Columns</h2>
+<h2>Session Statuses</h2>
+<p>Each signing session has one of the following statuses:</p>
 <table class="ref-table">
-  <thead><tr><th>Column</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Candidate</strong></td><td>Name and email of the signer</td></tr>
-    <tr><td><strong>Envelope</strong></td><td>Which envelope was used</td></tr>
-    <tr><td><strong>Status</strong></td><td>Current signing status (see reference below)</td></tr>
-    <tr><td><strong>Created</strong></td><td>When the session was initiated</td></tr>
-    <tr><td><strong>Completed</strong></td><td>When signing was finished (if applicable)</td></tr>
-    <tr><td><strong>Expires</strong></td><td>Expiration deadline</td></tr>
-    <tr><td><strong>Actions</strong></td><td>Quick actions menu</td></tr>
-  </tbody>
+  <tr><th>Status</th><th>Meaning</th></tr>
+  <tr><td><span class="status-badge green">Completed</span></td><td>All signers have signed. The contract is fully executed.</td></tr>
+  <tr><td><span class="status-badge blue">In Progress</span></td><td>The contract is currently being signed (some signers have completed).</td></tr>
+  <tr><td><span class="status-badge amber">Pending</span></td><td>The contract has been sent but no signatures yet.</td></tr>
+  <tr><td><span class="status-badge purple">Viewed</span></td><td>The candidate has opened the contract but hasn't signed yet.</td></tr>
+  <tr><td><span class="status-badge red">Declined</span></td><td>The candidate or a signer has explicitly declined to sign.</td></tr>
+  <tr><td><span class="status-badge gray">Expired</span></td><td>The signing deadline passed without completion.</td></tr>
+  <tr><td><span class="status-badge gray">Voided</span></td><td>An admin has manually cancelled/voided this contract.</td></tr>
 </table>
 
-<h2>Session Status Reference</h2>
-<table class="ref-table">
-  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
-  <tbody>
-    <tr><td><span class="status-badge amber">Pending</span></td><td>Contract sent but not yet opened by the candidate</td></tr>
-    <tr><td><span class="status-badge blue">Viewed</span></td><td>Candidate has opened and started reviewing the contract</td></tr>
-    <tr><td><span class="status-badge green">Completed</span></td><td>All required signatures and fields are done</td></tr>
-    <tr><td><span class="status-badge gray">Expired</span></td><td>Signing deadline passed without completion</td></tr>
-    <tr><td><span class="status-badge red">Voided</span></td><td>Manually cancelled by an admin</td></tr>
-    <tr><td><span class="status-badge red">Declined</span></td><td>Candidate explicitly declined to sign</td></tr>
-    <tr><td><span class="status-badge red">Failed</span></td><td>Technical error prevented completion</td></tr>
-  </tbody>
-</table>
-
-<h2>Session Detail View</h2>
-<p>Click any session row to see the full detail, which includes:</p>
+<h2>Filtering & Searching</h2>
 <ul>
-  <li><strong>Candidate Information</strong> — Name, email, phone, Talkpush ID</li>
-  <li><strong>Document Preview</strong> — View the signed or pending document</li>
-  <li><strong>Timeline</strong> — Chronological log of every event (sent, opened, signed, etc.)</li>
-  <li><strong>Audit Trail</strong> — IP address, device info, timestamps for legal compliance</li>
+  <li><strong>Status filter</strong> — Filter by one or more statuses to focus on specific groups</li>
+  <li><strong>Date range</strong> — Filter sessions by creation date or signing date</li>
+  <li><strong>Search</strong> — Search by candidate name or contract template name</li>
 </ul>
 
-<h2>Bulk Actions</h2>
-<p>Select multiple sessions using checkboxes to perform bulk operations:</p>
+<h2>Session Actions</h2>
+<p>For each signing session, you can perform these actions:</p>
 <ul>
-  <li><strong>Resend</strong> — Send reminder notifications to pending candidates</li>
-  <li><strong>Void</strong> — Cancel multiple sessions at once</li>
-  <li><strong>Export</strong> — Download session data as CSV for reporting</li>
+  <li><strong>View link</strong> — Copy the signing link (useful for sharing directly)</li>
+  <li><strong>Open page</strong> — View the contract and signing progress in detail</li>
+  <li><strong>Refresh</strong> — Update the session status</li>
+  <li><strong>Resend</strong> — Send a reminder notification to the candidate</li>
+  <li><strong>Void</strong> — Cancel the session (makes the contract invalid)</li>
+  <li><strong>View details</strong> — See the full activity log and audit trail</li>
 </ul>
+
+<div class="info-box warning">
+  <strong>Important</strong>
+  Voiding a contract is permanent. The candidate will no longer be able to sign it, and a new session will need to be created if a signature is still required.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     6. CANDIDATE SIGNING EXPERIENCE
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'candidate-experience',
     title: 'Candidate Signing Experience',
-    description: 'What candidates see when they receive, review, and sign contracts via WhatsApp, SMS, or email.',
-    icon: '🤝',
+    description: 'Understand what candidates see when they receive and sign a contract.',
+    icon: '\u{1F464}',
     iconBg: '#E8EAF6',
     articleCount: 1,
     articles: [
       {
         id: 'candidate-journey',
         title: 'The Candidate Signing Journey',
-        subtitle: 'A complete walkthrough of the 5-step signing experience from the candidate perspective.',
+        subtitle: 'Step-by-step walkthrough of what candidates experience from receiving a contract to completing their signature.',
         body: `
-<h2>Overview</h2>
-<p>When a signing session is triggered, candidates receive a link via WhatsApp, SMS, or email. The signing experience is fully mobile-optimized and designed for speed. Here's what the candidate sees at each step:</p>
+<p>When a contract is sent, the candidate receives a link via WhatsApp, SMS, or email. Here's what they experience:</p>
 
 <h2>Step 1: Welcome Screen</h2>
+<p>The candidate opens the link and sees a branded welcome screen with the company name, contract title, and a "Start" button.</p>
 <img src="screenshots/candidate-welcome.png" alt="Candidate welcome screen" />
-<p>The candidate lands on a branded welcome page showing:</p>
-<ul>
-  <li>Company logo and branding (configured in Settings)</li>
-  <li>A brief description of what they're about to sign</li>
-  <li>A clear <strong>"Start Signing"</strong> call-to-action button</li>
-  <li>Document count and estimated time to complete</li>
-</ul>
 
-<h2>Step 2: Document Reading</h2>
+<h2>Step 2: Reading the Contract</h2>
+<p>The candidate reviews the full contract document. They can scroll through all pages and read the terms. An AI chat assistant is available to help explain sections or answer questions about the contract.</p>
 <img src="screenshots/candidate-reading.png" alt="Candidate reading contract" />
-<p>The contract is rendered as a scrollable document. Candidates can:</p>
-<ul>
-  <li>Read the full contract at their own pace</li>
-  <li>Zoom in on specific sections</li>
-  <li>Navigate between pages</li>
-  <li>See highlighted areas where they need to take action (sign, fill in, check)</li>
-</ul>
 
-<h2>Step 3: AI Assistant (Optional)</h2>
-<img src="screenshots/candidate-chatting.png" alt="Candidate AI chat" />
-<p>If enabled, candidates can chat with an AI assistant that:</p>
-<ul>
-  <li>Answers questions about the contract in plain language</li>
-  <li>Explains legal terminology</li>
-  <li>Summarizes key sections</li>
-  <li>Helps candidates understand what they're agreeing to</li>
-</ul>
-<div class="info-box tip"><strong>Tip</strong>The AI assistant is trained only on the specific contract content. It cannot make promises or modify the contract terms — it only explains what's already there.</div>
+<h2>Step 3: Filling Fields & Signing</h2>
+<p>The candidate fills in any required fields (personal details, acknowledgments) and provides their electronic signature. Required fields are clearly marked.</p>
+<img src="screenshots/candidate-chatting.png" alt="Candidate signing with AI assistant" />
 
-<h2>Step 4: Signing</h2>
-<p>Candidates interact with each field that requires their input:</p>
-<ul>
-  <li><strong>Signature fields</strong> — Draw with finger/mouse or type their name</li>
-  <li><strong>Text fields</strong> — Fill in required information</li>
-  <li><strong>Checkboxes</strong> — Acknowledge terms and conditions</li>
-  <li><strong>Date fields</strong> — Select dates from a calendar picker</li>
-</ul>
-<p>All fields assigned to the candidate are highlighted and numbered, guiding them through the signing flow in order.</p>
-
-<h2>Step 5: Completion</h2>
+<h2>Step 4: Completion</h2>
+<p>After signing, the candidate sees a confirmation screen. They can download a copy of the signed contract for their records.</p>
 <img src="screenshots/candidate-completed.jpg" alt="Candidate completion screen" />
-<p>After signing all required fields, the candidate sees a confirmation screen with:</p>
+
+<h2>AI Chat Assistant</h2>
+<p>During the reading step, candidates have access to an AI chat assistant that can:</p>
 <ul>
-  <li>A success message confirming their signature was recorded</li>
-  <li>Option to download a copy of the signed document</li>
-  <li>Reference number for their records</li>
-  <li>Information about next steps in the hiring process</li>
+  <li>Explain contract clauses in plain language</li>
+  <li>Summarize key sections</li>
+  <li>Answer questions about terms and conditions</li>
+  <li>Help candidates understand what they're signing</li>
 </ul>
 
-<div class="info-box"><strong>Note</strong>The entire signing experience works on any device — desktop, tablet, or mobile phone. No app download is required.</div>
+<h2>Mobile Experience</h2>
+<p>The signing experience is fully responsive and optimized for mobile devices. Since most candidates receive the link via WhatsApp or SMS, the majority of signings happen on smartphones.</p>
+
+<div class="info-box tip">
+  <strong>Tip</strong>
+  The signing link works on any device with a modern browser. No app download is required. Candidates can start on one device and resume on another.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     7. ADMINISTRATION
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'administration',
     title: 'Administration',
-    description: 'Manage users, companies, roles, and platform settings. Admin-only features.',
-    icon: '⚙️',
-    iconBg: '#FBE9E7',
+    description: 'Manage users, companies, and roles & permissions in Contract Hub.',
+    icon: '\u{2699}\u{FE0F}',
+    iconBg: '#F3E5F5',
     articleCount: 3,
     articles: [
       {
         id: 'user-management',
         title: 'User Management',
-        subtitle: 'Invite team members, assign roles, and manage access to your Contract Hub company.',
+        subtitle: 'Add, edit, and manage team members and their access levels.',
         body: `
-<img src="screenshots/users.png" alt="User management" />
+<p>The <strong>Users</strong> section (visible to admins) lets you manage who has access to Contract Hub.</p>
 
-<h2>Inviting New Users</h2>
+<img src="screenshots/users.png" alt="User management screen" />
+
+<h2>Viewing Users</h2>
+<p>The user list shows:</p>
+<ul>
+  <li><strong>Name & email</strong> — User identity</li>
+  <li><strong>Role</strong> — Their permission level (Admin, User, etc.)</li>
+  <li><strong>Status</strong> — Active, Invited, or Deactivated</li>
+  <li><strong>Last active</strong> — When they last logged in</li>
+</ul>
+
+<h2>Adding Users</h2>
 <ol>
-  <li>Navigate to <strong>Users</strong> in the sidebar (Admin only)</li>
   <li>Click <strong>"Invite User"</strong></li>
   <li>Enter the user's email address</li>
-  <li>Select their role: <strong>Admin</strong> or <strong>Regular User</strong></li>
-  <li>Click <strong>"Send Invitation"</strong></li>
+  <li>Select their role (Admin or User)</li>
+  <li>Click <strong>Send Invitation</strong></li>
 </ol>
-<p>The invited user receives an email with a link to set up their password and access the platform.</p>
+<p>The invited user will receive an email with a link to set up their password and access Contract Hub.</p>
 
-<h2>User List</h2>
-<p>The Users page displays all team members with:</p>
+<h2>Editing Users</h2>
+<p>Click on any user to edit their:</p>
 <ul>
-  <li><strong>Name</strong> and email address</li>
-  <li><strong>Role</strong> — Admin or Regular User</li>
-  <li><strong>Status</strong> — Active, Pending (invitation sent), or Disabled</li>
-</ul>
-<p>Use the search bar and role/status filters to find specific users quickly.</p>
-
-<h2>Managing Users</h2>
-<ul>
-  <li><strong>Change Role</strong> — Promote a Regular User to Admin or vice versa</li>
-  <li><strong>Disable Account</strong> — Temporarily revoke access without deleting</li>
-  <li><strong>Re-send Invitation</strong> — Send another invitation email if the original expired</li>
+  <li>Role and permissions</li>
+  <li>Active/deactivated status</li>
+  <li>Company access (in multi-company setups)</li>
 </ul>
 
-<div class="info-box warning"><strong>Important</strong>Disabling a user immediately revokes their access. They will not be able to log in until re-enabled by an Admin.</div>
+<div class="info-box warning">
+  <strong>Important</strong>
+  Deactivating a user immediately revokes their access. Their historical activity (signing sessions, template edits) is preserved in the audit trail.
+</div>
         `
       },
       {
         id: 'company-management',
         title: 'Company Management',
-        subtitle: 'Create and configure companies within your Contract Hub organization.',
+        subtitle: 'Configure company settings and manage multi-company setups.',
         body: `
-<h2>Who Can Manage Companies?</h2>
-<p>Company management is restricted to <strong>Talkpush Owner</strong> role — the highest permission level. Regular Admins can manage users and settings within a company, but cannot create or delete companies.</p>
-
-<h2>Creating a New Company</h2>
-<ol>
-  <li>Navigate to the Company Selector (click company name in sidebar header)</li>
-  <li>Click <strong>"Create Company"</strong></li>
-  <li>Enter the company name</li>
-  <li>Configure initial settings (branding, expiration defaults)</li>
-</ol>
+<p>Company management is available to administrators and Talkpush account owners. It allows you to configure company-level settings.</p>
 
 <h2>Company Settings</h2>
-<p>Each company can be configured independently:</p>
 <ul>
-  <li><strong>Company Name</strong> — The display name shown to candidates and in the sidebar</li>
-  <li><strong>Branding</strong> — Logo and color scheme used in the candidate signing experience</li>
-  <li><strong>Default Settings</strong> — Expiration periods, reminder schedules, notification preferences</li>
+  <li><strong>Company name</strong> — The display name shown on contracts and in the platform</li>
+  <li><strong>Logo</strong> — Company logo for branding on contracts and the signing experience</li>
+  <li><strong>Contact information</strong> — Company email and address for contract footers</li>
 </ul>
 
-<div class="info-box"><strong>Note</strong>Each company is a completely separate workspace. Templates, envelopes, users, and signing sessions are not shared between companies unless explicitly configured.</div>
+<h2>Multi-Company Setup</h2>
+<p>If your organization has multiple entities (e.g., different subsidiaries or regional offices), each can be configured as a separate company in Contract Hub. Benefits include:</p>
+<ul>
+  <li>Separate template libraries per company</li>
+  <li>Independent signing session tracking</li>
+  <li>Company-specific branding and settings</li>
+  <li>User access control per company</li>
+</ul>
+
+<div class="info-box">
+  <strong>Note</strong>
+  Talkpush account owners have a special <strong>Global Users</strong> view that allows managing users across all companies from a single screen.
+</div>
         `
       },
       {
         id: 'roles-permissions',
-        title: 'Roles & Permissions Reference',
-        subtitle: 'Complete breakdown of the three-tier RBAC system and what each role can do.',
+        title: 'Roles & Permissions',
+        subtitle: 'Understanding the different access levels in Contract Hub.',
         body: `
-<h2>Three-Tier Role System</h2>
-<p>Contract Hub uses a simple but effective role-based access control (RBAC) system with three tiers:</p>
-
+<h2>Role Types</h2>
 <table class="ref-table">
-  <thead><tr><th>Capability</th><th>Regular User</th><th>Admin</th><th>Talkpush Owner</th></tr></thead>
-  <tbody>
-    <tr><td>View Dashboard</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>View Templates</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Create/Edit Templates</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>View Signing Sessions</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Create Signing Sessions</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Manage Envelopes</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Void Sessions</td><td>❌</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Manage Users</td><td>❌</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Edit Company Settings</td><td>❌</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Create/Delete Companies</td><td>❌</td><td>❌</td><td>✅</td></tr>
-    <tr><td>Manage All Companies</td><td>❌</td><td>❌</td><td>✅</td></tr>
-  </tbody>
+  <tr><th>Role</th><th>Access Level</th><th>Key Capabilities</th></tr>
+  <tr><td><strong>Talkpush Owner</strong></td><td>Highest</td><td>Full platform access, global user management, company creation, all admin functions</td></tr>
+  <tr><td><strong>Admin</strong></td><td>High</td><td>Template management, user management, signing sessions, company settings</td></tr>
+  <tr><td><strong>User</strong></td><td>Standard</td><td>View templates, track signing sessions, manage own profile settings</td></tr>
 </table>
 
-<h2>Role Descriptions</h2>
-<h3>Regular User</h3>
-<p>Day-to-day access for recruiters and HR team members. Can create templates, manage envelopes, and track signing sessions. Cannot manage users, void sessions, or change settings.</p>
+<h2>Permission Details</h2>
 
-<h3>Admin</h3>
-<p>Full control within a single company. Can do everything a Regular User can, plus manage users, void signing sessions, and configure company settings.</p>
+<h3>Template Management</h3>
+<ul>
+  <li><strong>Admin</strong> — Create, edit, duplicate, archive templates; configure matching rules</li>
+  <li><strong>User</strong> — View templates and their configurations</li>
+</ul>
 
-<h3>Talkpush Owner</h3>
-<p>Highest level of access across the entire organization. Can create and manage multiple companies, in addition to all Admin capabilities.</p>
+<h3>Signing Sessions</h3>
+<ul>
+  <li><strong>Admin</strong> — View all sessions, void contracts, resend links, access audit trails</li>
+  <li><strong>User</strong> — View signing sessions, copy links, view session details</li>
+</ul>
 
-<div class="info-box"><strong>Note</strong>A user can have different roles in different companies. For example, you might be an Admin in "Acme Corp" but a Regular User in "Acme BPO Division".</div>
+<h3>User Management</h3>
+<ul>
+  <li><strong>Admin</strong> — Invite users, change roles, deactivate accounts</li>
+  <li><strong>User</strong> — No access to user management</li>
+</ul>
+
+<div class="info-box tip">
+  <strong>Tip</strong>
+  Start with the least-privilege approach. Assign the "User" role by default and upgrade to "Admin" only when someone needs to manage templates or other users.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     8. SETTINGS & SECURITY
+     ══════════════════════════════════════════════════════════ */
   {
-    id: 'settings-security',
+    id: 'settings',
     title: 'Settings & Security',
-    description: 'Configure company settings, understand security features, and learn about legal compliance.',
-    icon: '🔒',
-    iconBg: '#EFEBE9',
+    description: 'Configure your profile, account preferences, and understand security & compliance.',
+    icon: '\u{1F512}',
+    iconBg: '#FFEBEE',
     articleCount: 2,
     articles: [
       {
-        id: 'settings',
-        title: 'Company Settings',
-        subtitle: 'Configure branding, expiration, reminders, and notification preferences.',
+        id: 'settings-profile',
+        title: 'Profile & Account Settings',
+        subtitle: 'Manage your personal profile and account preferences.',
         body: `
-<img src="screenshots/settings.png" alt="Company settings" />
+<p>Access your settings from the <strong>Settings</strong> item in the sidebar navigation.</p>
 
-<h2>Available Settings</h2>
+<img src="screenshots/settings.png" alt="Settings screen" />
 
-<h3>Company Name</h3>
-<p>The display name shown in the sidebar, company selector, and candidate-facing pages. Changing this updates the name everywhere immediately.</p>
-
-<h3>Default Expiration Period</h3>
-<p>Set how many days a signing session remains valid before expiring. Candidates who don't complete signing within this period will see their session marked as "Expired".</p>
+<h2>Profile Information</h2>
 <ul>
-  <li>Common settings: 7 days, 14 days, or 30 days</li>
-  <li>Can be overridden per-envelope if needed</li>
+  <li><strong>Display name</strong> — How your name appears in the platform and audit trails</li>
+  <li><strong>Email address</strong> — Your login email (changes require admin approval)</li>
+  <li><strong>Profile photo</strong> — Optional avatar for the platform</li>
 </ul>
 
-<h3>Reminder Schedule</h3>
-<p>Configure automatic reminders sent to candidates who haven't completed signing:</p>
+<h2>Password Management</h2>
 <ul>
-  <li>Set the frequency (e.g., every 2 days)</li>
-  <li>Set the maximum number of reminders</li>
-  <li>Reminders are sent via the same channel as the original contract (WhatsApp, SMS, or email)</li>
+  <li><strong>Change password</strong> — Update your current password</li>
+  <li><strong>Security requirements</strong> — Passwords must meet minimum complexity requirements</li>
 </ul>
 
-<h3>Branding</h3>
-<p>Customize the candidate signing experience with your company's identity:</p>
+<h2>Notification Preferences</h2>
+<p>Configure when you receive email notifications:</p>
 <ul>
-  <li><strong>Logo</strong> — Displayed on the welcome page and in the signing header</li>
-  <li><strong>Primary color</strong> — Used for buttons and accent elements</li>
-</ul>
-
-<h3>Notification Preferences</h3>
-<p>Control which events trigger notifications to your team:</p>
-<ul>
-  <li>Contract signed notifications</li>
-  <li>Contract expired alerts</li>
+  <li>Contract completed notifications</li>
   <li>Contract declined alerts</li>
+  <li>Contract expired reminders</li>
+  <li>New user invitation confirmations</li>
 </ul>
         `
       },
       {
         id: 'security-compliance',
-        title: 'Security & Legal Compliance',
-        subtitle: 'Authentication, data protection, audit trails, and e-signature legal standards.',
+        title: 'Security & Compliance',
+        subtitle: 'How Contract Hub protects data and ensures legal compliance.',
         body: `
-<h2>Authentication & Access Security</h2>
+<h2>Data Security</h2>
 <ul>
-  <li><strong>Google SSO</strong> — Leverages Google's enterprise-grade authentication</li>
-  <li><strong>Password hashing</strong> — Passwords are securely hashed and never stored in plain text</li>
-  <li><strong>Role-based access</strong> — Three-tier RBAC ensures users only see what they need</li>
-  <li><strong>Multi-company isolation</strong> — Each company's data is completely separate</li>
+  <li><strong>Encryption in transit</strong> — All data transmitted via HTTPS/TLS</li>
+  <li><strong>Encryption at rest</strong> — Stored data is encrypted</li>
+  <li><strong>Access controls</strong> — Role-based permissions limit who can see and do what</li>
 </ul>
 
-<h2>Signing Security</h2>
+<h2>Audit Trail</h2>
+<p>Every action in Contract Hub is logged with:</p>
 <ul>
-  <li><strong>Unique signing links</strong> — Each candidate receives a unique, time-limited URL</li>
-  <li><strong>Complete audit trail</strong> — Every action recorded with IP address, device, and timestamp</li>
-  <li><strong>Document integrity</strong> — Signed documents cannot be altered after completion</li>
-  <li><strong>Secure storage</strong> — All documents encrypted at rest and in transit</li>
+  <li>Who performed the action</li>
+  <li>What action was taken</li>
+  <li>When it happened (with timestamp)</li>
+  <li>IP address and device information</li>
+</ul>
+<p>This complete audit trail ensures legal defensibility of signed contracts.</p>
+
+<h2>E-Signature Legality</h2>
+<p>Electronic signatures collected through Contract Hub are legally binding under:</p>
+<ul>
+  <li><strong>ESIGN Act</strong> (United States)</li>
+  <li><strong>eIDAS Regulation</strong> (European Union)</li>
+  <li><strong>UETA</strong> (Uniform Electronic Transactions Act)</li>
 </ul>
 
-<h2>Legal Compliance</h2>
-<p>Contract Hub's e-signatures are designed to comply with major e-signature regulations:</p>
+<h2>Data Retention</h2>
+<p>Signed contracts and their audit trails are retained according to your organization's data retention policies. Contact your Talkpush administrator for specific retention periods.</p>
 
-<table class="ref-table">
-  <thead><tr><th>Standard</th><th>Jurisdiction</th><th>Description</th></tr></thead>
-  <tbody>
-    <tr><td><strong>ESIGN Act</strong></td><td>United States</td><td>Electronic Signatures in Global and National Commerce Act — establishes legal validity of electronic signatures</td></tr>
-    <tr><td><strong>UETA</strong></td><td>United States (state level)</td><td>Uniform Electronic Transactions Act — adopted by 47 states, provides state-level framework</td></tr>
-    <tr><td><strong>eIDAS</strong></td><td>European Union</td><td>Electronic Identification, Authentication and Trust Services — EU regulation for electronic transactions</td></tr>
-  </tbody>
-</table>
-
-<div class="info-box important"><strong>Important</strong>While Contract Hub provides the technology infrastructure for legally valid electronic signatures, organizations should consult their legal teams about specific compliance requirements for their industry and jurisdiction.</div>
-
-<h2>Data Protection</h2>
-<ul>
-  <li>All data transmitted over HTTPS (TLS 1.2+)</li>
-  <li>Documents encrypted at rest using AES-256</li>
-  <li>Regular security audits and penetration testing</li>
-  <li>Infrastructure hosted on enterprise-grade cloud providers</li>
-</ul>
+<div class="info-box">
+  <strong>Note</strong>
+  Contract Hub complies with enterprise security requirements. For specific compliance certifications or security questionnaire responses, contact the Talkpush team.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     9. TALKPUSH INTEGRATION
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'integration',
     title: 'Talkpush Integration',
-    description: 'How Contract Hub connects with Talkpush for automated contract delivery and data sync.',
-    icon: '🔗',
-    iconBg: '#E1F5FE',
+    description: 'How Contract Hub connects with the Talkpush recruitment platform.',
+    icon: '\u{1F517}',
+    iconBg: '#E0F2F1',
     articleCount: 1,
     articles: [
       {
         id: 'talkpush-integration',
-        title: 'Talkpush Platform Integration',
-        subtitle: 'Automated contract triggers, data sync, and lifecycle events.',
+        title: 'Integration with Talkpush',
+        subtitle: 'How candidate data flows from Talkpush into Contract Hub and back.',
         body: `
-<h2>Integration Points</h2>
-<p>Contract Hub integrates with the Talkpush recruitment platform at multiple touchpoints:</p>
+<h2>How It Works</h2>
+<p>Contract Hub is natively integrated with Talkpush's recruitment platform. This means:</p>
 <ul>
-  <li><strong>Candidate Data Sync</strong> — Auto-populate contract fields with Talkpush candidate profile data (name, email, phone, custom fields)</li>
-  <li><strong>Automated Triggers</strong> — Automatically send contracts when candidates reach a specific stage in the recruitment workflow</li>
-  <li><strong>Status Writeback</strong> — Signing status is written back to Talkpush, updating the candidate record in real-time</li>
-  <li><strong>In-Chat Delivery</strong> — Contracts are delivered via Talkpush's communication channels (WhatsApp, SMS, email)</li>
-  <li><strong>Data Writeback</strong> — Field values entered by candidates during signing can be synced back to their Talkpush profile</li>
+  <li><strong>Candidate data flows automatically</strong> — When a candidate reaches the contract stage in Talkpush, their information is available in Contract Hub without manual data entry</li>
+  <li><strong>Contracts are triggered by workflow rules</strong> — Talkpush automation rules can trigger contract creation based on candidate status changes</li>
+  <li><strong>In-chat delivery</strong> — Contracts are sent via the same communication channels the candidate is already using (WhatsApp, SMS, email)</li>
+  <li><strong>Status sync</strong> — Contract signing status is reflected back in Talkpush, allowing recruiters to track progress from their existing workflow</li>
 </ul>
 
-<h2>Lifecycle Events</h2>
-<p>Contract Hub sends event notifications to Talkpush at each stage of the signing process:</p>
-
+<h2>Data Mapping</h2>
+<p>Common fields that map from Talkpush to Contract Hub template fields:</p>
 <table class="ref-table">
-  <thead><tr><th>Event</th><th>Trigger</th></tr></thead>
-  <tbody>
-    <tr><td><strong>session.created</strong></td><td>A new signing session is generated for a candidate</td></tr>
-    <tr><td><strong>session.sent</strong></td><td>The contract link is delivered to the candidate</td></tr>
-    <tr><td><strong>session.viewed</strong></td><td>The candidate opens and views the contract</td></tr>
-    <tr><td><strong>session.signed</strong></td><td>The candidate completes all required signatures</td></tr>
-    <tr><td><strong>session.completed</strong></td><td>All signers have completed — the contract is fully executed</td></tr>
-    <tr><td><strong>session.expired</strong></td><td>The signing deadline passed without completion</td></tr>
-    <tr><td><strong>session.voided</strong></td><td>An admin manually cancelled the session</td></tr>
-    <tr><td><strong>session.declined</strong></td><td>The candidate declined to sign</td></tr>
-  </tbody>
+  <tr><th>Talkpush Field</th><th>Contract Hub Usage</th></tr>
+  <tr><td>Candidate name</td><td>Auto-fills name fields in contract</td></tr>
+  <tr><td>Email address</td><td>Signing notifications, delivery</td></tr>
+  <tr><td>Phone number</td><td>WhatsApp/SMS contract delivery</td></tr>
+  <tr><td>Campaign</td><td>Matching rules to select correct template</td></tr>
+  <tr><td>Custom attributes</td><td>Auto-fill custom fields, matching rule conditions</td></tr>
 </table>
 
-<h2>Setting Up Integration</h2>
-<p>Integration with Talkpush is configured at the organizational level by the Talkpush team. Once connected:</p>
+<h2>Matching Rules & Automation</h2>
+<p>The matching rules you configure on templates work together with Talkpush's automation engine:</p>
 <ol>
-  <li>Candidate data flows automatically into Contract Hub</li>
-  <li>Matching rules can reference Talkpush campaign attributes</li>
-  <li>Signing events are reflected in the Talkpush candidate timeline</li>
-  <li>Recruiters can trigger contracts directly from the Talkpush CRM</li>
+  <li>A Talkpush automation rule triggers "Send Contract" for a candidate</li>
+  <li>Contract Hub evaluates the candidate's campaign and attributes against all template matching rules</li>
+  <li>The best-matching template is selected and a signing session is created</li>
+  <li>The contract is delivered to the candidate through their preferred channel</li>
 </ol>
 
-<div class="info-box"><strong>Note</strong>To set up or modify the Talkpush integration, contact your Talkpush account manager or reach out to support.</div>
+<div class="info-box tip">
+  <strong>Tip</strong>
+  For the best experience, ensure your matching rules cover all campaigns and candidate scenarios. If no rule matches, the contract request will need manual template selection.
+</div>
         `
       }
     ]
   },
+
+  /* ══════════════════════════════════════════════════════════
+     10. FAQ
+     ══════════════════════════════════════════════════════════ */
   {
     id: 'faq',
     title: 'Frequently Asked Questions',
-    description: 'Quick answers to the most common questions about Contract Hub.',
-    icon: '❓',
-    iconBg: '#F3E5F5',
+    description: 'Common questions and answers about using Contract Hub.',
+    icon: '\u{2753}',
+    iconBg: '#FFF3E0',
     articleCount: 1,
     articles: [
       {
         id: 'faq-general',
-        title: 'FAQ: Common Questions',
-        subtitle: 'Quick answers to frequently asked questions about using Contract Hub.',
+        title: 'General FAQ',
+        subtitle: 'Answers to the most common questions about Contract Hub.',
         body: `
-<h2>Documents & Templates</h2>
+<h3>What file formats can I upload as a template?</h3>
+<p>Contract Hub supports DOCX (Word) and PDF files. DOCX files can be edited using the rich text Template Builder or converted to overlay mode. PDF files always use the Field Overlay Editor for field placement.</p>
 
-<h3>What file formats are supported?</h3>
-<p>Contract Hub supports <strong>PDF files only</strong>. Convert Word, Google Docs, or other formats to PDF before uploading. Maximum file size is 10MB.</p>
+<h3>Can I have multiple signers on a contract?</h3>
+<p>Yes. Every contract has a primary signer (usually the candidate) and you can add additional signers such as managers, HR representatives, or legal approvers. Each signer gets their own designated fields.</p>
 
-<h3>Can I send multiple contracts to the same candidate?</h3>
-<p>Yes! Use <strong>Envelopes</strong> to bundle multiple templates together. The candidate receives all documents in a single signing session and can complete them in sequence.</p>
+<h3>How do candidates receive their contract?</h3>
+<p>Contracts are delivered via WhatsApp, SMS, or email — whichever channel the candidate is already using in Talkpush. They receive a secure link that opens directly in their browser.</p>
 
-<h3>What's the difference between the Template Builder and Field Overlay Editor?</h3>
-<p>The <strong>Template Builder</strong> manages metadata (name, category, signer configuration), while the <strong>Field Overlay Editor</strong> is where you visually place interactive fields (signatures, text inputs, etc.) directly on the PDF pages.</p>
+<h3>Can candidates sign on their phone?</h3>
+<p>Absolutely. The signing experience is fully optimized for mobile devices. Since most candidates receive the link via WhatsApp or SMS, mobile is the most common signing method.</p>
 
-<h2>Signing & Delivery</h2>
+<h3>What happens if a candidate doesn't sign?</h3>
+<p>You can track unsigned contracts in the Signing section. Use the "Resend" action to send a reminder notification. If the signing deadline passes, the session status changes to "Expired" and a new session would need to be created.</p>
 
-<h3>What happens when a contract expires?</h3>
-<p>Expired sessions are marked with an "Expired" status. The candidate can no longer access the signing link. An Admin can create a new session for the same candidate if needed.</p>
+<h3>Can I void a contract after it's been sent?</h3>
+<p>Yes. Admins can void any signing session from the Signing section. This permanently invalidates the contract — the candidate can no longer sign it.</p>
 
-<h3>Can candidates sign on mobile devices?</h3>
-<p>Absolutely! The signing experience is fully responsive and optimized for mobile phones and tablets. Candidates can draw their signature with their finger on a touchscreen. No app download required.</p>
+<h3>How do matching rules determine which template to send?</h3>
+<p>Matching rules evaluate the candidate's campaign and attributes against conditions you define. Each template can have rules based on campaign selection and attribute filters using "is", "is not", or "contains" operators with AND/OR logic.</p>
 
-<h3>Are e-signatures legally valid?</h3>
-<p>Contract Hub is designed to comply with <strong>ESIGN Act</strong> (US), <strong>UETA</strong> (US state level), and <strong>eIDAS</strong> (EU) regulations. Each signing session includes a complete audit trail with timestamps, IP addresses, and device information for legal enforceability.</p>
+<h3>Can I edit a template after signing sessions have been created from it?</h3>
+<p>Yes, but changes only apply to new signing sessions. Existing sessions use the template version that was active when they were created. This ensures consistency for in-progress contracts.</p>
 
-<h2>Configuration & Access</h2>
+<h3>What's the difference between DOCX dynamic mode and overlay mode?</h3>
+<p>When uploading a DOCX file, you choose between dynamic editing (full rich-text editing in the Template Builder) or overlay mode (convert to PDF and place fields visually). Dynamic mode is best when you need to frequently update text content. Overlay mode is best when document layout must be preserved exactly.</p>
 
-<h3>I have access to multiple companies. How do I switch?</h3>
-<p>Click your <strong>company name</strong> in the sidebar header to return to the Company Selector. From there, click on any company card to enter that workspace.</p>
-
-<h3>How does AND/OR logic work in matching rules?</h3>
-<p><strong>AND</strong> means all conditions must match (stricter). <strong>OR</strong> means any condition can match (broader). Example: "Campaign is X <em>AND</em> Location is Y" requires both, while "Location is Y <em>OR</em> Location is Z" matches either.</p>
-
-<h3>How does auto-fill work?</h3>
-<p>Fields configured with a <strong>Talkpush Profile</strong> data source automatically pull values from the candidate's Talkpush record — like name, email, phone number, and custom attributes. This saves candidates time and reduces errors. If "Writeback" is enabled, values entered during signing are synced back to Talkpush.</p>
+<h3>What's the AI Assistant in the signing experience?</h3>
+<p>Contract Hub includes an optional AI chat assistant that candidates can use while reading their contract. The assistant explains contract terms in plain language, summarizes sections, and answers questions — helping candidates feel confident about what they're signing.</p>
         `
       }
     ]
@@ -1707,7 +1626,7 @@ function renderCollection(app, collectionId) {
   let html = `<div class="view-transition">
     <div class="breadcrumbs">
       <a href="#" onclick="navigateTo('home'); return false;">All Collections</a>
-      <span class="sep">›</span>
+      <span class="sep">\u203A</span>
       <span class="current">${col.title}</span>
     </div>
     <div class="collection-header">
@@ -1722,12 +1641,12 @@ function renderCollection(app, collectionId) {
   col.articles.forEach(art => {
     html += `<li><a href="#" onclick="navigateTo('article', '${art.id}', '${col.id}'); return false;">
       <span class="article-title">${art.title}</span>
-      <span class="chevron">›</span>
+      <span class="chevron">\u203A</span>
     </a></li>`;
   });
 
   html += `</ul>
-    <a class="back-to-top" onclick="navigateTo('home'); return false;">← Back to all collections</a>
+    <a class="back-to-top" onclick="navigateTo('home'); return false;">\u2190 Back to all collections</a>
   </div>`;
   app.innerHTML = html;
 }
@@ -1741,9 +1660,9 @@ function renderArticle(app, collectionId, articleId) {
   let html = `<div class="view-transition">
     <div class="breadcrumbs">
       <a href="#" onclick="navigateTo('home'); return false;">All Collections</a>
-      <span class="sep">›</span>
+      <span class="sep">\u203A</span>
       <a href="#" onclick="navigateTo('collection', '${col.id}'); return false;">${col.title}</a>
-      <span class="sep">›</span>
+      <span class="sep">\u203A</span>
       <span class="current">${art.title}</span>
     </div>
     <div class="article-header">
@@ -1757,7 +1676,7 @@ function renderArticle(app, collectionId, articleId) {
       </div>
     </div>
     <div class="article-body">${art.body}</div>
-    <a class="back-to-top" onclick="navigateTo('collection', '${col.id}'); return false;">← Back to ${col.title}</a>
+    <a class="back-to-top" onclick="navigateTo('collection', '${col.id}'); return false;">\u2190 Back to ${col.title}</a>
   </div>`;
   app.innerHTML = html;
 }
@@ -1769,7 +1688,7 @@ function renderSearchResults(app, query) {
   let html = `<div class="view-transition">
     <div class="breadcrumbs">
       <a href="#" onclick="navigateTo('home'); return false;">All Collections</a>
-      <span class="sep">›</span>
+      <span class="sep">\u203A</span>
       <span class="current">Search results</span>
     </div>
     <div class="search-results">
@@ -1796,7 +1715,7 @@ function renderSearchResults(app, query) {
   }
 
   html += `</div>
-    <a class="back-to-top" onclick="navigateTo('home'); return false;">← Back to all collections</a>
+    <a class="back-to-top" onclick="navigateTo('home'); return false;">\u2190 Back to all collections</a>
   </div>`;
   app.innerHTML = html;
 }
