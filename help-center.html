@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contract Hub Help Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Polymath Text';
+  src: url('fonts/PolymathTextDemo-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Polymath Text';
+  src: url('fonts/PolymathTextDemo-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --purple-deep: #230F59;
+  --purple-mid: #3D1F8E;
+  --purple-light: #6B4FCF;
+  --purple-pale: #E8E0F5;
+  --sage: #B8D4C8;
+  --lavender: #C5CAE9;
+  --pink: #F0B8D0;
+  --amber: #F0A830;
+  --cream: #FAF8F5;
+  --white: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-light: #9B9B9B;
+  --border: #E8E4DF;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 6px 20px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Polymath Text', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─── */
+.header {
+  background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-mid) 50%, var(--purple-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+}
+.header-decor::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  top: -180px; right: -80px;
+}
+.header-decor::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  bottom: -120px; left: -60px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #fff;
+}
+.header-logo svg { height: 28px; width: auto; }
+.header-logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.header-nav a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.header-nav a:hover { color: #fff; }
+
+.header-content {
+  text-align: center;
+  padding: 48px 40px 56px;
+  position: relative;
+  z-index: 2;
+}
+.header-content h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.search-box {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  padding: 14px 20px 14px 48px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-family: inherit;
+  background: rgba(255,255,255,0.95);
+  color: var(--text-dark);
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: box-shadow 0.2s;
+}
+.search-box input::placeholder { color: var(--text-light); }
+.search-box input:focus { box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+.search-box .search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+}
+
+/* ─── HEADER COMPACT (Collection & Article pages) ─── */
+.header.compact .header-content {
+  padding: 24px 40px 32px;
+}
+.header.compact .header-content h1 { font-size: 26px; margin-bottom: 16px; }
+
+/* ─── MAIN CONTENT ─── */
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ─── BREADCRUMBS ─── */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+.breadcrumbs a {
+  color: var(--purple-mid);
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs .sep { color: var(--text-light); }
+.breadcrumbs .current { color: var(--text-secondary); }
+
+/* ─── COLLECTION GRID (Homepage) ─── */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.collection-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.collection-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.collection-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.collection-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--purple-deep);
+  margin-bottom: 8px;
+}
+
+.collection-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.collection-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-light);
+}
+.collection-card-meta .avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--lavender);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+/* ─── COLLECTION PAGE (Article List) ─── */
+.collection-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.collection-header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.collection-header-info h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.collection-header-info .meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.article-list { list-style: none; }
+.article-list li {
+  border-bottom: 1px solid var(--border);
+}
+.article-list li:first-child { border-top: 1px solid var(--border); }
+
+.article-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 4px;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: color 0.15s;
+}
+.article-list a:hover { color: var(--purple-mid); }
+
+.article-list .article-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+.article-list .chevron {
+  color: var(--text-light);
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+/* ─── ARTICLE PAGE ─── */
+.article-header {
+  margin-bottom: 36px;
+}
+.article-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.article-header .subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-light);
+}
+.article-meta .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--purple-deep);
+}
+
+.article-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-dark);
+}
+
+.article-body h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  color: var(--text-dark);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--purple-pale);
+}
+
+.article-body h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 28px 0 12px;
+  color: var(--text-dark);
+}
+
+.article-body p { margin-bottom: 16px; }
+
+.article-body ul, .article-body ol {
+  margin: 12px 0 16px 24px;
+}
+.article-body li { margin-bottom: 8px; }
+
+.article-body img {
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  margin: 20px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.article-body strong { font-weight: 700; }
+
+.article-body code {
+  background: var(--purple-pale);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--purple-deep);
+}
+
+.info-box {
+  background: #EDE7F6;
+  border-left: 4px solid var(--purple-mid);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 20px 0;
+  font-size: 14px;
+}
+.info-box.tip { background: #E8F5E9; border-left-color: var(--sage); }
+.info-box.warning { background: #FFF8E1; border-left-color: var(--amber); }
+.info-box.important { background: #FCE4EC; border-left-color: var(--pink); }
+
+.info-box strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 14px;
+}
+.ref-table th {
+  background: #F5F2ED;
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom: 2px solid var(--border);
+}
+.ref-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.ref-table tr:hover td { background: var(--cream); }
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status-badge.green { background: #E8F5E9; color: #2E7D32; }
+.status-badge.amber { background: #FFF8E1; color: #F57F17; }
+.status-badge.blue { background: #E3F2FD; color: #1565C0; }
+.status-badge.red { background: #FCE4EC; color: #C62828; }
+.status-badge.gray { background: #F5F5F5; color: #616161; }
+.status-badge.purple { background: #EDE7F6; color: #4527A0; }
+
+/* ─── SEARCH RESULTS ─── */
+.search-results {
+  margin-top: 8px;
+}
+.search-results h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+.search-result-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.search-result-item:hover { box-shadow: var(--shadow-md); }
+.search-result-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--purple-deep);
+  margin-bottom: 4px;
+}
+.search-result-item .collection-name {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+.search-result-item p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--purple-deep);
+  padding: 32px 40px;
+  text-align: center;
+}
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+.footer-logo svg { height: 22px; }
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+/* ─── BACK TO TOP ─── */
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--purple-mid);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.back-to-top:hover { text-decoration: underline; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .header-top { padding: 12px 20px; }
+  .header-content { padding: 32px 20px 40px; }
+  .header-content h1 { font-size: 24px; }
+  .main { padding: 24px 16px 60px; }
+  .collections-grid { grid-template-columns: 1fr; }
+  .footer-content { flex-direction: column; gap: 16px; }
+  .collection-header { flex-direction: column; align-items: center; text-align: center; }
+  .header-nav { display: none; }
+  .ref-table { font-size: 12px; }
+  .ref-table th, .ref-table td { padding: 8px 10px; }
+}
+
+/* ─── TRANSITIONS ─── */
+.view-transition {
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── PRINT ─── */
+@media print {
+  .header, .footer, .search-box, .back-to-top { display: none; }
+  .main { max-width: 100%; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ╔═══════════════════════════════════════════╗ -->
+<!-- ║           HEADER                          ║ -->
+<!-- ╚═══════════════════════════════════════════╝ -->
+<header class="header" id="site-header">
+  <div class="header-decor"></div>
+  <div class="header-top">
+    <a href="#" class="header-logo" onclick="navigateTo('home'); return false;">
+      <svg viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="22" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="white">Contract Hub</text>
+      </svg>
+    </a>
+    <nav class="header-nav">
+      <a href="https://contract-hub.talkpush.com" target="_blank">Open App</a>
+      <a href="https://help.talkpush.com" target="_blank">Talkpush Help</a>
+      <a href="index.html">Full Documentation</a>
+    </nav>
+  </div>
+  <div class="header-content">
+    <h1 id="header-title">How can we help?</h1>
+    <div class="search-box">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Search for articles..." oninput="handleSearch(this.value)" />
+    </div>
+  </div>
+</header>
+
+<!-- ╔═══════════════════════════════════════════╗ -->
+<!-- ║           MAIN CONTENT                    ║ -->
+<!-- ╚═══════════════════════════════════════════╝ -->
+<main class="main" id="app">
+  <!-- Rendered by JavaScript -->
+</main>
+
+<!-- ╔═══════════════════════════════════════════╗ -->
+<!-- ║           FOOTER                          ║ -->
+<!-- ╚═══════════════════════════════════════════╝ -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <svg viewBox="0 0 120 22" fill="none"><text x="0" y="18" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="600" fill="rgba(255,255,255,0.7)">Contract Hub</text></svg>
+      <span>&middot; Powered by Talkpush</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.talkpush.com" target="_blank">Website</a>
+      <a href="https://www.talkpush.com/about-us" target="_blank">About Us</a>
+      <a href="https://help.talkpush.com" target="_blank">Help Center</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ╔═══════════════════════════════════════════╗ -->
+<!-- ║           DATA & APPLICATION              ║ -->
+<!-- ╚═══════════════════════════════════════════╝ -->
+<script>
+// ─── HELP CENTER DATA ───
+const COLLECTIONS = [
+  {
+    id: 'getting-started',
+    title: 'Getting Started',
+    description: 'Learn the basics of Contract Hub, key concepts, and how to sign in and navigate the platform.',
+    icon: '🚀',
+    iconBg: '#EDE7F6',
+    articleCount: 4,
+    articles: [
+      {
+        id: 'introduction',
+        title: 'Introduction to Contract Hub',
+        subtitle: 'What is Contract Hub and how it transforms your hiring contract workflow.',
+        body: `
+<p>Contract Hub is Talkpush's native e-signature and contract management solution designed specifically for high-volume recruitment. It enables organizations to create, send, and track employment contracts at scale — all integrated directly into the candidate communication flow.</p>
+
+<h2>Why Contract Hub?</h2>
+<p>Traditional e-signature tools weren't designed for recruitment at scale. Contract Hub solves this by providing:</p>
+<ul>
+  <li><strong>In-chat contract delivery</strong> — Contracts arrive via WhatsApp, SMS, or email, right where candidates already communicate</li>
+  <li><strong>Template-based workflows</strong> — Upload once, reuse unlimited times with auto-populated candidate data</li>
+  <li><strong>Smart matching rules</strong> — Automatically match the right contract template to the right candidate based on campaign, location, or other attributes</li>
+  <li><strong>Real-time tracking</strong> — Know exactly who signed, who's pending, and who needs a reminder</li>
+  <li><strong>Full audit trail</strong> — Every action is logged for legal compliance</li>
+</ul>
+
+<h2>Who Uses Contract Hub?</h2>
+<ul>
+  <li><strong>Recruiters & HR teams</strong> — Manage templates, send contracts, track completion</li>
+  <li><strong>Administrators</strong> — Configure settings, manage users and companies</li>
+  <li><strong>Candidates</strong> — Receive, review, and sign contracts from any device</li>
+</ul>
+
+<div class="info-box tip"><strong>Tip</strong>Contract Hub integrates seamlessly with Talkpush's recruitment automation platform. Contracts can be triggered automatically as part of your hiring workflow.</div>
+        `
+      },
+      {
+        id: 'key-concepts',
+        title: 'Key Concepts & Terminology',
+        subtitle: 'Essential terms you need to know when working with Contract Hub.',
+        body: `
+<p>Before diving into Contract Hub, here are the core concepts you'll encounter throughout the platform:</p>
+
+<table class="ref-table">
+  <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Template</strong></td><td>A reusable contract document (PDF) with configured fields for signatures, text inputs, dates, and more. Templates are the foundation — you upload a PDF once, configure the fields, and reuse it for every candidate.</td></tr>
+    <tr><td><strong>Envelope</strong></td><td>A package containing one or more templates that gets sent to a candidate as a group. Envelopes let you bundle multiple documents (e.g., NDA + Employment Contract + Policy Agreement) into a single signing session.</td></tr>
+    <tr><td><strong>Signing Session</strong></td><td>A specific instance of an envelope sent to a particular candidate. Each session tracks its own status, timestamps, and completion progress.</td></tr>
+    <tr><td><strong>Field</strong></td><td>An interactive element placed on a template page — signatures, text inputs, checkboxes, dates, and more. Fields can be pre-filled with candidate data or left for manual input.</td></tr>
+    <tr><td><strong>Matching Rule</strong></td><td>Logic that automatically selects the correct template or envelope for a candidate based on attributes like campaign, location, or job type. Uses AND/OR operators for flexible filtering.</td></tr>
+    <tr><td><strong>Bundle</strong></td><td>A group of templates within an envelope. Each template in the bundle shares the same matching rules and signer configuration.</td></tr>
+    <tr><td><strong>Audit Trail</strong></td><td>A complete log of every action taken during the signing process — who signed, when, from what device, and IP address. Critical for legal compliance.</td></tr>
+    <tr><td><strong>Data Source</strong></td><td>Where field values come from when auto-filling. Data can come from Talkpush candidate profiles, manual entry, system-generated values (like dates), or fixed text.</td></tr>
+    <tr><td><strong>Company</strong></td><td>An organizational unit in Contract Hub. Each company has its own templates, envelopes, users, and settings. Users can belong to multiple companies.</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box"><strong>Note</strong>These concepts build on each other: <strong>Templates</strong> contain <strong>Fields</strong>, <strong>Envelopes</strong> contain <strong>Templates</strong>, and <strong>Signing Sessions</strong> are instances of <strong>Envelopes</strong> sent to candidates.</div>
+        `
+      },
+      {
+        id: 'signing-in',
+        title: 'Signing In & Account Access',
+        subtitle: 'How to access Contract Hub and manage your account credentials.',
+        body: `
+<img src="screenshots/login.png" alt="Contract Hub login screen" />
+
+<h2>Authentication Methods</h2>
+<p>Contract Hub supports two ways to sign in:</p>
+
+<h3>Google Single Sign-On (SSO)</h3>
+<p>Click <strong>"Sign in with Google"</strong> on the login page. You'll be redirected to Google's authentication flow. Use your company Google account for seamless access.</p>
+
+<h3>Email & Password</h3>
+<p>Enter your registered email address and password directly on the login page. This option is available for organizations that don't use Google Workspace.</p>
+
+<h2>First-Time Password Setup</h2>
+<ol>
+  <li>When an administrator invites you, you'll receive an email with a setup link</li>
+  <li>Click the link to set your password</li>
+  <li>Choose a strong password (minimum 8 characters, mix of letters and numbers)</li>
+  <li>Once set, you can log in with your email and password immediately</li>
+</ol>
+
+<h2>Password Recovery</h2>
+<ol>
+  <li>Click <strong>"Forgot password?"</strong> on the login page</li>
+  <li>Enter your registered email address</li>
+  <li>Check your inbox for the reset link (also check spam/junk folders)</li>
+  <li>Click the link and set a new password</li>
+</ol>
+
+<div class="info-box warning"><strong>Important</strong>Password reset links expire after 24 hours. If your link has expired, simply request a new one from the login page.</div>
+        `
+      },
+      {
+        id: 'company-selector',
+        title: 'Switching Between Companies',
+        subtitle: 'Navigate between different companies if you have multi-company access.',
+        body: `
+<img src="screenshots/company-selector.png" alt="Company selector screen" />
+
+<h2>Multi-Company Access</h2>
+<p>If your organization manages multiple companies or brands, you may have access to more than one company in Contract Hub. After logging in, you'll see the Company Selector screen.</p>
+
+<h2>How to Switch Companies</h2>
+<ol>
+  <li><strong>After login</strong>, all companies you have access to are displayed as cards</li>
+  <li><strong>Search</strong> — Use the search bar at the top to filter companies by name</li>
+  <li><strong>Select</strong> — Click on a company card to enter that company's workspace</li>
+  <li><strong>Switch anytime</strong> — Click your company name in the sidebar header to return to the Company Selector</li>
+</ol>
+
+<h2>What Changes When You Switch</h2>
+<p>Each company is a separate workspace with its own:</p>
+<ul>
+  <li>Contract templates and envelopes</li>
+  <li>Signing sessions and candidate data</li>
+  <li>User roster and role assignments</li>
+  <li>Settings (branding, expiration, reminders)</li>
+</ul>
+
+<div class="info-box"><strong>Note</strong>Your role may differ between companies. For example, you might be an Admin in one company and a Regular User in another.</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'dashboard',
+    title: 'Dashboard & Navigation',
+    description: 'Understand the dashboard overview, sidebar navigation, and key metrics at a glance.',
+    icon: '📊',
+    iconBg: '#E8F5E9',
+    articleCount: 1,
+    articles: [
+      {
+        id: 'dashboard-overview',
+        title: 'Dashboard Overview',
+        subtitle: 'Your command center for monitoring contract activity and navigating the platform.',
+        body: `
+<img src="screenshots/dashboard.png" alt="Contract Hub dashboard" />
+
+<h2>Sidebar Navigation</h2>
+<p>The left sidebar provides quick access to every section of Contract Hub:</p>
+
+<table class="ref-table">
+  <thead><tr><th>Menu Item</th><th>Description</th><th>Visibility</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Dashboard</strong></td><td>Overview with stats and recent activity</td><td>All users</td></tr>
+    <tr><td><strong>Contracts</strong></td><td>Manage contract templates</td><td>All users</td></tr>
+    <tr><td><strong>Envelopes</strong></td><td>Configure envelope bundles</td><td>All users</td></tr>
+    <tr><td><strong>Signing Sessions</strong></td><td>Track individual candidate sessions</td><td>All users</td></tr>
+    <tr><td><strong>Users</strong></td><td>Manage team members</td><td>Admins only</td></tr>
+    <tr><td><strong>Settings</strong></td><td>Company configuration</td><td>Admins only</td></tr>
+  </tbody>
+</table>
+
+<h2>Dashboard Stats</h2>
+<p>The dashboard displays six key metrics at the top:</p>
+<ul>
+  <li><strong>Total Sessions</strong> — Total signing sessions ever created</li>
+  <li><strong>Completed</strong> — Sessions fully signed by candidates</li>
+  <li><strong>Pending</strong> — Sessions awaiting candidate action</li>
+  <li><strong>Expired</strong> — Sessions past their expiration date</li>
+  <li><strong>Voided</strong> — Sessions manually cancelled by an admin</li>
+  <li><strong>Completion Rate</strong> — Percentage of sessions that were completed</li>
+</ul>
+
+<h2>Recent Signing Activity</h2>
+<p>Below the stats, you'll see a chronological feed of the most recent signing events — new sessions created, contracts signed, and sessions expired. This gives you a real-time pulse on contract activity.</p>
+
+<h2>Hero Banner</h2>
+<p>The banner at the top highlights key system messages or announcements from Talkpush about new features and updates.</p>
+        `
+      }
+    ]
+  },
+  {
+    id: 'templates',
+    title: 'Contract Templates',
+    description: 'Create, manage, and configure reusable contract templates with fields and signing logic.',
+    icon: '📄',
+    iconBg: '#E3F2FD',
+    articleCount: 3,
+    articles: [
+      {
+        id: 'managing-contracts',
+        title: 'Managing Your Templates',
+        subtitle: 'Browse, search, filter, and manage your library of contract templates.',
+        body: `
+<img src="screenshots/contracts-list.png" alt="Contract templates list" />
+
+<h2>Template Library</h2>
+<p>The Contracts page shows all templates in your company as a card-based grid. Each card displays the template name, category, current status, and available actions.</p>
+
+<h2>Search & Filter</h2>
+<ul>
+  <li><strong>Search bar</strong> — Find templates by name instantly</li>
+  <li><strong>Status filter</strong> — Show only Active, Draft, or Archived templates</li>
+  <li><strong>Category filter</strong> — Filter by template category</li>
+</ul>
+
+<h2>Template Card Actions</h2>
+<p>Each template card has a menu (⋮) with these options:</p>
+<table class="ref-table">
+  <thead><tr><th>Action</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Edit</strong></td><td>Open the Template Builder to modify metadata and signer config</td></tr>
+    <tr><td><strong>Edit Fields</strong></td><td>Open the Field Overlay Editor to place/modify fields on the PDF</td></tr>
+    <tr><td><strong>Duplicate</strong></td><td>Create a copy of the template with all its configuration</td></tr>
+    <tr><td><strong>Download</strong></td><td>Download the original PDF file</td></tr>
+    <tr><td><strong>Archive / Restore</strong></td><td>Move to archive or restore from archive</td></tr>
+    <tr><td><strong>Delete</strong></td><td>Permanently remove the template (requires confirmation)</td></tr>
+  </tbody>
+</table>
+
+<h2>Template Statuses</h2>
+<ul>
+  <li><span class="status-badge green">Active</span> — Available for use in envelopes and signing sessions</li>
+  <li><span class="status-badge amber">Draft</span> — Still being configured, not yet available</li>
+  <li><span class="status-badge gray">Archived</span> — Hidden from active use but preserved for records</li>
+</ul>
+
+<h2>Contract Categories</h2>
+<p>Organize templates using categories: <strong>Employment Contract</strong>, <strong>NDA</strong>, <strong>Offer Letter</strong>, <strong>Policy Agreement</strong>, <strong>Benefits Enrollment</strong>, <strong>Tax Form</strong>, and <strong>Other</strong>.</p>
+        `
+      },
+      {
+        id: 'creating-contract',
+        title: 'Creating a New Contract Template',
+        subtitle: 'Step-by-step guide to uploading a PDF and setting up a new template.',
+        body: `
+<h2>The 4-Step Creation Wizard</h2>
+<p>Creating a new template follows a guided wizard that walks you through each step:</p>
+
+<h3>Step 1: Upload Your PDF</h3>
+<p>Click <strong>"New Contract"</strong> on the Contracts page, then:</p>
+<ul>
+  <li>Drag and drop a PDF file, or click to browse your files</li>
+  <li>Supported format: PDF only</li>
+  <li>Maximum file size: 10MB</li>
+  <li>Multi-page documents are fully supported</li>
+</ul>
+
+<h3>Step 2: Enter Contract Details</h3>
+<ul>
+  <li><strong>Contract Name</strong> — A clear, descriptive name (e.g., "US Employment Agreement 2024")</li>
+  <li><strong>Category</strong> — Select the appropriate contract type</li>
+  <li><strong>Description</strong> (optional) — Add notes about when this template should be used</li>
+</ul>
+
+<h3>Step 3: Configure Signers</h3>
+<ul>
+  <li>Define the number of signers (typically 1 for candidate-only, or 2 for candidate + employer)</li>
+  <li>Set the signing order — who signs first?</li>
+  <li>Name each signer role (e.g., "Candidate", "HR Manager")</li>
+</ul>
+
+<h3>Step 4: Place Fields on the Document</h3>
+<p>This opens the <strong>Field Overlay Editor</strong> where you visually place signature fields, text inputs, date pickers, and more directly on the PDF pages. See the <a href="#" onclick="navigateTo('article', 'field-editor', 'field-overlay'); return false;">Field Overlay Editor</a> article for details.</p>
+
+<div class="info-box tip"><strong>Tip</strong>You can save as Draft at any point and return later to finish configuring. A template must have at least one signature field to be marked as Active.</div>
+        `
+      },
+      {
+        id: 'template-builder',
+        title: 'Template Builder: Metadata & Signer Configuration',
+        subtitle: 'Configure template details, signer roles, and signing order.',
+        body: `
+<img src="screenshots/template-detail.png" alt="Template builder" />
+
+<h2>Template Metadata</h2>
+<p>The Template Builder lets you edit the core information about your template:</p>
+<ul>
+  <li><strong>Name</strong> — The display name shown in the template library and sent to candidates</li>
+  <li><strong>Category</strong> — Organizational classification (Employment Contract, NDA, etc.)</li>
+  <li><strong>Description</strong> — Internal notes about the template's purpose and usage</li>
+  <li><strong>Status</strong> — Toggle between Draft and Active</li>
+</ul>
+
+<h2>Signer Configuration</h2>
+<p>Each template defines who needs to sign and in what order:</p>
+
+<h3>Signer Roles</h3>
+<p>Add one or more signer roles. Common configurations:</p>
+<ul>
+  <li><strong>Single signer</strong> — Candidate only (most common for high-volume hiring)</li>
+  <li><strong>Two signers</strong> — Candidate + Manager/HR representative</li>
+  <li><strong>Multiple signers</strong> — For complex contracts requiring multiple approvals</li>
+</ul>
+
+<h3>Signing Order</h3>
+<p>Choose sequential signing (signer 1 must complete before signer 2 receives the document) or parallel signing (all signers receive simultaneously).</p>
+
+<h2>PDF Preview</h2>
+<p>The right side of the Template Builder shows a preview of your uploaded PDF document, so you can verify the content while configuring metadata.</p>
+
+<div class="info-box"><strong>Note</strong>Changes to signer configuration may affect existing field assignments. If you change the number of signers, review your field placements in the Field Overlay Editor.</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'field-overlay',
+    title: 'Field Overlay Editor',
+    description: 'Place and configure interactive fields on your contract PDFs — signatures, inputs, dates, and more.',
+    icon: '✏️',
+    iconBg: '#FFF8E1',
+    articleCount: 2,
+    articles: [
+      {
+        id: 'field-editor',
+        title: 'Using the Field Overlay Editor',
+        subtitle: 'Drag, drop, and configure fields directly on your PDF contract pages.',
+        body: `
+<img src="screenshots/field-overlay-editor.png" alt="Field Overlay Editor" />
+
+<h2>Opening the Editor</h2>
+<p>Access the Field Overlay Editor from the Contracts page by clicking <strong>"Edit Fields"</strong> on any template card menu, or directly from Step 4 of the creation wizard.</p>
+
+<h2>Editor Layout</h2>
+<p>The editor has three main areas:</p>
+<ul>
+  <li><strong>Document Canvas (center)</strong> — Your PDF rendered at full size. Navigate between pages using the page controls at the bottom.</li>
+  <li><strong>Field Palette (left sidebar)</strong> — Drag field types from here onto the document. Categories include Signature fields, Input fields, and Display fields.</li>
+  <li><strong>Configuration Panel (right sidebar)</strong> — When you select a field on the canvas, this panel shows its properties: signer assignment, data source, validation rules, and positioning.</li>
+</ul>
+
+<h2>Placing Fields</h2>
+<ol>
+  <li><strong>Select a field type</strong> from the left palette</li>
+  <li><strong>Drag it onto the PDF</strong> to the exact position where it should appear</li>
+  <li><strong>Resize</strong> by dragging the corner handles</li>
+  <li><strong>Configure</strong> using the right panel — assign to a signer, set data source, add validation</li>
+</ol>
+
+<h2>Field Actions</h2>
+<ul>
+  <li><strong>Move</strong> — Click and drag to reposition</li>
+  <li><strong>Resize</strong> — Drag corner handles</li>
+  <li><strong>Duplicate</strong> — Copy a field with its configuration</li>
+  <li><strong>Delete</strong> — Remove a field from the page</li>
+  <li><strong>Configure</strong> — Click to open the property panel</li>
+</ul>
+
+<h2>Multi-Page Documents</h2>
+<p>For multi-page PDFs, use the page navigator at the bottom to switch between pages. Fields are placed per-page, and each page can have different field configurations.</p>
+
+<div class="info-box tip"><strong>Tip</strong>Use the zoom controls to get pixel-perfect field placement. Zoom in for precise positioning of signature lines and small text fields.</div>
+        `
+      },
+      {
+        id: 'field-types',
+        title: 'Field Types Reference',
+        subtitle: 'Complete guide to all available field types, data sources, and validation options.',
+        body: `
+<h2>Signature Fields</h2>
+<table class="ref-table">
+  <thead><tr><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Signature</strong></td><td>Digital signature capture — candidates draw or type their signature</td></tr>
+    <tr><td><strong>Initials</strong></td><td>Smaller initial capture for page-by-page acknowledgment</td></tr>
+    <tr><td><strong>Signature Date</strong></td><td>Automatically stamps the date when the signature is applied</td></tr>
+  </tbody>
+</table>
+
+<h2>Input Fields</h2>
+<table class="ref-table">
+  <thead><tr><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Text Input</strong></td><td>Free-form text entry (names, addresses, custom responses)</td></tr>
+    <tr><td><strong>Date Picker</strong></td><td>Calendar-based date selection with format options</td></tr>
+    <tr><td><strong>Checkbox</strong></td><td>Yes/No toggle for acknowledgments and confirmations</td></tr>
+    <tr><td><strong>Dropdown</strong></td><td>Selection from a predefined list of options</td></tr>
+    <tr><td><strong>Number Input</strong></td><td>Numeric-only field for IDs, amounts, etc.</td></tr>
+  </tbody>
+</table>
+
+<h2>Display Fields</h2>
+<table class="ref-table">
+  <thead><tr><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Static Text</strong></td><td>Pre-filled text that candidates can read but not edit</td></tr>
+    <tr><td><strong>Auto-fill Text</strong></td><td>Text automatically populated from candidate data (name, email, etc.)</td></tr>
+    <tr><td><strong>Image</strong></td><td>Display a static image (logos, stamps) on the document</td></tr>
+    <tr><td><strong>QR Code</strong></td><td>Auto-generated QR code linking to the signing session or verification URL</td></tr>
+  </tbody>
+</table>
+
+<h2>Data Sources</h2>
+<p>Each field can pull its value from different sources:</p>
+<ul>
+  <li><strong>Talkpush Profile</strong> — Auto-fill from the candidate's Talkpush data (name, email, phone, etc.)</li>
+  <li><strong>Manual Entry</strong> — Candidate fills in the value during signing</li>
+  <li><strong>System Generated</strong> — Automatic values like current date, session ID, signing timestamp</li>
+  <li><strong>Fixed Value</strong> — A constant value defined when creating the template (company name, address, etc.)</li>
+</ul>
+
+<h2>Validation Rules</h2>
+<p>Input fields support validation to ensure data quality:</p>
+<ul>
+  <li><strong>Required</strong> — Field must be filled before signing can complete</li>
+  <li><strong>Format validation</strong> — Email format, phone number format, date format</li>
+  <li><strong>Character limits</strong> — Minimum and maximum length constraints</li>
+</ul>
+
+<div class="info-box"><strong>Note</strong>Auto-fill fields linked to Talkpush profiles can also write data back to the candidate record after signing. Enable "Writeback" in the field configuration to sync values back to Talkpush.</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'envelopes',
+    title: 'Envelopes & Matching Rules',
+    description: 'Bundle templates into envelopes and configure smart matching rules for automatic contract assignment.',
+    icon: '📬',
+    iconBg: '#FCE4EC',
+    articleCount: 2,
+    articles: [
+      {
+        id: 'envelopes-overview',
+        title: 'Understanding Envelopes',
+        subtitle: 'Package multiple templates together and define how they get assigned to candidates.',
+        body: `
+<h2>What Are Envelopes?</h2>
+<p>An envelope is a package that groups one or more contract templates together. When a signing session is created, it's based on an envelope — the candidate receives all templates in the envelope as a single signing experience.</p>
+
+<h2>Why Use Envelopes?</h2>
+<ul>
+  <li><strong>Bundle documents</strong> — Send an employment contract, NDA, and benefits form together</li>
+  <li><strong>Smart assignment</strong> — Use matching rules to automatically select the right envelope for each candidate</li>
+  <li><strong>Consistent experience</strong> — Ensure every candidate in a category gets the exact same set of documents</li>
+</ul>
+
+<h2>Envelope Structure</h2>
+<table class="ref-table">
+  <thead><tr><th>Component</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Name</strong></td><td>Descriptive name for the envelope (e.g., "US Full-Time Onboarding Package")</td></tr>
+    <tr><td><strong>Description</strong></td><td>Internal notes about when to use this envelope</td></tr>
+    <tr><td><strong>Templates</strong></td><td>One or more contract templates included in the bundle</td></tr>
+    <tr><td><strong>Matching Rules</strong></td><td>Logic that determines which candidates receive this envelope</td></tr>
+    <tr><td><strong>Status</strong></td><td>Active (available for use) or Draft (still configuring)</td></tr>
+    <tr><td><strong>Expiration</strong></td><td>Default expiration period for signing sessions created from this envelope</td></tr>
+  </tbody>
+</table>
+
+<h2>Creating an Envelope</h2>
+<ol>
+  <li>Navigate to <strong>Envelopes</strong> in the sidebar</li>
+  <li>Click <strong>"New Envelope"</strong></li>
+  <li>Enter the envelope name and description</li>
+  <li>Add templates by selecting from your template library</li>
+  <li>Configure matching rules (optional — see <a href="#" onclick="navigateTo('article', 'matching-rules', 'envelopes'); return false;">Matching Rules</a>)</li>
+</ol>
+
+<h2>Envelope Dashboard</h2>
+<p>The Envelopes page shows all configured envelopes with their status, number of included templates, and matching rule summary. Use the search bar and filters to quickly find specific envelopes.</p>
+
+<div class="info-box tip"><strong>Tip</strong>Start with a simple envelope containing one template. You can always add more templates later as your process matures.</div>
+        `
+      },
+      {
+        id: 'matching-rules',
+        title: 'Configuring Matching Rules',
+        subtitle: 'Set up automatic contract assignment using AND/OR logic and candidate attributes.',
+        body: `
+<img src="screenshots/matching-rules.png" alt="Matching rules configuration" />
+
+<h2>What Are Matching Rules?</h2>
+<p>Matching rules let you automatically assign the correct envelope to each candidate based on their profile attributes. Instead of manually selecting contracts, the system matches candidates to envelopes automatically.</p>
+
+<h2>AND/OR Logic</h2>
+<p>Rules are built using two logical operators:</p>
+<ul>
+  <li><strong>AND</strong> — All conditions must be true (narrower match)</li>
+  <li><strong>OR</strong> — Any condition can be true (broader match)</li>
+</ul>
+
+<div class="info-box"><strong>Example</strong><em>AND logic:</em> Campaign is "Customer Service" AND Location is "New York" → Only candidates in the NYC Customer Service campaign match.<br><br><em>OR logic:</em> Location is "New York" OR Location is "New Jersey" → Candidates in either location match.</div>
+
+<h2>Available Filter Attributes</h2>
+<p>You can filter candidates based on these Talkpush profile attributes:</p>
+
+<table class="ref-table">
+  <thead><tr><th>Attribute</th><th>Operators</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Campaign</strong></td><td>is, is not, contains</td><td>Campaign is "Summer 2024 BPO Hiring"</td></tr>
+    <tr><td><strong>Location / City</strong></td><td>is, is not, contains</td><td>City contains "Manila"</td></tr>
+    <tr><td><strong>Job Title</strong></td><td>is, is not, contains</td><td>Job Title is "Customer Service Rep"</td></tr>
+    <tr><td><strong>Department</strong></td><td>is, is not</td><td>Department is "Operations"</td></tr>
+    <tr><td><strong>Country</strong></td><td>is, is not</td><td>Country is "Philippines"</td></tr>
+    <tr><td><strong>Source</strong></td><td>is, is not, contains</td><td>Source is "Indeed"</td></tr>
+    <tr><td><strong>Status</strong></td><td>is, is not</td><td>Status is "Offer Accepted"</td></tr>
+    <tr><td><strong>Custom Attributes</strong></td><td>is, is not, contains, is empty</td><td>Custom field "Employment Type" is "Full-Time"</td></tr>
+  </tbody>
+</table>
+
+<h2>Building Complex Rules</h2>
+<p>Combine multiple conditions for precise targeting:</p>
+<ol>
+  <li>Click <strong>"Add Condition"</strong> to add a new rule</li>
+  <li>Select the attribute, operator, and value</li>
+  <li>Choose <strong>AND</strong> or <strong>OR</strong> to connect with other conditions</li>
+  <li>Group conditions together for nested logic when needed</li>
+</ol>
+
+<div class="info-box warning"><strong>Important</strong>If multiple envelopes match the same candidate, the first matching envelope (by priority order) will be used. Make sure your rules don't overlap unintentionally.</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'signing-sessions',
+    title: 'Signing Sessions',
+    description: 'Track, manage, and take action on individual candidate signing sessions.',
+    icon: '✍️',
+    iconBg: '#E0F2F1',
+    articleCount: 1,
+    articles: [
+      {
+        id: 'tracking-sessions',
+        title: 'Tracking & Managing Signing Sessions',
+        subtitle: 'Monitor the status of every contract sent to candidates, with filtering, detail views, and bulk actions.',
+        body: `
+<img src="screenshots/signing-sessions.png" alt="Signing sessions list" />
+
+<h2>Sessions Overview</h2>
+<p>The Signing Sessions page gives you a complete view of every contract instance sent to candidates. Each row represents one candidate's signing journey.</p>
+
+<h2>Filtering Sessions</h2>
+<p>Find specific sessions using three methods:</p>
+<ul>
+  <li><strong>Search</strong> — Type a candidate name, email, or session ID</li>
+  <li><strong>Status filter</strong> — Filter by Pending, Viewed, Completed, Expired, Voided, Declined, or Failed</li>
+  <li><strong>Date range</strong> — Show sessions created within a specific period</li>
+</ul>
+
+<h2>Session Columns</h2>
+<table class="ref-table">
+  <thead><tr><th>Column</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Candidate</strong></td><td>Name and email of the signer</td></tr>
+    <tr><td><strong>Envelope</strong></td><td>Which envelope was used</td></tr>
+    <tr><td><strong>Status</strong></td><td>Current signing status (see reference below)</td></tr>
+    <tr><td><strong>Created</strong></td><td>When the session was initiated</td></tr>
+    <tr><td><strong>Completed</strong></td><td>When signing was finished (if applicable)</td></tr>
+    <tr><td><strong>Expires</strong></td><td>Expiration deadline</td></tr>
+    <tr><td><strong>Actions</strong></td><td>Quick actions menu</td></tr>
+  </tbody>
+</table>
+
+<h2>Session Status Reference</h2>
+<table class="ref-table">
+  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><span class="status-badge amber">Pending</span></td><td>Contract sent but not yet opened by the candidate</td></tr>
+    <tr><td><span class="status-badge blue">Viewed</span></td><td>Candidate has opened and started reviewing the contract</td></tr>
+    <tr><td><span class="status-badge green">Completed</span></td><td>All required signatures and fields are done</td></tr>
+    <tr><td><span class="status-badge gray">Expired</span></td><td>Signing deadline passed without completion</td></tr>
+    <tr><td><span class="status-badge red">Voided</span></td><td>Manually cancelled by an admin</td></tr>
+    <tr><td><span class="status-badge red">Declined</span></td><td>Candidate explicitly declined to sign</td></tr>
+    <tr><td><span class="status-badge red">Failed</span></td><td>Technical error prevented completion</td></tr>
+  </tbody>
+</table>
+
+<h2>Session Detail View</h2>
+<p>Click any session row to see the full detail, which includes:</p>
+<ul>
+  <li><strong>Candidate Information</strong> — Name, email, phone, Talkpush ID</li>
+  <li><strong>Document Preview</strong> — View the signed or pending document</li>
+  <li><strong>Timeline</strong> — Chronological log of every event (sent, opened, signed, etc.)</li>
+  <li><strong>Audit Trail</strong> — IP address, device info, timestamps for legal compliance</li>
+</ul>
+
+<h2>Bulk Actions</h2>
+<p>Select multiple sessions using checkboxes to perform bulk operations:</p>
+<ul>
+  <li><strong>Resend</strong> — Send reminder notifications to pending candidates</li>
+  <li><strong>Void</strong> — Cancel multiple sessions at once</li>
+  <li><strong>Export</strong> — Download session data as CSV for reporting</li>
+</ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'candidate-experience',
+    title: 'Candidate Signing Experience',
+    description: 'What candidates see when they receive, review, and sign contracts via WhatsApp, SMS, or email.',
+    icon: '🤝',
+    iconBg: '#E8EAF6',
+    articleCount: 1,
+    articles: [
+      {
+        id: 'candidate-journey',
+        title: 'The Candidate Signing Journey',
+        subtitle: 'A complete walkthrough of the 5-step signing experience from the candidate perspective.',
+        body: `
+<h2>Overview</h2>
+<p>When a signing session is triggered, candidates receive a link via WhatsApp, SMS, or email. The signing experience is fully mobile-optimized and designed for speed. Here's what the candidate sees at each step:</p>
+
+<h2>Step 1: Welcome Screen</h2>
+<img src="screenshots/candidate-welcome.png" alt="Candidate welcome screen" />
+<p>The candidate lands on a branded welcome page showing:</p>
+<ul>
+  <li>Company logo and branding (configured in Settings)</li>
+  <li>A brief description of what they're about to sign</li>
+  <li>A clear <strong>"Start Signing"</strong> call-to-action button</li>
+  <li>Document count and estimated time to complete</li>
+</ul>
+
+<h2>Step 2: Document Reading</h2>
+<img src="screenshots/candidate-reading.png" alt="Candidate reading contract" />
+<p>The contract is rendered as a scrollable document. Candidates can:</p>
+<ul>
+  <li>Read the full contract at their own pace</li>
+  <li>Zoom in on specific sections</li>
+  <li>Navigate between pages</li>
+  <li>See highlighted areas where they need to take action (sign, fill in, check)</li>
+</ul>
+
+<h2>Step 3: AI Assistant (Optional)</h2>
+<img src="screenshots/candidate-chatting.png" alt="Candidate AI chat" />
+<p>If enabled, candidates can chat with an AI assistant that:</p>
+<ul>
+  <li>Answers questions about the contract in plain language</li>
+  <li>Explains legal terminology</li>
+  <li>Summarizes key sections</li>
+  <li>Helps candidates understand what they're agreeing to</li>
+</ul>
+<div class="info-box tip"><strong>Tip</strong>The AI assistant is trained only on the specific contract content. It cannot make promises or modify the contract terms — it only explains what's already there.</div>
+
+<h2>Step 4: Signing</h2>
+<p>Candidates interact with each field that requires their input:</p>
+<ul>
+  <li><strong>Signature fields</strong> — Draw with finger/mouse or type their name</li>
+  <li><strong>Text fields</strong> — Fill in required information</li>
+  <li><strong>Checkboxes</strong> — Acknowledge terms and conditions</li>
+  <li><strong>Date fields</strong> — Select dates from a calendar picker</li>
+</ul>
+<p>All fields assigned to the candidate are highlighted and numbered, guiding them through the signing flow in order.</p>
+
+<h2>Step 5: Completion</h2>
+<img src="screenshots/candidate-completed.jpg" alt="Candidate completion screen" />
+<p>After signing all required fields, the candidate sees a confirmation screen with:</p>
+<ul>
+  <li>A success message confirming their signature was recorded</li>
+  <li>Option to download a copy of the signed document</li>
+  <li>Reference number for their records</li>
+  <li>Information about next steps in the hiring process</li>
+</ul>
+
+<div class="info-box"><strong>Note</strong>The entire signing experience works on any device — desktop, tablet, or mobile phone. No app download is required.</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'administration',
+    title: 'Administration',
+    description: 'Manage users, companies, roles, and platform settings. Admin-only features.',
+    icon: '⚙️',
+    iconBg: '#FBE9E7',
+    articleCount: 3,
+    articles: [
+      {
+        id: 'user-management',
+        title: 'User Management',
+        subtitle: 'Invite team members, assign roles, and manage access to your Contract Hub company.',
+        body: `
+<img src="screenshots/users.png" alt="User management" />
+
+<h2>Inviting New Users</h2>
+<ol>
+  <li>Navigate to <strong>Users</strong> in the sidebar (Admin only)</li>
+  <li>Click <strong>"Invite User"</strong></li>
+  <li>Enter the user's email address</li>
+  <li>Select their role: <strong>Admin</strong> or <strong>Regular User</strong></li>
+  <li>Click <strong>"Send Invitation"</strong></li>
+</ol>
+<p>The invited user receives an email with a link to set up their password and access the platform.</p>
+
+<h2>User List</h2>
+<p>The Users page displays all team members with:</p>
+<ul>
+  <li><strong>Name</strong> and email address</li>
+  <li><strong>Role</strong> — Admin or Regular User</li>
+  <li><strong>Status</strong> — Active, Pending (invitation sent), or Disabled</li>
+</ul>
+<p>Use the search bar and role/status filters to find specific users quickly.</p>
+
+<h2>Managing Users</h2>
+<ul>
+  <li><strong>Change Role</strong> — Promote a Regular User to Admin or vice versa</li>
+  <li><strong>Disable Account</strong> — Temporarily revoke access without deleting</li>
+  <li><strong>Re-send Invitation</strong> — Send another invitation email if the original expired</li>
+</ul>
+
+<div class="info-box warning"><strong>Important</strong>Disabling a user immediately revokes their access. They will not be able to log in until re-enabled by an Admin.</div>
+        `
+      },
+      {
+        id: 'company-management',
+        title: 'Company Management',
+        subtitle: 'Create and configure companies within your Contract Hub organization.',
+        body: `
+<h2>Who Can Manage Companies?</h2>
+<p>Company management is restricted to <strong>Talkpush Owner</strong> role — the highest permission level. Regular Admins can manage users and settings within a company, but cannot create or delete companies.</p>
+
+<h2>Creating a New Company</h2>
+<ol>
+  <li>Navigate to the Company Selector (click company name in sidebar header)</li>
+  <li>Click <strong>"Create Company"</strong></li>
+  <li>Enter the company name</li>
+  <li>Configure initial settings (branding, expiration defaults)</li>
+</ol>
+
+<h2>Company Settings</h2>
+<p>Each company can be configured independently:</p>
+<ul>
+  <li><strong>Company Name</strong> — The display name shown to candidates and in the sidebar</li>
+  <li><strong>Branding</strong> — Logo and color scheme used in the candidate signing experience</li>
+  <li><strong>Default Settings</strong> — Expiration periods, reminder schedules, notification preferences</li>
+</ul>
+
+<div class="info-box"><strong>Note</strong>Each company is a completely separate workspace. Templates, envelopes, users, and signing sessions are not shared between companies unless explicitly configured.</div>
+        `
+      },
+      {
+        id: 'roles-permissions',
+        title: 'Roles & Permissions Reference',
+        subtitle: 'Complete breakdown of the three-tier RBAC system and what each role can do.',
+        body: `
+<h2>Three-Tier Role System</h2>
+<p>Contract Hub uses a simple but effective role-based access control (RBAC) system with three tiers:</p>
+
+<table class="ref-table">
+  <thead><tr><th>Capability</th><th>Regular User</th><th>Admin</th><th>Talkpush Owner</th></tr></thead>
+  <tbody>
+    <tr><td>View Dashboard</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>View Templates</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Create/Edit Templates</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>View Signing Sessions</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Create Signing Sessions</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Manage Envelopes</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Void Sessions</td><td>❌</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Manage Users</td><td>❌</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Edit Company Settings</td><td>❌</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Create/Delete Companies</td><td>❌</td><td>❌</td><td>✅</td></tr>
+    <tr><td>Manage All Companies</td><td>❌</td><td>❌</td><td>✅</td></tr>
+  </tbody>
+</table>
+
+<h2>Role Descriptions</h2>
+<h3>Regular User</h3>
+<p>Day-to-day access for recruiters and HR team members. Can create templates, manage envelopes, and track signing sessions. Cannot manage users, void sessions, or change settings.</p>
+
+<h3>Admin</h3>
+<p>Full control within a single company. Can do everything a Regular User can, plus manage users, void signing sessions, and configure company settings.</p>
+
+<h3>Talkpush Owner</h3>
+<p>Highest level of access across the entire organization. Can create and manage multiple companies, in addition to all Admin capabilities.</p>
+
+<div class="info-box"><strong>Note</strong>A user can have different roles in different companies. For example, you might be an Admin in "Acme Corp" but a Regular User in "Acme BPO Division".</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'settings-security',
+    title: 'Settings & Security',
+    description: 'Configure company settings, understand security features, and learn about legal compliance.',
+    icon: '🔒',
+    iconBg: '#EFEBE9',
+    articleCount: 2,
+    articles: [
+      {
+        id: 'settings',
+        title: 'Company Settings',
+        subtitle: 'Configure branding, expiration, reminders, and notification preferences.',
+        body: `
+<img src="screenshots/settings.png" alt="Company settings" />
+
+<h2>Available Settings</h2>
+
+<h3>Company Name</h3>
+<p>The display name shown in the sidebar, company selector, and candidate-facing pages. Changing this updates the name everywhere immediately.</p>
+
+<h3>Default Expiration Period</h3>
+<p>Set how many days a signing session remains valid before expiring. Candidates who don't complete signing within this period will see their session marked as "Expired".</p>
+<ul>
+  <li>Common settings: 7 days, 14 days, or 30 days</li>
+  <li>Can be overridden per-envelope if needed</li>
+</ul>
+
+<h3>Reminder Schedule</h3>
+<p>Configure automatic reminders sent to candidates who haven't completed signing:</p>
+<ul>
+  <li>Set the frequency (e.g., every 2 days)</li>
+  <li>Set the maximum number of reminders</li>
+  <li>Reminders are sent via the same channel as the original contract (WhatsApp, SMS, or email)</li>
+</ul>
+
+<h3>Branding</h3>
+<p>Customize the candidate signing experience with your company's identity:</p>
+<ul>
+  <li><strong>Logo</strong> — Displayed on the welcome page and in the signing header</li>
+  <li><strong>Primary color</strong> — Used for buttons and accent elements</li>
+</ul>
+
+<h3>Notification Preferences</h3>
+<p>Control which events trigger notifications to your team:</p>
+<ul>
+  <li>Contract signed notifications</li>
+  <li>Contract expired alerts</li>
+  <li>Contract declined alerts</li>
+</ul>
+        `
+      },
+      {
+        id: 'security-compliance',
+        title: 'Security & Legal Compliance',
+        subtitle: 'Authentication, data protection, audit trails, and e-signature legal standards.',
+        body: `
+<h2>Authentication & Access Security</h2>
+<ul>
+  <li><strong>Google SSO</strong> — Leverages Google's enterprise-grade authentication</li>
+  <li><strong>Password hashing</strong> — Passwords are securely hashed and never stored in plain text</li>
+  <li><strong>Role-based access</strong> — Three-tier RBAC ensures users only see what they need</li>
+  <li><strong>Multi-company isolation</strong> — Each company's data is completely separate</li>
+</ul>
+
+<h2>Signing Security</h2>
+<ul>
+  <li><strong>Unique signing links</strong> — Each candidate receives a unique, time-limited URL</li>
+  <li><strong>Complete audit trail</strong> — Every action recorded with IP address, device, and timestamp</li>
+  <li><strong>Document integrity</strong> — Signed documents cannot be altered after completion</li>
+  <li><strong>Secure storage</strong> — All documents encrypted at rest and in transit</li>
+</ul>
+
+<h2>Legal Compliance</h2>
+<p>Contract Hub's e-signatures are designed to comply with major e-signature regulations:</p>
+
+<table class="ref-table">
+  <thead><tr><th>Standard</th><th>Jurisdiction</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ESIGN Act</strong></td><td>United States</td><td>Electronic Signatures in Global and National Commerce Act — establishes legal validity of electronic signatures</td></tr>
+    <tr><td><strong>UETA</strong></td><td>United States (state level)</td><td>Uniform Electronic Transactions Act — adopted by 47 states, provides state-level framework</td></tr>
+    <tr><td><strong>eIDAS</strong></td><td>European Union</td><td>Electronic Identification, Authentication and Trust Services — EU regulation for electronic transactions</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box important"><strong>Important</strong>While Contract Hub provides the technology infrastructure for legally valid electronic signatures, organizations should consult their legal teams about specific compliance requirements for their industry and jurisdiction.</div>
+
+<h2>Data Protection</h2>
+<ul>
+  <li>All data transmitted over HTTPS (TLS 1.2+)</li>
+  <li>Documents encrypted at rest using AES-256</li>
+  <li>Regular security audits and penetration testing</li>
+  <li>Infrastructure hosted on enterprise-grade cloud providers</li>
+</ul>
+        `
+      }
+    ]
+  },
+  {
+    id: 'integration',
+    title: 'Talkpush Integration',
+    description: 'How Contract Hub connects with Talkpush for automated contract delivery and data sync.',
+    icon: '🔗',
+    iconBg: '#E1F5FE',
+    articleCount: 1,
+    articles: [
+      {
+        id: 'talkpush-integration',
+        title: 'Talkpush Platform Integration',
+        subtitle: 'Automated contract triggers, data sync, and lifecycle events.',
+        body: `
+<h2>Integration Points</h2>
+<p>Contract Hub integrates with the Talkpush recruitment platform at multiple touchpoints:</p>
+<ul>
+  <li><strong>Candidate Data Sync</strong> — Auto-populate contract fields with Talkpush candidate profile data (name, email, phone, custom fields)</li>
+  <li><strong>Automated Triggers</strong> — Automatically send contracts when candidates reach a specific stage in the recruitment workflow</li>
+  <li><strong>Status Writeback</strong> — Signing status is written back to Talkpush, updating the candidate record in real-time</li>
+  <li><strong>In-Chat Delivery</strong> — Contracts are delivered via Talkpush's communication channels (WhatsApp, SMS, email)</li>
+  <li><strong>Data Writeback</strong> — Field values entered by candidates during signing can be synced back to their Talkpush profile</li>
+</ul>
+
+<h2>Lifecycle Events</h2>
+<p>Contract Hub sends event notifications to Talkpush at each stage of the signing process:</p>
+
+<table class="ref-table">
+  <thead><tr><th>Event</th><th>Trigger</th></tr></thead>
+  <tbody>
+    <tr><td><strong>session.created</strong></td><td>A new signing session is generated for a candidate</td></tr>
+    <tr><td><strong>session.sent</strong></td><td>The contract link is delivered to the candidate</td></tr>
+    <tr><td><strong>session.viewed</strong></td><td>The candidate opens and views the contract</td></tr>
+    <tr><td><strong>session.signed</strong></td><td>The candidate completes all required signatures</td></tr>
+    <tr><td><strong>session.completed</strong></td><td>All signers have completed — the contract is fully executed</td></tr>
+    <tr><td><strong>session.expired</strong></td><td>The signing deadline passed without completion</td></tr>
+    <tr><td><strong>session.voided</strong></td><td>An admin manually cancelled the session</td></tr>
+    <tr><td><strong>session.declined</strong></td><td>The candidate declined to sign</td></tr>
+  </tbody>
+</table>
+
+<h2>Setting Up Integration</h2>
+<p>Integration with Talkpush is configured at the organizational level by the Talkpush team. Once connected:</p>
+<ol>
+  <li>Candidate data flows automatically into Contract Hub</li>
+  <li>Matching rules can reference Talkpush campaign attributes</li>
+  <li>Signing events are reflected in the Talkpush candidate timeline</li>
+  <li>Recruiters can trigger contracts directly from the Talkpush CRM</li>
+</ol>
+
+<div class="info-box"><strong>Note</strong>To set up or modify the Talkpush integration, contact your Talkpush account manager or reach out to support.</div>
+        `
+      }
+    ]
+  },
+  {
+    id: 'faq',
+    title: 'Frequently Asked Questions',
+    description: 'Quick answers to the most common questions about Contract Hub.',
+    icon: '❓',
+    iconBg: '#F3E5F5',
+    articleCount: 1,
+    articles: [
+      {
+        id: 'faq-general',
+        title: 'FAQ: Common Questions',
+        subtitle: 'Quick answers to frequently asked questions about using Contract Hub.',
+        body: `
+<h2>Documents & Templates</h2>
+
+<h3>What file formats are supported?</h3>
+<p>Contract Hub supports <strong>PDF files only</strong>. Convert Word, Google Docs, or other formats to PDF before uploading. Maximum file size is 10MB.</p>
+
+<h3>Can I send multiple contracts to the same candidate?</h3>
+<p>Yes! Use <strong>Envelopes</strong> to bundle multiple templates together. The candidate receives all documents in a single signing session and can complete them in sequence.</p>
+
+<h3>What's the difference between the Template Builder and Field Overlay Editor?</h3>
+<p>The <strong>Template Builder</strong> manages metadata (name, category, signer configuration), while the <strong>Field Overlay Editor</strong> is where you visually place interactive fields (signatures, text inputs, etc.) directly on the PDF pages.</p>
+
+<h2>Signing & Delivery</h2>
+
+<h3>What happens when a contract expires?</h3>
+<p>Expired sessions are marked with an "Expired" status. The candidate can no longer access the signing link. An Admin can create a new session for the same candidate if needed.</p>
+
+<h3>Can candidates sign on mobile devices?</h3>
+<p>Absolutely! The signing experience is fully responsive and optimized for mobile phones and tablets. Candidates can draw their signature with their finger on a touchscreen. No app download required.</p>
+
+<h3>Are e-signatures legally valid?</h3>
+<p>Contract Hub is designed to comply with <strong>ESIGN Act</strong> (US), <strong>UETA</strong> (US state level), and <strong>eIDAS</strong> (EU) regulations. Each signing session includes a complete audit trail with timestamps, IP addresses, and device information for legal enforceability.</p>
+
+<h2>Configuration & Access</h2>
+
+<h3>I have access to multiple companies. How do I switch?</h3>
+<p>Click your <strong>company name</strong> in the sidebar header to return to the Company Selector. From there, click on any company card to enter that workspace.</p>
+
+<h3>How does AND/OR logic work in matching rules?</h3>
+<p><strong>AND</strong> means all conditions must match (stricter). <strong>OR</strong> means any condition can match (broader). Example: "Campaign is X <em>AND</em> Location is Y" requires both, while "Location is Y <em>OR</em> Location is Z" matches either.</p>
+
+<h3>How does auto-fill work?</h3>
+<p>Fields configured with a <strong>Talkpush Profile</strong> data source automatically pull values from the candidate's Talkpush record — like name, email, phone number, and custom attributes. This saves candidates time and reduces errors. If "Writeback" is enabled, values entered during signing are synced back to Talkpush.</p>
+        `
+      }
+    ]
+  }
+];
+
+// ─── SEARCH INDEX ───
+function buildSearchIndex() {
+  const index = [];
+  COLLECTIONS.forEach(col => {
+    col.articles.forEach(art => {
+      const text = (art.title + ' ' + art.subtitle + ' ' + art.body).replace(/<[^>]+>/g, '').toLowerCase();
+      index.push({
+        collectionId: col.id,
+        collectionTitle: col.title,
+        articleId: art.id,
+        title: art.title,
+        subtitle: art.subtitle,
+        text: text
+      });
+    });
+  });
+  return index;
+}
+
+const searchIndex = buildSearchIndex();
+
+// ─── ROUTING ───
+function navigateTo(view, id, collectionId) {
+  if (view === 'home') {
+    window.location.hash = '';
+  } else if (view === 'collection') {
+    window.location.hash = '#collection/' + id;
+  } else if (view === 'article') {
+    window.location.hash = '#article/' + collectionId + '/' + id;
+  }
+}
+
+function parseHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (!hash) return { view: 'home' };
+  const parts = hash.split('/');
+  if (parts[0] === 'collection') return { view: 'collection', id: parts[1] };
+  if (parts[0] === 'article') return { view: 'article', collectionId: parts[1], id: parts[2] };
+  if (parts[0] === 'search') return { view: 'search', query: decodeURIComponent(parts.slice(1).join('/')) };
+  return { view: 'home' };
+}
+
+// ─── RENDERING ───
+function render() {
+  const route = parseHash();
+  const app = document.getElementById('app');
+  const header = document.getElementById('site-header');
+  const searchInput = document.getElementById('search-input');
+  const headerTitle = document.getElementById('header-title');
+
+  // Reset search
+  if (route.view !== 'search') {
+    searchInput.value = '';
+  }
+
+  // Header style
+  if (route.view === 'home') {
+    header.className = 'header';
+    headerTitle.textContent = 'How can we help?';
+  } else {
+    header.className = 'header compact';
+    headerTitle.textContent = 'Contract Hub Help Center';
+  }
+
+  // Render view
+  if (route.view === 'home') {
+    renderHome(app);
+  } else if (route.view === 'collection') {
+    renderCollection(app, route.id);
+  } else if (route.view === 'article') {
+    renderArticle(app, route.collectionId, route.id);
+  } else if (route.view === 'search') {
+    renderSearchResults(app, route.query);
+  }
+
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+function renderHome(app) {
+  let html = '<div class="view-transition"><div class="collections-grid">';
+  COLLECTIONS.forEach(col => {
+    html += `
+      <div class="collection-card" onclick="navigateTo('collection', '${col.id}')">
+        <div class="collection-card-icon" style="background:${col.iconBg}">${col.icon}</div>
+        <h3>${col.title}</h3>
+        <p>${col.description}</p>
+        <div class="collection-card-meta">
+          <div class="avatar">CH</div>
+          <span>${col.articleCount} article${col.articleCount !== 1 ? 's' : ''}</span>
+        </div>
+      </div>`;
+  });
+  html += '</div></div>';
+  app.innerHTML = html;
+}
+
+function renderCollection(app, collectionId) {
+  const col = COLLECTIONS.find(c => c.id === collectionId);
+  if (!col) { renderHome(app); return; }
+
+  let html = `<div class="view-transition">
+    <div class="breadcrumbs">
+      <a href="#" onclick="navigateTo('home'); return false;">All Collections</a>
+      <span class="sep">›</span>
+      <span class="current">${col.title}</span>
+    </div>
+    <div class="collection-header">
+      <div class="collection-header-icon" style="background:${col.iconBg}">${col.icon}</div>
+      <div class="collection-header-info">
+        <h2>${col.title}</h2>
+        <p class="meta">${col.articleCount} article${col.articleCount !== 1 ? 's' : ''}</p>
+      </div>
+    </div>
+    <ul class="article-list">`;
+
+  col.articles.forEach(art => {
+    html += `<li><a href="#" onclick="navigateTo('article', '${art.id}', '${col.id}'); return false;">
+      <span class="article-title">${art.title}</span>
+      <span class="chevron">›</span>
+    </a></li>`;
+  });
+
+  html += `</ul>
+    <a class="back-to-top" onclick="navigateTo('home'); return false;">← Back to all collections</a>
+  </div>`;
+  app.innerHTML = html;
+}
+
+function renderArticle(app, collectionId, articleId) {
+  const col = COLLECTIONS.find(c => c.id === collectionId);
+  if (!col) { renderHome(app); return; }
+  const art = col.articles.find(a => a.id === articleId);
+  if (!art) { renderCollection(app, collectionId); return; }
+
+  let html = `<div class="view-transition">
+    <div class="breadcrumbs">
+      <a href="#" onclick="navigateTo('home'); return false;">All Collections</a>
+      <span class="sep">›</span>
+      <a href="#" onclick="navigateTo('collection', '${col.id}'); return false;">${col.title}</a>
+      <span class="sep">›</span>
+      <span class="current">${art.title}</span>
+    </div>
+    <div class="article-header">
+      <h1>${art.title}</h1>
+      <p class="subtitle">${art.subtitle}</p>
+      <div class="article-meta">
+        <div class="avatar">CH</div>
+        <span>Contract Hub Team</span>
+        <span>&middot;</span>
+        <span>Updated February 2026</span>
+      </div>
+    </div>
+    <div class="article-body">${art.body}</div>
+    <a class="back-to-top" onclick="navigateTo('collection', '${col.id}'); return false;">← Back to ${col.title}</a>
+  </div>`;
+  app.innerHTML = html;
+}
+
+function renderSearchResults(app, query) {
+  const q = query.toLowerCase().trim();
+  const results = searchIndex.filter(item => item.text.includes(q));
+
+  let html = `<div class="view-transition">
+    <div class="breadcrumbs">
+      <a href="#" onclick="navigateTo('home'); return false;">All Collections</a>
+      <span class="sep">›</span>
+      <span class="current">Search results</span>
+    </div>
+    <div class="search-results">
+      <h2>${results.length} result${results.length !== 1 ? 's' : ''} for "${query}"</h2>`;
+
+  if (results.length === 0) {
+    html += `<p style="color:var(--text-secondary);margin-top:16px;">No articles found matching your search. Try different keywords or <a href="#" onclick="navigateTo('home'); return false;" style="color:var(--purple-mid);">browse all collections</a>.</p>`;
+  } else {
+    results.forEach(r => {
+      // Extract snippet
+      const idx = r.text.indexOf(q);
+      const start = Math.max(0, idx - 60);
+      const end = Math.min(r.text.length, idx + q.length + 100);
+      let snippet = (start > 0 ? '...' : '') + r.text.slice(start, end) + (end < r.text.length ? '...' : '');
+      // Bold the match
+      snippet = snippet.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '<strong>$&</strong>');
+
+      html += `<div class="search-result-item" onclick="navigateTo('article', '${r.articleId}', '${r.collectionId}')">
+        <h4>${r.title}</h4>
+        <div class="collection-name">${r.collectionTitle}</div>
+        <p>${snippet}</p>
+      </div>`;
+    });
+  }
+
+  html += `</div>
+    <a class="back-to-top" onclick="navigateTo('home'); return false;">← Back to all collections</a>
+  </div>`;
+  app.innerHTML = html;
+}
+
+// ─── SEARCH HANDLER ───
+let searchTimeout;
+function handleSearch(value) {
+  clearTimeout(searchTimeout);
+  if (!value.trim()) {
+    if (parseHash().view === 'search') navigateTo('home');
+    return;
+  }
+  searchTimeout = setTimeout(() => {
+    window.location.hash = '#search/' + encodeURIComponent(value.trim());
+  }, 300);
+}
+
+// ─── INIT ───
+window.addEventListener('hashchange', render);
+window.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>
