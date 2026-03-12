@@ -557,7 +557,7 @@
   <tbody>
     <tr><td><strong>Active Contracts</strong></td><td>Number of published templates ready to use</td></tr>
     <tr><td><strong>Total Sessions</strong></td><td>All signing sessions created (all time)</td></tr>
-    <tr><td><strong>Completed</strong></td><td>Sessions where all documents are signed</td></tr>
+    <tr><td><strong>Completed</strong></td><td>Sessions where all signers have signed all documents</td></tr>
     <tr><td><strong>Pending</strong></td><td>Sessions awaiting candidate action</td></tr>
     <tr><td><strong>Declined</strong></td><td>Sessions the candidate rejected</td></tr>
     <tr><td><strong>Expired</strong></td><td>Sessions that passed their deadline</td></tr>
@@ -1207,7 +1207,7 @@
 <section id="candidate-completion">
 <h3>Completion</h3>
 <p>
-  After signing, the candidate sees a confirmation screen with a success message. They can download a copy of the signed document for their records. The session status is updated to <strong>Completed</strong> and the audit trail is finalized.
+  After signing, the candidate sees a confirmation screen with a success message. They can download a copy of the signed document for their records. Note that the session status is only updated to <strong>Completed</strong> once all signers (not just the candidate) have signed. The audit trail is finalized at that point.
 </p>
 <figure class="screenshot screenshot-mobile">
   <img src="screenshots/candidate-completed.jpg" alt="Completion screen showing success message and download option">
@@ -1229,7 +1229,7 @@
 <table>
   <thead><tr><th>Status</th><th>Badge</th><th>Description</th></tr></thead>
   <tbody>
-    <tr><td>Completed</td><td><span class="badge badge-sage">Completed</span></td><td>All documents have been signed successfully.</td></tr>
+    <tr><td>Completed</td><td><span class="badge badge-sage">Completed</span></td><td>All signers have signed all documents successfully.</td></tr>
     <tr><td>In Progress</td><td><span class="badge badge-lavender">In Progress</span></td><td>The candidate has started filling out fields but hasn't finished.</td></tr>
     <tr><td>Pending</td><td><span class="badge badge-amber">Pending</span></td><td>The session has been created but the candidate hasn't opened the link yet.</td></tr>
     <tr><td>Viewed</td><td><span class="badge badge-lavender">Viewed</span></td><td>The candidate opened the signing link but hasn't started filling fields.</td></tr>
@@ -1343,7 +1343,7 @@
     <tr><td><code>session.created</code></td><td>A new signing session is initiated</td><td>Session ID, candidate ID, template ID</td></tr>
     <tr><td><code>session.viewed</code></td><td>Candidate opens the signing link</td><td>Session ID, timestamp, IP</td></tr>
     <tr><td><code>session.in_progress</code></td><td>Candidate starts filling fields</td><td>Session ID, timestamp</td></tr>
-    <tr><td><code>session.completed</code></td><td>All documents are signed</td><td>Session ID, signed document URL, timestamp</td></tr>
+    <tr><td><code>session.completed</code></td><td>All signers have signed all documents</td><td>Session ID, signed document URL, timestamp</td></tr>
     <tr><td><code>session.declined</code></td><td>Candidate refuses to sign</td><td>Session ID, reason (if provided), timestamp</td></tr>
     <tr><td><code>session.expired</code></td><td>Signing deadline passes</td><td>Session ID, expiration timestamp</td></tr>
     <tr><td><code>session.voided</code></td><td>Administrator cancels the session</td><td>Session ID, voided by, timestamp</td></tr>

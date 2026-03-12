@@ -500,7 +500,7 @@
 <p>El panel muestra estad&iacute;sticas clave de un vistazo:</p>
 <ul>
   <li><strong>Total de Sesiones</strong> &mdash; N&uacute;mero total de sesiones de firma creadas.</li>
-  <li><strong>Completadas</strong> &mdash; Sesiones donde todos los documentos han sido firmados.</li>
+  <li><strong>Completadas</strong> &mdash; Sesiones donde todos los firmantes han firmado todos los documentos.</li>
   <li><strong>En Progreso</strong> &mdash; Sesiones donde el candidato ha comenzado pero no ha terminado.</li>
   <li><strong>Pendientes</strong> &mdash; Sesiones creadas pero a&uacute;n no abiertas por el candidato.</li>
   <li><strong>Expiradas/Rechazadas</strong> &mdash; Sesiones que pasaron su fecha l&iacute;mite o fueron expl&iacute;citamente rechazadas.</li>
@@ -969,7 +969,7 @@
 <section id="candidate-completion">
 <h3>Confirmaci&oacute;n</h3>
 <p>
-  Despu&eacute;s de firmar, el candidato ve una pantalla de confirmaci&oacute;n con un mensaje de &eacute;xito. Puede descargar una copia del documento firmado para sus registros. El estado de la sesi&oacute;n se actualiza a <strong>Completado</strong> y el seguimiento de auditor&iacute;a se finaliza.
+  Despu&eacute;s de firmar, el candidato ve una pantalla de confirmaci&oacute;n con un mensaje de &eacute;xito. Puede descargar una copia del documento firmado para sus registros. El estado de la sesi&oacute;n solo se actualiza a <strong>Completado</strong> cuando todos los firmantes (no solo el candidato) hayan firmado. El seguimiento de auditor&iacute;a se finaliza en ese momento.
 </p>
 <figure class="screenshot screenshot-mobile">
   <img src="screenshots/candidate-completed.jpg" alt="Pantalla de finalizaci&oacute;n mostrando mensaje de &eacute;xito y opci&oacute;n de descarga">
@@ -989,7 +989,7 @@
 <table>
   <thead><tr><th>Estado</th><th>Insignia</th><th>Descripci&oacute;n</th></tr></thead>
   <tbody>
-    <tr><td>Completado</td><td><span class="badge badge-sage">Completado</span></td><td>Todos los documentos han sido firmados exitosamente.</td></tr>
+    <tr><td>Completado</td><td><span class="badge badge-sage">Completado</span></td><td>Todos los firmantes han firmado todos los documentos exitosamente.</td></tr>
     <tr><td>En Progreso</td><td><span class="badge badge-lavender">En Progreso</span></td><td>El candidato ha comenzado a completar campos pero no ha terminado.</td></tr>
     <tr><td>Pendiente</td><td><span class="badge badge-amber">Pendiente</span></td><td>La sesi&oacute;n ha sido creada pero el candidato a&uacute;n no ha abierto el enlace.</td></tr>
     <tr><td>Visto</td><td><span class="badge badge-lavender">Visto</span></td><td>El candidato abri&oacute; el enlace de firma pero no ha comenzado a completar campos.</td></tr>
@@ -1103,7 +1103,7 @@
     <tr><td><code>session.created</code></td><td>Se inicia una nueva sesi&oacute;n de firma</td><td>ID de sesi&oacute;n, ID del candidato, ID de plantilla</td></tr>
     <tr><td><code>session.viewed</code></td><td>El candidato abre el enlace de firma</td><td>ID de sesi&oacute;n, marca de tiempo, IP</td></tr>
     <tr><td><code>session.in_progress</code></td><td>El candidato comienza a completar campos</td><td>ID de sesi&oacute;n, marca de tiempo</td></tr>
-    <tr><td><code>session.completed</code></td><td>Todos los documentos est&aacute;n firmados</td><td>ID de sesi&oacute;n, URL del documento firmado, marca de tiempo</td></tr>
+    <tr><td><code>session.completed</code></td><td>Todos los firmantes han firmado todos los documentos</td><td>ID de sesi&oacute;n, URL del documento firmado, marca de tiempo</td></tr>
     <tr><td><code>session.declined</code></td><td>El candidato se niega a firmar</td><td>ID de sesi&oacute;n, raz&oacute;n (si se proporcion&oacute;), marca de tiempo</td></tr>
     <tr><td><code>session.expired</code></td><td>Pasa el plazo de firma</td><td>ID de sesi&oacute;n, marca de tiempo de expiraci&oacute;n</td></tr>
     <tr><td><code>session.voided</code></td><td>El administrador cancela la sesi&oacute;n</td><td>ID de sesi&oacute;n, anulado por, marca de tiempo</td></tr>
